@@ -45,3 +45,15 @@
 ![数据结构](http://processon.com/chart_image/5d9d49e2e4b03347e1381791.png?_=1570673460420)
 
 ![算法](http://processon.com/chart_image/5d9d537ce4b0a95d96080c2c.png?_=1570673503844)
+
+## 第二课
+
+### Big O notation
+
+* O(1)：Constant Complexity 常数复杂度
+* O(log n)：Logarithmic Complexity 对数复杂度
+* O(n)：Linear Complexity 线性时间复杂度
+* O(n^2)：N square Complexity 平方
+* O(n^3)：N cube Complexity 立方
+* O(2^n)：Exponential Growth 指数
+* O(n!)：Factorial 阶乘
