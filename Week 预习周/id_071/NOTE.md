@@ -1,5 +1,13 @@
 # NOTE
 
+#### 脑图地址（持续更新）
+
+
+[数据结构](https://naotu.baidu.com/file/2e5493a31ae3dec9bf1526d5101b1e11)
+
+[算法](https://naotu.baidu.com/file/977368cc2d9bc9affce2acd8098ddec8)
+
+
 #### 学习方法
 
 
@@ -59,8 +67,3 @@
     二叉树遍历 O(n)     T(n) = 2T(n/2)+O(1)
     二维矩阵   O(n)     T(n) = 2T(n/2)+O(logn)
     归并排序   O(nlogn) T(n) = 2T(n/2)+O(n)
-
-
-[数据结构](https://naotu.baidu.com/file/2e5493a31ae3dec9bf1526d5101b1e11)
-
-[算法](https://naotu.baidu.com/file/977368cc2d9bc9affce2acd8098d递归树
