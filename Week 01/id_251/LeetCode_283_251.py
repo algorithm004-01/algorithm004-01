@@ -19,7 +19,8 @@ class Solution(object):
     """
     # 1 loop 两层循环统计 0
     # 2 一个新数组，遍历非零存入新数组，最后len(old array) - len(new array)个0
-    # 3 index
+    # 3 index 统计非零
+    1 和 3 本质上差别不到，无非就是 一个统计0 一个统计非0
     """
 
     def moveZeroes(self, nums):
@@ -28,7 +29,7 @@ class Solution(object):
         :rtype: None Do not return anything, modify nums in-place instead.
         """
         # 双指针法优化版本
-        # 全0的时候 速度比two_index 好
+        # 速度比two_index 好，0越多越明显
         j = 0
         for i in range(len(nums)):
             if nums[i] != 0:
@@ -42,6 +43,11 @@ class Solution(object):
         j = 0
         for i in range(len(nums)):
             if nums[i] != 0:
+                """
+                # 减少无用的操作，只有在没有0的情况下才生效，意义不大
+                if i != j:
+                    nums[j], nums[i] = nums[i], nums[j]
+                """
                 nums[j], nums[i] = nums[i], nums[j]
                 j += 1
 
@@ -55,6 +61,37 @@ class Solution(object):
 
         for i in range(j, len(nums)):
             nums[i] = 0
+
+    # 1 count 0
+    def count_zeros(self, nums):
+        zeros_count = 0
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                zeros_count += 1
+            else:
+                """
+                # 减少无用的赋值操作，只有在没有0的情况下才生效，意义不大
+                if i - zeros_count != i:
+                    nums[i - zeros_count] = nums[i]
+                """
+                nums[i - zeros_count] = nums[i]
+
+        for j in range(len(nums) - zeros_count, len(nums)):
+            nums[j] = 0
+
+    # 1.2 count 0 改进版
+    def count_zeros_(self, nums):
+        zeros_count = 0
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                zeros_count += 1
+            else:
+                """
+                # 减少无用的赋值操作，只有在没有0的情况下才生效，意义不大
+                if i - zeros_count != i:
+                    nums[i - zeros_count], nums[i] = nums[i], nums[i - zeros_count]
+                """
+                nums[i - zeros_count], nums[i] = nums[i], nums[i - zeros_count]
 
     # 笨方法 LeetCode 是无法通过的
     def newArray(self, nums):
