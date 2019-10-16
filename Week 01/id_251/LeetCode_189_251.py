@@ -45,14 +45,16 @@ class Solution(object):
 
     # 1 暴力解法 O(n*k) 超时
     def force_rotate(self, nums, k):
+        k %= len(nums)
         for i in range(k):
-            previous = nums[len(nums) - 1]
+            previous = nums[-1]
             for j in range(len(nums)):
                 previous, nums[j] = nums[j], previous
 
     # 2 使用额外的数组 时间空间：O(n)
     def new_arr_rotate(self, nums, k):
         new_list = [None] * len(nums)
+        k %= len(nums)
         for i in range(len(nums)):
             new_list[(i + k) % len(nums)] = nums[i]
 
