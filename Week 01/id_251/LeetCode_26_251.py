@@ -68,7 +68,6 @@ class Solution(object):
             if nums[i] != nums[j]:
                 j += 1
                 nums[j] = nums[i]
-
         return j + 1
 
     def count_non_dup(self, nums):
