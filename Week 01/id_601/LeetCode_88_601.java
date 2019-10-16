@@ -21,7 +21,7 @@ class Solution {
                  *  if(j < nums2.length-1 && nums2[j] > nums2[j+1]){} 作用：
                  *  当 nums2[0] 元素比 nums2[1] 大时候，做相应处理
                  */
-                if(j < nums2.length-1 && nums2[j] > nums2[j+1]) {
+                if (j < nums2.length-1 && nums2[j] > nums2[j+1]) {
                     temp = nums2[j];
                     nums2[j] = nums2[j+1];
                     nums2[j+1] = temp;
