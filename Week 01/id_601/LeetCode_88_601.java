@@ -6,13 +6,13 @@ class Solution {
          */
         int j = 0;
         int temp = 0;
-        for (int i = 0; i<nums1.length; i++){
-            if (nums2[j] < nums1[i]){
+        for (int i = 0; i<nums1.length; i++) {
+            if (nums2[j] < nums1[i]) {
                 temp = nums1[i];
                 nums1[i] = nums2[j];
                 nums2[j] = temp;
             }
-            if (nums1[i] == 0){
+            if (nums1[i] == 0) {
                 /**
                  *  int[] nums1 = {1,2,3,8,0,0,0,0,0,0};
                  *  int[] nums2 = {4,5,6,7,8,9};
@@ -21,7 +21,7 @@ class Solution {
                  *  if(j < nums2.length-1 && nums2[j] > nums2[j+1]){} 作用：
                  *  当 nums2[0] 元素比 nums2[1] 大时候，做相应处理
                  */
-                if(j < nums2.length-1 && nums2[j] > nums2[j+1]){
+                if(j < nums2.length-1 && nums2[j] > nums2[j+1]) {
                     temp = nums2[j];
                     nums2[j] = nums2[j+1];
                     nums2[j+1] = temp;
