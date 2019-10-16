@@ -65,6 +65,7 @@ class Solution(object):
     def two_index(self, nums):
         j = 0
         for i in range(len(nums)):
+            # 当出现第一次重复项才开始生效
             if nums[i] != nums[j]:
                 j += 1
                 nums[j] = nums[i]
