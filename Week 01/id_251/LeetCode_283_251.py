@@ -93,7 +93,7 @@ class Solution(object):
                 """
                 nums[i - zeros_count], nums[i] = nums[i], nums[i - zeros_count]
 
-    # 笨方法 LeetCode 是无法通过的
+    # 笨方法 LeetCode
     def newArray(self, nums):
         new_list = []
         for i in nums:
@@ -102,7 +102,7 @@ class Solution(object):
         zeros_count = len(nums) - len(new_list)
         if zeros_count:
             new_list.extend([0] * zeros_count)
-        return new_list
+        nums[:] = new_list  # 不改变指针赋值
 
 
 # leetcode submit region end(Prohibit modification and deletion)
