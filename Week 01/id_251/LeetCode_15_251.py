@@ -39,32 +39,26 @@ class Solution(object):
 
     def sort_towIndex_three_sum(self, nums):
         nums.sort()
-        res, k = [], 0
+        res = []
         for k in range(len(nums) - 2):
-            if nums[k] > 0:  # because of r > l > k
-                break
-            if k > 0 and nums[k] == nums[k - 1]:  # skip the same 'nums[k]'
-                continue
+            if nums[k] > 0: break  # 因为 nums[r] > nums[l] > nums[k]
+            if k > 0 and nums[k] == nums[k - 1]: continue  # skip 重复项
 
             l, r = k + 1, len(nums) - 1
             while l < r:
                 s = nums[k] + nums[l] + nums[r]
                 if s < 0:
+                    while l < r and nums[l] == nums[l + 1]: l += 1  # skip 重复项
                     l += 1
-                    while l < r and nums[l] == nums[l - 1]:
-                        l += 1
                 elif s > 0:
+                    while l < r and nums[r] == nums[r - 1]: r -= 1  # skip 重复项
                     r -= 1
-                    while l < r and nums[r] == nums[r + 1]:
-                        r -= 1
                 else:
                     res.append([nums[k], nums[l], nums[r]])
+                    while l < r and nums[l] == nums[l + 1]: l += 1  # skip 重复项
+                    while l < r and nums[r] == nums[r - 1]: r -= 1  # skip 重复项
                     l += 1
                     r -= 1
-                    while l < r and nums[l] == nums[l - 1]:
-                        l += 1
-                    while l < r and nums[r] == nums[r + 1]:
-                        r -= 1
         return res
 
     def hash_three_sum(self, nums):
@@ -74,8 +68,9 @@ class Solution(object):
         nums.sort()
         res = set()
         for i, v in enumerate(nums[:-2]):
-            if i >= 1 and v == nums[i - 1]:
-                continue
+            if v > 0: break
+            if i > 0 and v == nums[i - 1]: continue  # skip 重复项
+
             vist = {}
             for x in nums[i + 1:]:
                 if x not in vist:
