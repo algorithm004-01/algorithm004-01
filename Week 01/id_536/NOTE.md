@@ -95,9 +95,11 @@
 
     2、Redis：
     
-     Redis sorted set的内部使用HashMap和跳跃表(SkipList)来保证数据的存储和有序，HashMap里放的是成员到score的映射，
+     Redis sorted set的内部使用HashMap和跳跃表(SkipList)来保证数据的存储和有序，
      
-     而跳跃表里存放的 是所有的成员，排序依据是HashMap里存的score,使用跳跃表的结构可以获得比较高的查找效率，并且在实现上比较简单。
+     HashMap里放的是成员到score的映射，而跳跃表里存放的 是所有的成员，排序依据是HashMap里存的score,
+     
+     使用跳跃表的结构可以获得比较高的查找效率，并且在实现上比较简单。
 
 ###### 写在最后
 
