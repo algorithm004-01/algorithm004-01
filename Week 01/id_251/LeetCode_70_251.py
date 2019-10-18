@@ -38,6 +38,7 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+
     # 1 朴素递归
     def simple_recursion(self, n):
         if n == 1:
@@ -51,15 +52,14 @@ class Solution(object):
         if n == 1:
             return 1
         first, second = 1, 2
-
-        for i in range(2, n):
+        for _ in range(2, n):
             second, first = first + second, second
         return second
 
     # 斐波那契
     def iteration1(self, n):
         a, b = 0, 1
-        for i in range(n):
+        for _ in range(n):
             b, a = a + b, b
         return b
 

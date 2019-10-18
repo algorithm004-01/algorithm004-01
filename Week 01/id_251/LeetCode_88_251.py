@@ -74,10 +74,10 @@ class Solution(object):
                 p2 -= 1
             p -= 1
 
-        if p1 < 0:  # if p2 left
+        if p2 != -1:  # if p2 left
             nums1[:p2 + 1] = nums2[:p2 + 1]
 
-    # 方法2 改进版
+    # 方法3 改进版
     def two_index3(self, nums1, m, nums2, n):
         m, n = m - 1, n - 1
 
