@@ -35,7 +35,7 @@ class Solution(object):
                 for k in range(j + 1, len(nums)):
                     if nums[i] + nums[j] + nums[k] == 0:
                         res.add((nums[i], nums[j], nums[k]))
-        return map(list, res)
+        return list(map(list, res))
 
     def sort_towIndex_three_sum(self, nums):
         nums.sort()
@@ -77,5 +77,5 @@ class Solution(object):
                     vist[-v - x] = 1
                 else:
                     res.add((v, -v - x, x))
-        return map(list, res)
+        return list(map(list, res))
 # leetcode submit region end(Prohibit modification and deletion)
