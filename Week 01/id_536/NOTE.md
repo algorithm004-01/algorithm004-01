@@ -66,8 +66,7 @@
       从概率上讲，能够保证跳表的索引大小和数据大小平衡性，不至于性能的过度退化。至于随机函数的选择，见下面的c++代码实现：
 
         /***** 随机函数起始********/
-	
-	private int randomLevel(){
+		private int randomLevel(){
 		int level = 1;
 		for(int i = 1; i < MAX_LEVEL; ++i){   //MAX_LEVEL为链条数
 			if(random.nextInt() % 2 == 1){
