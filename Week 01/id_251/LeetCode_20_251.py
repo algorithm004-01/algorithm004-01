@@ -79,4 +79,17 @@ class Solution(object):
                 stack.append(char)
         return not stack
 
+    # 栈方法优化版
+    def isValid2_1(self, s):
+        if len(s) & 1 == 1:  # 位运算判断奇偶
+            return False
+
+        stack = ['#']
+        hash_map = {'(': ')', '[': ']', '{': '}'}
+        for c in s:
+            if c in hash_map:
+                stack.append(c)
+            elif hash_map[stack.pop()] != c:
+                return False
+        return len(stack) == 1
 # leetcode submit region end(Prohibit modification and deletion)
