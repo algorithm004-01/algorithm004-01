@@ -162,6 +162,7 @@ class MinStack4(object):
     def pop(self):
         if len(self.data) > 1:
             self.data.pop()
+            # del self.data[-1]
 
     def top(self):
         return self.data[-1][0]
