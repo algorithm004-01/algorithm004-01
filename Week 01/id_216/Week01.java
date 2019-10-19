@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 /**
  * Created by liuyp on 2019/10/16.
  */
@@ -46,5 +48,34 @@ public class Week01 {
         }
     }
 
+    //接雨水
+    public int trap(int[] height) {
+        int res = 0;
+        Stack<Integer> stack = new Stack<Integer>();
+        int index = 0;
+
+        while (index < height.length) {
+            while (stack.size() > 0 && height[index] > height[stack.peek()]) {
+                int top = stack.pop();
+                if (stack.empty()) {
+                    break;
+                }
+                int h = Math.min(height[index], height[stack.peek()]) - height[top];
+                System.out.println("h====" + h);
+                int d = index - stack.peek() - 1;
+                System.out.println("d====" + d);
+                System.out.println("------------------------------------");
+
+                res = res + h * d;
+            }
+            stack.push(index++);
+        }
+        return res;
+    }
+
+
+    public static void main(String[] args) {
+    }
 
 }
+
