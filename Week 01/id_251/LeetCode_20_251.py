@@ -64,6 +64,7 @@ class Solution(object):
                 return False
         return True
 
+    # LeetCode中文官方题解不推荐
     def isValid2(self, s):
         if len(s) & 1 == 1:  # 位运算判断奇偶
             return False
@@ -79,13 +80,30 @@ class Solution(object):
                 stack.append(char)
         return not stack
 
-    # 栈方法优化版
-    def isValid2_1(self, s):
+    # 栈方法 正向思维 推荐
+    def isValid3(self, s):
+        if len(s) & 1 == 1:  # 位运算判断奇偶
+            return False
+
+        stack = []
+        hash_map = {'(': ')', '[': ']', '{': '}'}
+        for c in s:
+            if c in hash_map:
+                stack.append(c)
+                continue
+            elif stack and hash_map[stack[-1]] == c:
+                del stack[-1]
+            else:
+                return False
+        return not stack
+
+    # 栈方法
+    def isValid3_1(self, s):
         if len(s) & 1 == 1:  # 位运算判断奇偶
             return False
 
         stack = ['#']
-        hash_map = {'(': ')', '[': ']', '{': '}'}
+        hash_map = {'(': ')', '[': ']', '{': '}', '#': '#'}
         for c in s:
             if c in hash_map:
                 stack.append(c)
