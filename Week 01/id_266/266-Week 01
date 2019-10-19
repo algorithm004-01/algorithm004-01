@@ -1,0 +1,57 @@
+1.移动零(move-zero)
+// 思路:
+// 首先输入的是一个数组,然后设定两个下标i和j,技巧在于以空间(两个下标)换时间。i是用来寻找非0元素(在for循环里,移动快);
+// j是从来寻找非零元素应该存放的位置(移动慢)。
+
+class Solution{
+	public void moveZeros(int[] nums){
+		int j = 0;
+		for (int i = 0; i < nums.length; i++){
+			if (nums[i] != 0){
+				int temp = nums[j];
+				nums[j] = nums[i];
+				nums[i] = temp;
+				j++; //注意此处的j++一定要在if里面,意思是当交换完成之后j就往后挪一个位置,如果放在了if的外面则每次for循环j都加1则不对。只有在交换完成之后j才加1
+			}
+		}
+	}
+}
+// 用时0ms
+
+// 中间for循环部分也可以像老师的代码那样先把nums[i]放到j的位置，然后再把原来i的位置赋为0，即相当于变相的交换了一次。
+// if (nums[i] != 0){
+// 	nums[j] = nums[i];
+// 	if (i != j){
+// 		nums[i] = 0;
+// 	}
+// 	j++;
+// }
+
+2.合并两个有序数组(merge-sorted-array)
+class Solution {
+  public void merge(int[] nums1, int m, int[] nums2, int n) {
+    // 首先把数组nums1复制一个,长度为m
+    int [] nums1_copy = new int[m];
+    System.arraycopy(nums1, 0, nums1_copy, 0, m);
+
+    // 用两个下标p1和p2分别记录nums1_copy和nums2的下标。
+    int p1 = 0;
+    int p2 = 0;
+
+    // 用p记录原数组nums1的下标
+    int p = 0;
+
+    // 开始比较nums1_copy和nums2中的元素,较小的存入nums1里。
+    while ((p1 < m) && (p2 < n)){
+      nums1[p++] = (nums1_copy[p1] < nums2[p2]) ? nums1_copy[p1++] : nums2[p2++];
+    }
+
+    // 分别考虑nums1_copy和nums2还没处理完的情况。
+    if (p1 < m) {
+      System.arraycopy(nums1_copy, p1, nums1, p1 + p2, m + n - p1 - p2);
+    }
+    if (p2 < n) {
+      System.arraycopy(nums2, p2, nums1, p1 + p2, m + n - p1 - p2);
+    }
+  }
+}
