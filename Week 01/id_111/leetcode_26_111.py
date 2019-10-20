@@ -31,13 +31,15 @@ class Solution:
                 a,b=a+1,b+1
         return a+1
 
-#外网上看到的别人的解法
+#外网上看到的别人的解法,类似
 #class Solution:
     def removeDuplicates_2(self, nums: List[int]) -> int:
     """
     1. 定义 len_ 
     2. 如果数组长度为 0 则 0
-        
+        用i 作下标遍历数组，遇到n[i]不等于相邻元素时，将值赋给 len_
+        最后返回 len_ 值
+    3. 时间复杂度 O(n) 一样是需要遍历完整个数组
 
     """
         len_ = 1
@@ -46,5 +48,21 @@ class Solution:
         for i in range(1,len(nums)):
             if nums[i] != nums[i-1]:
                 nums[len_] = nums[i]
-                len_ +=1
+                len_ += 1
         return len_
+
+#优化项：
+#假设极端情况，数组中没有重复元素，则每次判断a!=b 都会将数值复制一遍
+# 可以对复制值前先作一个判断 b-a>1 即 中间存在重复值时，才进行复制：
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        a,b=0,1
+        while b<len(nums):       
+            if nums[a]==nums[b]:
+                b=b+1
+            else:
+                 if b - a > 1:
+                    nums[a+1]=nums[b]
+                a,b=a+1,b+1 #这里好像执行有问题
+        return a+1
