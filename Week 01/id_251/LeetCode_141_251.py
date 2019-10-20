@@ -65,9 +65,8 @@ class Solution(object):
         while head:
             if head in hash_set:
                 return True
-            else:
-                hash_set.add(head)
-                head = head.next
+            hash_set.add(head)
+            head = head.next
         return False
 
     # 快慢指针法
