@@ -98,11 +98,46 @@ int mergeSort(int[] arr, int low, int high) {
     merge(arr, low, mid, high)
 }
 // 合并函数, 将两个有序数组合并为一个有序数组
-void merge(int[] arr, int low, int mid, int high) {
-    
+void merge(A[p...r], A[p...q], A[q+1...r]) {
+  var i := p，j := q+1，k := 0 // 初始化变量 i, j, k
+  var tmp := new array[0...r-p] // 申请一个大小跟 A[p...r] 一样的临时数组
+  while i<=q AND j<=r do {
+    if A[i] <= A[j] {
+      tmp[k++] = A[i++] // i++ 等于 i:=i+1
+    } else {
+      tmp[k++] = A[j++]
+    }
+  }
+  
+  // 判断哪个子数组中有剩余的数据
+  var start := i，end := q
+  if j<=r then start := j, end:=r
+  
+  // 将剩余的数据拷贝到临时数组 tmp
+  while start <= end do {
+    tmp[k++] = A[start++]
+  }
+  
+  // 将 tmp 中的数组拷贝回 A[p...r]
+  for i:=0 to r-p do {
+    A[p+i] = tmp[i]
+  }
 }
+
+// 下面是分析
+1. 当n=1时，mergeSort 计算次数是1， f(1) = 1
+2. 归并排序，当n较大时，第一步递归左半部分，第二步递归右半部分，第三步merge两个有序数组为1个, merge 的时间复杂度是 O(n)
+可知 f(n) = f(n/2) + f(n/2) + n 
+ = 2f(n/2) + n 
+ = 2(2f(n/4) + n/2) + n = 4f(n/4) + 2n
+ = ...
+ = 2^k * f(n/2^k) + k * n
+
+ 当 n/2^k = 1 时，可求解，所以 k = logn, 带入 f(n) = n + logn * n
+ 所以归并排序的时间复杂度是 O(nlogn)
 ```
 
+复杂度分析需要多多练习，需要掌握复杂度分析的一般规则、组合规则、递归求解规则等，其中递归求解是比较复杂的分析方法。
 
 --- 
 
@@ -144,8 +179,6 @@ public class DequeDemo {
 ##### Queue 源码分析
 
 `Queue` 的实现比较多
-
-
 
 ##### Priority Queue 源码分析
 
