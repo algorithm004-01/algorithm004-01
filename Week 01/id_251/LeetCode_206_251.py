@@ -21,8 +21,8 @@
 2 递归
     # 参考资料: https://www.cnblogs.com/kubixuesheng/p/4394509.html
     (1) 结束条件：已经反转的链表为空或者链表中只有一个元素 head = None or head.next = None
-    (1) 递推公式：
-        ! 先反转后面的链表，走到链表的末端结点 new_head = f(head.next),
+    (2) 递推公式：只要画一下第一层就行head
+        ! 先反转后面的链表，走到链表的末端结点 new_pre = f(head.next),
         !! 再将当前节点设置为后面节点的后续节点 head.next.next = head; head.next = None
 """
 
@@ -46,9 +46,9 @@ class Solution(object):
         if head is None or head.next is None:
             return head
         # 先反转后面的链表，走到链表的末端结点
-        new_head = self.reverseList1(head.next)
+        new_pre = self.reverseList1(head.next)
         # 再将当前节点设置为后面节点的后续节点
-        head.next.next = head
-        head.next = None
-        return new_head  # 走到链表的末端结点
+        head.next.next = head  # 防止出现环
+        head.next = None  # 防止出现环
+        return new_pre  # 走到链表的末端结点
 # leetcode submit region end(Prohibit modification and deletion)
