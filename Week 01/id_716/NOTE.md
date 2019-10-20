@@ -139,6 +139,11 @@ void merge(A[p...r], A[p...q], A[q+1...r]) {
 
 复杂度分析需要多多练习，需要掌握复杂度分析的一般规则、组合规则、递归求解规则等，其中递归求解是比较复杂的分析方法。
 
+参考：
+1. [十分钟搞定时间复杂度（算法的时间复杂度）](https://www.jianshu.com/p/f4cca5ce055a)
+2. [拜托，面试别再问我时间复杂度了](https://www.itcodemonkey.com/article/10271.html)
+3. [复杂度分析](https://amberwest.github.io/2018/09/27/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/)
+
 --- 
 
 #### 改写代码
