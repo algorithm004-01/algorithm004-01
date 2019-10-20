@@ -52,7 +52,7 @@ class Solution(object):
         while pre.next and pre.next.next:
             a = pre.next
             b = a.next
-            pre.next, a.next, b.next = b, b.next, a
+            pre.next, b.next, a.next = b, a, b.next
             pre = a
         return dummy.next
 
