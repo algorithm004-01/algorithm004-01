@@ -49,6 +49,7 @@ class MinStack(object):
         :rtype: None
         """
         self.data.append(x)
+        # 这里 x < self.helper[-1] 或者 x <= self.helper[-1] 都可以
         if len(self.helper) == 0 or x <= self.helper[-1]:
             self.helper.append(x)
         else:
@@ -60,7 +61,7 @@ class MinStack(object):
         """
         if self.data:
             del self.helper[-1]
-            return self.data.pop()
+            del self.data[-1]
 
     def top(self):
         """
@@ -111,7 +112,7 @@ class MinStackNoSync(object):
         if self.data:
             if self.data[-1] == self.helper[-1]:
                 del self.helper[-1]
-            return self.data.pop()
+                del self.data[-1]
 
     def top(self):
         """
