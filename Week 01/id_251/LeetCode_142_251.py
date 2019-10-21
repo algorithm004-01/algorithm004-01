@@ -63,17 +63,15 @@ class Solution(object):
         while head:
             if head in visited:
                 return head
-            else:
-                visited.add(head)
-                head = head.next
+            visited.add(head)
+            head = head.next
 
     #### 2 Floyd方法
     def slow_fast_index(self, head):
         slow = fast = head
         while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-            if slow == fast:
+            slow, fast = slow.next, fast.next.next
+            if slow is fast:
                 return slow  # return meet position
         # 如果不写return python 会默认 return None
 
