@@ -32,6 +32,7 @@
 1 看图 https://leetcode-cn.com/problems/reverse-nodes-in-k-group/solution/tu-jie-kge-yi-zu-fan-zhuan-lian-biao-by-user7208t/
 """
 
+
 class Solution(object):
     def reverseKGroup(self, head, k):
         """
@@ -42,13 +43,15 @@ class Solution(object):
         pre, end, pre.next, end.next = self, self, head, head
 
         while end:
+            # 三个一组取出
             for i in range(k):
                 if end is None:
                     break
                 end = end.next
+            # 判断不是整数倍跳出
             if end is None:
                 break
-            start, _next, end.next = pre.next, end.next, None
+            start, end.next, _next = pre.next, None, end.next
             pre.next, start.next = self.reverse(start), _next
             end = pre = start
         return self.next
