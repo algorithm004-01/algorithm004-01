@@ -16,7 +16,10 @@ Climbing Stairs|Easy|2019-10-18|||||https://leetcode.com/problems/climbing-stair
 3Sum|Medium|2019-10-20|||||https://leetcode.com/problems/3sum/
 Remove Duplicates from Sorted Array|Easy|2019-10-20|||||https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 Design Circular Deque|Medium|2019-10-20|||||https://leetcode.com/problems/design-circular-deque/
-Trapping Rain Water|Hard|2019-10-20|||||https://leetcode.com/problems/trapping-rain-water/
+`Trapping Rain Water`|Hard|2019-10-20|||||https://leetcode.com/problems/trapping-rain-water/
+Reverse Linked List|Easy|2019-10-21||||||https://leetcode.com/problems/reverse-linked-list/
+Swap Nodes in Pairs|Medium|2019-10-21|||||https://leetcode.com/problems/swap-nodes-in-pairs/
+Linked List Cycle|Easy|2019-10-21|||||https://leetcode.com/problems/linked-list-cycle/
 
 <a id="note" name="note"></a>
 
