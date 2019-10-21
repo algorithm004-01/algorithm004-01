@@ -18,22 +18,35 @@ package cn.leetcode;
 // Related Topics 数组 双指针
 public class LeetCode_11_351 {
 
-    /**
-     * 双指针发,两边同时往中间收拢.
-     *
-     * @param height
-     * @return
-     */
-    public int maxArea(int[] height) {
-        int max = 0;
-        for (int left = 0, right = height.length - 1; left < right; ) {
-            //1)计算出左右两根柱子的宽度
-            int width = right - left;
-            //2找到两根柱子小的那个高度
-            int minHeight = height[left] < height[right] ? height[left++] : height[right--];
-            int area = width * minHeight;
-            max = Math.max(max, area);
-        }
-        return max;
+    public static void main(String[] args) {
+        App app = new App();
+        int[] height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+        int area = app.maxArea(height);
+        System.out.println(area);
     }
+
+    static class App {
+
+        /**
+         * 双指针发,两边同时往中间收拢.
+         *
+         * @param height
+         * @return
+         */
+        public int maxArea(int[] height) {
+            int max = 0;
+            for (int left = 0, right = height.length - 1; left < right; ) {
+                //1)计算出左右两根柱子的宽度
+                int width = right - left;
+                //2找到两根柱子小的那个高度
+                int minHeight = height[left] < height[right] ? height[left++] : height[right--];
+                int area = width * minHeight;
+                max = Math.max(max, area);
+            }
+            return max;
+        }
+    }
+
+
+
 }

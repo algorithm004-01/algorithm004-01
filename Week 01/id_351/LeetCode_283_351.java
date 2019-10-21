@@ -17,41 +17,49 @@ package cn.leetcode;
 
 public class LeetCode_283_351 {
 
-    /**
-     * 将
-     * @param nums
-     */
-    public void moveZeroes(int[] nums) {
-        //1)将非0元素往前移动,用index来记录最后非零元素的位置
-        int index = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                nums[index] = nums[i];
-                index++;
-            }
-        }
-        //2)末尾补零...
-        for (int i = index; i < nums.length; i++) {
-            nums[i] = 0;
-        }
+    public static void main(String[] args) {
+        App app = new App();
+        int[] nums = {0, 1, 0, 3, 12};
+        //app.moveZeroes(nums);
+        app.moveZeroes1(nums);
         for (int num : nums) {
             System.out.println(num);
         }
     }
 
-    //02更为高效的方法,用零时变量交换....
-    public void moveZeroes1(int[] nums) {
-        int offset = 0;
-        for (int index = 0; index < nums.length; index++) {
-            if (nums[index] != 0) {
-                int temp = nums[offset];
-                nums[offset] = nums[index];
-                nums[index] = temp;
-                offset++;
+    static class App {
+        /**
+         * 将
+         * @param nums
+         */
+        public void moveZeroes(int[] nums) {
+            //1)将非0元素往前移动,用index来记录最后非零元素的位置
+            int index = 0;
+            for (int i = 0; i < nums.length; i++) {
+                if (nums[i] != 0) {
+                    nums[index] = nums[i];
+                    index++;
+                }
+            }
+            //2)末尾补零...
+            for (int i = index; i < nums.length; i++) {
+                nums[i] = 0;
             }
         }
-        for (int num : nums) {
-            System.out.println(num);
+
+        //02更为高效的方法,用零时变量交换....
+        public void moveZeroes1(int[] nums) {
+            int offset = 0;
+            for (int index = 0; index < nums.length; index++) {
+                if (nums[index] != 0) {
+                    int temp = nums[offset];
+                    nums[offset] = nums[index];
+                    nums[index] = temp;
+                    offset++;
+                }
+            }
         }
     }
+
+
 }
