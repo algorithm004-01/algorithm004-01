@@ -60,8 +60,11 @@ class MinStack(object):
         :rtype: None
         """
         if self.data:
-            del self.helper[-1]
-            del self.data[-1]
+            # del 时间复杂度比pop高
+            # del self.helper[-1]
+            # del self.data[-1]
+            self.helper.pop()
+            self.data.pop()
 
     def top(self):
         """
@@ -111,8 +114,11 @@ class MinStackNoSync(object):
         """
         if self.data:
             if self.data[-1] == self.helper[-1]:
-                del self.helper[-1]
-                del self.data[-1]
+                # del 时间复杂度比pop高
+                # del self.helper[-1]
+                # del self.data[-1]
+                self.helper.pop()
+                self.data.pop()
 
     def top(self):
         """
@@ -141,7 +147,8 @@ class MinStackTuple(object):
 
     def pop(self):
         if self.stack:
-            del self.stack[-1]
+            # del self.stack[-1]
+            self.stack.pop()
 
     def top(self):
         if self.stack:
