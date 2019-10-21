@@ -25,8 +25,10 @@ func main() {
 	//l2.Next.Next.Val = 7
 	//fmt.Println(l1.Val)
 	//fmt.Println(linklist.MergeTwoLists(l1, l2).Next.Next.Next.Next.Val)
-	a1 := []int{1, 3, 9, 8, 7}
-	fmt.Println(TwoSum(a1, 10))
+	//a1 := []int{1, 3, 9, 8, 7}
+	//fmt.Println(TwoSum(a1, 10))
+	c := Constructor(3)
+	fmt.Println(c.InsertFront(3))
 }
 
 /**
@@ -254,3 +256,7 @@ func MergeTwoLists(l1 *linklist.ListNode, l2 *linklist.ListNode) *linklist.ListN
 	}
 	return res
 }
+
+/**
+收集雨水
+*/
