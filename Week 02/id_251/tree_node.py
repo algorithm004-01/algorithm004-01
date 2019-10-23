@@ -21,17 +21,17 @@ class TraversalTree:
             self.preorder(root.right)
 
     # 中序遍历
-    def inoder(self, root):
+    def inorder(self, root):
         if root:
-            self.inoder(root.left)
+            self.inorder(root.left)
             self.traverse_path.append(root.val)
-            self.inoder(root.right)
+            self.inorder(root.right)
 
     # 后序遍历
-    def postoder(self, root):
+    def postorder(self, root):
         if root:
-            self.postoder(root.left)
-            self.postoder(root.right)
+            self.postorder(root.left)
+            self.postorder(root.right)
             self.traverse_path.append(root.val)
 
 
@@ -44,11 +44,11 @@ if __name__ == '__main__':
     print(pre.traverse_path)
     print('中序遍历')
     in_ = TraversalTree()
-    in_.inoder(root)
+    in_.inorder(root)
     print(in_.traverse_path)
     print('后序遍历')
     post = TraversalTree()
-    post.postoder(root)
+    post.postorder(root)
     print(post.traverse_path)
     print('-------------二叉搜索树---------------')
     print('         4         \n',
@@ -64,9 +64,9 @@ if __name__ == '__main__':
     print(pre.traverse_path)
     print('中序遍历')
     in_ = TraversalTree()
-    in_.inoder(root)
+    in_.inorder(root)
     print(in_.traverse_path)
     print('后序遍历')
     post = TraversalTree()
-    post.postoder(root)
+    post.postorder(root)
     print(post.traverse_path)
