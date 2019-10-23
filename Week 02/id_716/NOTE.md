@@ -6,9 +6,9 @@
 
 - Java 中HashMap、Set的实现分析
 - 讲解题目：242，49
-https://leetcode-cn.com/problems/valid-anagram/description/  (done)
-https://leetcode-cn.com/problems/group-anagrams/ (done)
-https://leetcode-cn.com/problems/two-sum/description/ (done)
+1. https://leetcode-cn.com/problems/valid-anagram/description/  (done)
+2. https://leetcode-cn.com/problems/group-anagrams/ (done)
+3. https://leetcode-cn.com/problems/two-sum/description/ (done)
   
 #### 树、二叉树、二叉搜索树
 
@@ -18,11 +18,11 @@ https://leetcode-cn.com/problems/two-sum/description/ (done)
 - 二叉搜索树及操作，查找、插入、删除
 - 树的面试题解法一般都是递归，为什么？
 - 讲解题目：树的遍历
-https://leetcode-cn.com/problems/binary-tree-inorder-traversal/  (done)
-https://leetcode-cn.com/problems/binary-tree-preorder-traversal/ (done)
-https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/ (done)
-https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/  (done)
-https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/ (done)
+1. https://leetcode-cn.com/problems/binary-tree-inorder-traversal/  (done)
+2. https://leetcode-cn.com/problems/binary-tree-preorder-traversal/ (done)
+3. https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/ (done)
+4. https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/  (done)
+5. https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/ (done)
 
 #### 范型递归、递归树
 
@@ -45,19 +45,18 @@ https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/ (done)
 3. 数学归纳法思维
 
 - 讲解题目：70，22
-https://leetcode-cn.com/problems/climbing-stairs/
-https://leetcode-cn.com/problems/generate-parentheses/
-https://leetcode-cn.com/problems/invert-binary-tree/description/
-https://leetcode-cn.com/problems/validate-binary-search-tree
-https://leetcode-cn.com/problems/maximum-depth-of-binary-tree
-https://leetcode-cn.com/problems/minimum-depth-of-binary-tree
-https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/
-
-https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
-https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal
-https://leetcode-cn.com/problems/combinations/
-https://leetcode-cn.com/problems/permutations/
-https://leetcode-cn.com/problems/permutations-ii/
+1. https://leetcode-cn.com/problems/climbing-stairs/
+2. https://leetcode-cn.com/problems/generate-parentheses/
+3. https://leetcode-cn.com/problems/invert-binary-tree/description/
+4. https://leetcode-cn.com/problems/validate-binary-search-tree
+5. https://leetcode-cn.com/problems/maximum-depth-of-binary-tree
+6. https://leetcode-cn.com/problems/minimum-depth-of-binary-tree
+7. https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/
+8. https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
+9. https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal
+10. https://leetcode-cn.com/problems/combinations/
+11. https://leetcode-cn.com/problems/permutations/
+12. https://leetcode-cn.com/problems/permutations-ii/
 
 #### 分治、回溯
 
@@ -71,11 +70,11 @@ https://leetcode-cn.com/problems/permutations-ii/
 4. 清理状态
 
 - 讲解题目：
-https://leetcode-cn.com/problems/powx-n/
-https://leetcode-cn.com/problems/subsets/
-https://leetcode-cn.com/problems/majority-element/description/ （简单、但是高频）
-https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/
-https://leetcode-cn.com/problems/n-queens/
+1. https://leetcode-cn.com/problems/powx-n/
+2. https://leetcode-cn.com/problems/subsets/
+3. https://leetcode-cn.com/problems/majority-element/description/ （简单、但是高频）
+4. https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/
+5. https://leetcode-cn.com/problems/n-queens/
 
 ---
 
