@@ -33,6 +33,12 @@
 #         self.left = None
 #         self.right = None
 
+"""
+1 递归
+2 栈 迭代
+"""
+
+
 class Solution(object):
     def invertTree(self, root):
         """
@@ -41,4 +47,20 @@ class Solution(object):
         """
         if root is None: return
         root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
+        return root
+
+    # 1-2 递归优化
+    def invertTree1(self, root):
+        if root:
+            root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
+            return root
+
+    # 2 栈
+    def invertTree2(self, root):
+        stack = [root]
+        while stack:
+            node = stack.pop()
+            if node:
+                node.left, node.right = node.right, node.left
+                stack += node.left, node.right
         return root
