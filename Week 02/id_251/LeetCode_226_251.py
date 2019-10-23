@@ -50,7 +50,7 @@ class Solution(object):
         return root
 
     # 1-2 递归优化
-    def invertTree1(self, root):
+    def invertTree(self, root):
         if root:
             root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
             return root
