@@ -144,6 +144,30 @@ void merge(A[p...r], A[p...q], A[q+1...r]) {
 2. [拜托，面试别再问我时间复杂度了](https://www.itcodemonkey.com/article/10271.html)
 3. [复杂度分析](https://amberwest.github.io/2018/09/27/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/)
 
+10.24 补充 关于斐波那契递归实现的复杂度分析
+
+分析一下使用朴素递归的方式的时间复杂度，代码如下
+```
+func climbStairs(n int) int {
+    if n <= 2 { return n }
+    return climbStairs(n - 1) + climbStairs(n - 2)
+}
+
+// 简单的分析方法
+// 可以将递归调用转成一个调用树，树的深度是n，每个非叶子有两个节点，而树中的每个节点都需要计算一次，叶子节点的上限是 2^n,
+// 所以时间复杂度可以粗略的得出为 O(2^n), 这个是不精确的一个上限
+
+// 更加严谨的分析方法
+// 从代码实现可知，T(n) = O(1) + T(n-1) + T(n-2), 其中O(1)是加法操作，为常量级别
+// 斐波那契数列是可以求出通项的，使用数学的方式进行分析，这个对数学有一定要求，详细看 参考1
+```
+
+朴素递归可以使用尾递归进行优化
+
+
+参考：
+1. [几种斐波那契数列项算法的复杂度分析](https://blog.mottomo.moe/categories/Tech/Coding/zh/2019-04-07-Fibonacci-Implementations/)
+
 --- 
 
 #### 改写代码

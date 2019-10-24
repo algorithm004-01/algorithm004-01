@@ -45,7 +45,7 @@
 3. 数学归纳法思维
 
 - 讲解题目：70，22
-1. https://leetcode-cn.com/problems/climbing-stairs/
+1. https://leetcode-cn.com/problems/climbing-stairs/  (done)
 2. https://leetcode-cn.com/problems/generate-parentheses/
 3. https://leetcode-cn.com/problems/invert-binary-tree/description/
 4. https://leetcode-cn.com/problems/validate-binary-search-tree
