@@ -114,6 +114,5 @@ class Solution3:
             root = stack.pop()
             if pre and root.val <= pre.val:
                 return False
-            pre = root
-            root = root.right
+            pre, root = root, root.right
         return True
