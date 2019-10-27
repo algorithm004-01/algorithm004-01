@@ -1,31 +1,31 @@
+import java.util.*;
 /**
- * 两数之和
+ * 二叉树的最小深度
  */
 public class Solution {
     /**
-     * 基于 map 实现
+     * 二叉树的最小深度
      */
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (!map.containsKey(target - nums[i])) map.put(nums[i], i);
-            else return new int[]{i, map.get(target - nums[i])};
+    public int minDepth(TreeNode root) {
+        if (root == null) return 0;
+        if (root.left == null && root.right == null) return 1;
+        int depth = Integer.MAX_VALUE;
+        if (root.left != null) {
+            depth = minDepth(root.left);
         }
-        return new int[0];
+        if (root.right != null) {
+            depth = Math.min(minDepth(root.right), depth);
+        }
+        return depth + 1;
     }
 
-    /**
-     * 模拟 map 桶实现
-     * 不足：这里的 max 容量，很可能因为 nums数据过大而发生哈希碰撞
-     */
-    public int[] twoSum2(int[] nums, int target) {
-        int max = 4095;
-        int[] arr = new int[max + 1];
-        for (int i = 0; i < nums.length; i++) {
-            int diff = (target - nums[i]) & max;
-            if (arr[diff] != 0) return new int[]{arr[diff] - 1, i};
-            arr[nums[i] & max] = i + 1;
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
         }
-        return new int[0];
     }
 }

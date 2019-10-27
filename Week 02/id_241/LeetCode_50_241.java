@@ -1,31 +1,25 @@
+import java.util.*;
 /**
- * 两数之和
+ * Pow(x, n)
  */
 public class Solution {
     /**
-     * 基于 map 实现
+     * Pow(x, n)
      */
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (!map.containsKey(target - nums[i])) map.put(nums[i], i);
-            else return new int[]{i, map.get(target - nums[i])};
-        }
-        return new int[0];
+    public double myPow(double x, int n) {
+        double result = myPowHelper(x, Math.abs(n));
+        return n > 0 ? result : 1 / result;
     }
 
-    /**
-     * 模拟 map 桶实现
-     * 不足：这里的 max 容量，很可能因为 nums数据过大而发生哈希碰撞
-     */
-    public int[] twoSum2(int[] nums, int target) {
-        int max = 4095;
-        int[] arr = new int[max + 1];
-        for (int i = 0; i < nums.length; i++) {
-            int diff = (target - nums[i]) & max;
-            if (arr[diff] != 0) return new int[]{arr[diff] - 1, i};
-            arr[nums[i] & max] = i + 1;
+    private double myPowHelper(double x, long n) {
+        if (n == 0)
+            return 1;
+        double result = myPowHelper(x, n / 2);
+        if (n % 2 == 0) {
+            result = result * result;
+        } else {
+            result = result * result * x;
         }
-        return new int[0];
+        return result;
     }
 }

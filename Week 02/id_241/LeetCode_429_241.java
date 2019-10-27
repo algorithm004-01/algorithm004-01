@@ -1,31 +1,40 @@
+import java.util.*;
 /**
- * 两数之和
+ * N叉树的层序遍历
  */
 public class Solution {
     /**
-     * 基于 map 实现
+     * 多子节点层级遍历
+     * 基于栈
      */
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (!map.containsKey(target - nums[i])) map.put(nums[i], i);
-            else return new int[]{i, map.get(target - nums[i])};
-        }
-        return new int[0];
+    public List<List<Integer>> levelOrder(Node root) {
+        List<List<Integer>> l = new ArrayList<>();
+        if (root == null) return l;
+        helper(root, 0, l);
+        return l;
     }
 
-    /**
-     * 模拟 map 桶实现
-     * 不足：这里的 max 容量，很可能因为 nums数据过大而发生哈希碰撞
-     */
-    public int[] twoSum2(int[] nums, int target) {
-        int max = 4095;
-        int[] arr = new int[max + 1];
-        for (int i = 0; i < nums.length; i++) {
-            int diff = (target - nums[i]) & max;
-            if (arr[diff] != 0) return new int[]{arr[diff] - 1, i};
-            arr[nums[i] & max] = i + 1;
+    private void helper(Node node, int deep, List<List<Integer>> res) {
+        if (node == null) return;
+        if (deep + 1 > res.size())
+            res.add(new ArrayList<>());
+        if (node.children != null)
+            for (Node n : node.children) {
+                helper(n, deep + 1, res);
+            }
+        res.get(deep).add(node.val);
+    }
+
+    class Node {
+        int val;
+        List<Node> children;
+
+        public Node() {
         }
-        return new int[0];
+
+        public Node(int _val, List<Node> _children) {
+            val = _val;
+            children = _children;
+        }
     }
 }

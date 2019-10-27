@@ -1,31 +1,27 @@
+import java.util.*;
 /**
- * 两数之和
+ * 括号生成
  */
 public class Solution {
     /**
-     * 基于 map 实现
+     * 括号生成
      */
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (!map.containsKey(target - nums[i])) map.put(nums[i], i);
-            else return new int[]{i, map.get(target - nums[i])};
-        }
-        return new int[0];
+    public List<String> generateParenthesis(int n) {
+        List<String> list = new ArrayList<>();
+        _generateParenthesis(n, 0, 0, list, "");
+        return list;
     }
 
-    /**
-     * 模拟 map 桶实现
-     * 不足：这里的 max 容量，很可能因为 nums数据过大而发生哈希碰撞
-     */
-    public int[] twoSum2(int[] nums, int target) {
-        int max = 4095;
-        int[] arr = new int[max + 1];
-        for (int i = 0; i < nums.length; i++) {
-            int diff = (target - nums[i]) & max;
-            if (arr[diff] != 0) return new int[]{arr[diff] - 1, i};
-            arr[nums[i] & max] = i + 1;
+    private void _generateParenthesis(int max, int leftSum, int rightSum, List<String> res, String s) {
+        if (leftSum + rightSum == 2 * max) {
+            res.add(s);
+            return;
         }
-        return new int[0];
+        if (leftSum < max) {
+            _generateParenthesis(max, leftSum + 1, rightSum, res, s + "(");
+        }
+        if (rightSum < leftSum) {
+            _generateParenthesis(max, leftSum, rightSum + 1, res, s + ")");
+        }
     }
 }

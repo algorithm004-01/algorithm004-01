@@ -1,31 +1,37 @@
+import java.util.*;
 /**
- * 两数之和
+ * 电话号码的字母组合
  */
 public class Solution {
     /**
-     * 基于 map 实现
+     * 电话号码的字母组合
      */
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (!map.containsKey(target - nums[i])) map.put(nums[i], i);
-            else return new int[]{i, map.get(target - nums[i])};
-        }
-        return new int[0];
+    List<String> res;
+
+    public List<String> letterCombinations(String digits) {
+        res = new ArrayList<>();
+        if (digits.isEmpty()) return res;
+        Map<Character, String> map = new HashMap<>(10);
+        map.put('2', "abc");
+        map.put('3', "def");
+        map.put('4', "ghi");
+        map.put('5', "jkl");
+        map.put('6', "mno");
+        map.put('7', "pqrs");
+        map.put('8', "tuv");
+        map.put('9', "wxyz");
+        letterCombinationsHelper(digits, map, 0, "");
+        return res;
     }
 
-    /**
-     * 模拟 map 桶实现
-     * 不足：这里的 max 容量，很可能因为 nums数据过大而发生哈希碰撞
-     */
-    public int[] twoSum2(int[] nums, int target) {
-        int max = 4095;
-        int[] arr = new int[max + 1];
-        for (int i = 0; i < nums.length; i++) {
-            int diff = (target - nums[i]) & max;
-            if (arr[diff] != 0) return new int[]{arr[diff] - 1, i};
-            arr[nums[i] & max] = i + 1;
+    private void letterCombinationsHelper(String digits, Map<Character, String> map, int index, String s) {
+        if (index == digits.length()) {
+            res.add(s);
+            return;
         }
-        return new int[0];
+        String letters = map.get(digits.charAt(index));
+        for (int i = 0; i < letters.length(); i++) {
+            letterCombinationsHelper(digits, map, index + 1, s + letters.charAt(i));
+        }
     }
 }

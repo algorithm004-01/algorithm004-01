@@ -1,31 +1,54 @@
+import java.util.*;
 /**
- * 两数之和
+ * N皇后
  */
 public class Solution {
     /**
-     * 基于 map 实现
+     * N皇后
      */
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (!map.containsKey(target - nums[i])) map.put(nums[i], i);
-            else return new int[]{i, map.get(target - nums[i])};
-        }
-        return new int[0];
+    List<List<String>> results;
+
+    public List<List<String>> solveNQueens(int n) {
+        results = new ArrayList<>();
+        if (n == 0) return results;
+        Set<Integer> col = new HashSet<>();
+        Set<Integer> left = new HashSet<>();
+        Set<Integer> right = new HashSet<>();
+        solveNQueensHelper(0, col, left, right, new int[n]);
+        return results;
     }
 
-    /**
-     * 模拟 map 桶实现
-     * 不足：这里的 max 容量，很可能因为 nums数据过大而发生哈希碰撞
-     */
-    public int[] twoSum2(int[] nums, int target) {
-        int max = 4095;
-        int[] arr = new int[max + 1];
-        for (int i = 0; i < nums.length; i++) {
-            int diff = (target - nums[i]) & max;
-            if (arr[diff] != 0) return new int[]{arr[diff] - 1, i};
-            arr[nums[i] & max] = i + 1;
+    private void solveNQueensHelper(int index,
+                                    Set<Integer> col,
+                                    Set<Integer> left,
+                                    Set<Integer> right,
+                                    int[] res) {
+        if (index > res.length - 1) {
+            List<String> list = new ArrayList<>();
+            for (int r : res) {
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < res.length; i++) {
+                    if (r == i)
+                        sb.append("Q");
+                    else
+                        sb.append(".");
+                }
+                list.add(sb.toString());
+            }
+            results.add(list);
+            return;
         }
-        return new int[0];
+        for (int i = 0; i < res.length; i++) {
+            if (col.contains(i) || left.contains(i + index) || right.contains(index - i))
+                continue;
+            col.add(i);
+            left.add(i + index);
+            right.add(index - i);
+            res[index] = i;
+            solveNQueensHelper(index + 1, col, left, right, res);
+            col.remove(i);
+            left.remove(i + index);
+            right.remove(index - i);
+        }
     }
 }

@@ -1,31 +1,51 @@
+import java.util.*;
 /**
- * 两数之和
+ * 二叉树的最近公共祖先
  */
 public class Solution {
     /**
-     * 基于 map 实现
+     * 二叉树的最近公共祖先(13ms)
      */
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (!map.containsKey(target - nums[i])) map.put(nums[i], i);
-            else return new int[]{i, map.get(target - nums[i])};
-        }
-        return new int[0];
+    TreeNode common = new TreeNode(0);
+
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null) return null;
+        int left = lowestCommonAncestor(root.left, p, q) == null ? 0 : 1;
+        int right = lowestCommonAncestor(root.right, p, q) == null ? 0 : 1;
+        int middle = 0;
+        if (root.val == p.val || root.val == q.val)
+            middle = 1;
+        if (left + right + middle >= 2)
+            common = root;
+        return (left + right + middle > 0) ? common : null;
     }
 
     /**
-     * 模拟 map 桶实现
-     * 不足：这里的 max 容量，很可能因为 nums数据过大而发生哈希碰撞
+     * 二叉树的最近公共祖先(改进版 9ms)
      */
-    public int[] twoSum2(int[] nums, int target) {
-        int max = 4095;
-        int[] arr = new int[max + 1];
-        for (int i = 0; i < nums.length; i++) {
-            int diff = (target - nums[i]) & max;
-            if (arr[diff] != 0) return new int[]{arr[diff] - 1, i};
-            arr[nums[i] & max] = i + 1;
+    public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
+        //如果找到等于 p 或 q，直接返回不在继续对当前方向子树进行递归。直接递归另一边的子树即可
+        if (root == null || root == p || root == q)
+            return root;
+        TreeNode left = lowestCommonAncestor2(root.left, p, q);
+        TreeNode right = lowestCommonAncestor2(root.right, p, q);
+        //达到叶子节点
+        if (left == null && right == null)
+            return null;
+        //最外层，如果一边不为空，一边为空，说明要查询的节点均在一边，则返回此边的节点即为公共祖先
+        if (left == null || right == null)
+            return left == null ? right : left;
+        //如果两遍皆不为空，则当前的根节点即为公共祖先
+        return root;
+    }
+
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
         }
-        return new int[0];
     }
 }

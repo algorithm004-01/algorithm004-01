@@ -1,31 +1,54 @@
+import java.util.*;
 /**
- * 两数之和
+ *  N叉树的前序遍历
  */
 public class Solution {
     /**
-     * 基于 map 实现
+     * 多子节点前续遍历
+     * 基于递归(1ms)
      */
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (!map.containsKey(target - nums[i])) map.put(nums[i], i);
-            else return new int[]{i, map.get(target - nums[i])};
+    public List<Integer> preorder(Node root) {
+        if (root != null) {
+            list.add(root.val);
+            if (root.children != null)
+                for (int i = 0; i < root.children.size(); i++) {
+                    preorder(root.children.get(i));
+                }
         }
-        return new int[0];
+        return list;
     }
 
     /**
-     * 模拟 map 桶实现
-     * 不足：这里的 max 容量，很可能因为 nums数据过大而发生哈希碰撞
+     * 多子节点前续遍历
+     * 基于栈(5ms)
      */
-    public int[] twoSum2(int[] nums, int target) {
-        int max = 4095;
-        int[] arr = new int[max + 1];
-        for (int i = 0; i < nums.length; i++) {
-            int diff = (target - nums[i]) & max;
-            if (arr[diff] != 0) return new int[]{arr[diff] - 1, i};
-            arr[nums[i] & max] = i + 1;
+    public List<Integer> preorder2(Node root) {
+        Stack<Node> stack = new Stack<>();
+        List<Integer> list = new ArrayList<>();
+        if (root == null) return list;
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node curr = stack.pop();
+            list.add(curr.val);
+            if (curr.children != null) {
+                for (int i = curr.children.size() - 1; i >= 0; i--) {
+                    stack.push(curr.children.get(i));
+                }
+            }
         }
-        return new int[0];
+        return list;
+    }
+
+    class Node {
+        int val;
+        List<Node> children;
+
+        public Node() {
+        }
+
+        public Node(int _val, List<Node> _children) {
+            val = _val;
+            children = _children;
+        }
     }
 }

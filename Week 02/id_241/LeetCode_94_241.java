@@ -1,31 +1,51 @@
+import java.util.*;
 /**
- * 两数之和
+ * 二叉树的中序遍历
  */
 public class Solution {
     /**
-     * 基于 map 实现
+     * 中序遍历
+     * 基于递归
      */
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (!map.containsKey(target - nums[i])) map.put(nums[i], i);
-            else return new int[]{i, map.get(target - nums[i])};
-        }
-        return new int[0];
+    public List<Integer> inorderTraversal(TreeNode root) {
+        if (root == null) return new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        if (root.left != null)
+            list.addAll(inorderTraversal(root.left));
+        list.add(root.val);
+        if (root.right != null)
+            list.addAll(inorderTraversal(root.right));
+        return list;
     }
 
     /**
-     * 模拟 map 桶实现
-     * 不足：这里的 max 容量，很可能因为 nums数据过大而发生哈希碰撞
+     * 中序遍历
+     * 基于栈
+     * 每次讲遍历的节点的所有左节点入栈
      */
-    public int[] twoSum2(int[] nums, int target) {
-        int max = 4095;
-        int[] arr = new int[max + 1];
-        for (int i = 0; i < nums.length; i++) {
-            int diff = (target - nums[i]) & max;
-            if (arr[diff] != 0) return new int[]{arr[diff] - 1, i};
-            arr[nums[i] & max] = i + 1;
+    public List<Integer> inorderTraversal2(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        List<Integer> list = new ArrayList<>();
+        while (root != null || !stack.isEmpty()) {
+            TreeNode curr = root;
+            while (curr != null) {
+                stack.push(curr);
+                curr = curr.left;
+            }
+            curr = stack.pop();
+            list.add(curr.val);
+            root = curr.right;
         }
-        return new int[0];
+        return list;
+    }
+
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

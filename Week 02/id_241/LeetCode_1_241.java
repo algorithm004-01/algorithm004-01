@@ -1,36 +1,32 @@
+import java.util.*;
 /**
- * 字母异位词分组
+ * 两数之和
  */
 public class Solution {
     /**
-     * 基于计算出现次数
+     * 基于 map 实现
      */
-    public List<List<String>> groupAnagrams(String[] strs) {
-        Map<String, List<String>> map = new HashMap<>();
-        for (String str : strs) {
-            int[] arr = new int[26];
-            for (int i = 0; i < str.length(); i++) {
-                arr[str.charAt(i) - 'a']++;
-            }
-            String ss = Arrays.toString(arr);
-            if (!map.containsKey(ss)) map.put(ss, new ArrayList<>());
-            map.get(ss).add(str);
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (!map.containsKey(target - nums[i])) map.put(nums[i], i);
+            else return new int[]{i, map.get(target - nums[i])};
         }
-        return new ArrayList<>(map.values());
+        return new int[0];
     }
 
     /**
-     * 基于字符串排序
+     * 模拟 map 桶实现
+     * 不足：这里的 max 容量，很可能因为 nums数据过大而发生哈希碰撞
      */
-    public List<List<String>> groupAnagrams2(String[] strs) {
-        Map<String, List<String>> map = new HashMap<>();
-        for (String str : strs) {
-            char[] arr = str.toCharArray();
-            Arrays.sort(arr);
-            String sort = String.valueOf(arr);
-            if (!map.containsKey(sort)) map.put(sort, new ArrayList<>());
-            map.get(sort).add(str);
+    public int[] twoSum2(int[] nums, int target) {
+        int max = 4095;
+        int[] arr = new int[max + 1];
+        for (int i = 0; i < nums.length; i++) {
+            int diff = (target - nums[i]) & max;
+            if (arr[diff] != 0) return new int[]{arr[diff] - 1, i};
+            arr[nums[i] & max] = i + 1;
         }
-        return new ArrayList<>(map.values());
+        return new int[0];
     }
 }

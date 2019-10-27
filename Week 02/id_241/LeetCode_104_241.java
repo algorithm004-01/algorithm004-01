@@ -1,31 +1,45 @@
+import java.util.*;
 /**
- * 两数之和
+ * 二叉树的最大深度
  */
 public class Solution {
     /**
-     * 基于 map 实现
+     * 二叉树的最大深度
+     * 基于递归(每次进入一层函数，就增加一个 level)
      */
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (!map.containsKey(target - nums[i])) map.put(nums[i], i);
-            else return new int[]{i, map.get(target - nums[i])};
-        }
-        return new int[0];
+    int maxLevel = 0;
+
+    public int maxDepth(TreeNode root) {
+        if (root == null) return 0;
+        maxDepthHelper(root, 1);
+        return maxLevel;
+    }
+
+    private void maxDepthHelper(TreeNode root, int level) {
+        if (root == null) return;
+        maxDepthHelper(root.left, level + 1);
+        maxDepthHelper(root.right, level + 1);
+        maxLevel = Math.max(maxLevel, level);
     }
 
     /**
-     * 模拟 map 桶实现
-     * 不足：这里的 max 容量，很可能因为 nums数据过大而发生哈希碰撞
+     * 二叉树的最大深度
+     * 基于递归(改进版，完全利用递归的反向思维，每次回溯的时候，层级加 1 即可)
      */
-    public int[] twoSum2(int[] nums, int target) {
-        int max = 4095;
-        int[] arr = new int[max + 1];
-        for (int i = 0; i < nums.length; i++) {
-            int diff = (target - nums[i]) & max;
-            if (arr[diff] != 0) return new int[]{arr[diff] - 1, i};
-            arr[nums[i] & max] = i + 1;
+    public int maxDepth2(TreeNode root) {
+        if (root == null) return 0;
+        int left = maxDepth2(root.left);
+        int right = maxDepth2(root.right);
+        return Math.max(left, right) + 1;
+    }
+
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
         }
-        return new int[0];
     }
 }

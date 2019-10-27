@@ -1,31 +1,43 @@
+import java.util.*;
 /**
- * 两数之和
+ * 全排列 II
  */
 public class Solution {
     /**
-     * 基于 map 实现
+     * 全排列 II(基于全排列I 的修改)
      */
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (!map.containsKey(target - nums[i])) map.put(nums[i], i);
-            else return new int[]{i, map.get(target - nums[i])};
-        }
-        return new int[0];
+    private List<List<Integer>> result;
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        result = new ArrayList<>();
+        if (nums == null || nums.length == 0) return result;
+        permuteUniqueHelper(0, nums);
+        return result;
     }
 
-    /**
-     * 模拟 map 桶实现
-     * 不足：这里的 max 容量，很可能因为 nums数据过大而发生哈希碰撞
-     */
-    public int[] twoSum2(int[] nums, int target) {
-        int max = 4095;
-        int[] arr = new int[max + 1];
-        for (int i = 0; i < nums.length; i++) {
-            int diff = (target - nums[i]) & max;
-            if (arr[diff] != 0) return new int[]{arr[diff] - 1, i};
-            arr[nums[i] & max] = i + 1;
+    private void permuteUniqueHelper(int index, int[] nums) {
+        if (index == nums.length) {
+            List<Integer> list = new ArrayList<>();
+            for (int value : nums.clone()) list.add(value);
+            result.add(list);
         }
-        return new int[0];
+        int[] change = nums.clone();
+        for (int i = index; i < nums.length; i++) {
+            if (isRepeat(change, index, i)) continue;
+            int tmp = change[index];
+            change[index] = change[i];
+            change[i] = tmp;
+            permuteUniqueHelper(index + 1, change);
+            change = nums.clone();
+        }
+    }
+
+    //判断是否重复，比如 1322，1 与第一个 2 换位后回溯，1 与下一个 2 比较，但是之前 2 已经存在
+    //所以，从 index 开始，到当前需要比较的数之间查询是否曾经存在过
+    private boolean isRepeat(int[] nums, int index, int i) {
+        for (int j = index; j < i; j++) {
+            if (nums[i] == nums[j])
+                return true;
+        }
+        return false;
     }
 }

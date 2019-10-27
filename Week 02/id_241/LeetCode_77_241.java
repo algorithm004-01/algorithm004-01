@@ -1,31 +1,33 @@
+import java.util.*;
 /**
- * 两数之和
+ * 组合
  */
 public class Solution {
     /**
-     * 基于 map 实现
+     * 组合
      */
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (!map.containsKey(target - nums[i])) map.put(nums[i], i);
-            else return new int[]{i, map.get(target - nums[i])};
-        }
-        return new int[0];
+    private int num;
+    private int size;
+    private List<List<Integer>> result;
+
+    public List<List<Integer>> combine(int n, int k) {
+        num = n;
+        size = k;
+        result = new ArrayList<>();
+        combineHelper(1, new LinkedList<>());
+        return result;
     }
 
-    /**
-     * 模拟 map 桶实现
-     * 不足：这里的 max 容量，很可能因为 nums数据过大而发生哈希碰撞
-     */
-    public int[] twoSum2(int[] nums, int target) {
-        int max = 4095;
-        int[] arr = new int[max + 1];
-        for (int i = 0; i < nums.length; i++) {
-            int diff = (target - nums[i]) & max;
-            if (arr[diff] != 0) return new int[]{arr[diff] - 1, i};
-            arr[nums[i] & max] = i + 1;
+    private void combineHelper(int begin, LinkedList<Integer> curr) {
+        if (curr.size() == size) {
+            result.add(new LinkedList<>(curr));
+            //TODO()不加 return，运行时间从 48ms 缩短到 14ms?
+            //return;
         }
-        return new int[0];
+        for (int i = begin; i < num + 1; i++) {
+            curr.add(i);
+            combineHelper(i + 1, curr);
+            curr.removeLast();
+        }
     }
 }
