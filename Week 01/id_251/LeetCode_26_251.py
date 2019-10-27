@@ -45,13 +45,23 @@
 """
 
 
-# leetcode submit region begin(Prohibit modification and deletion)
 class Solution(object):
     def removeDuplicates(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
+
+    # 最优解法
+    def two_index(self, nums):
+        j = 0
+        for i in range(len(nums)):
+            if nums[i] != nums[j]:
+                j += 1
+                nums[j], nums[i] = nums[i], nums[j]
+                # 不需要考虑数组中超出新长度后面的元素
+                # nums[j] = nums[i]
+        return j + 1
 
     def count_dup(self, nums):
         count_dup = 0
@@ -62,14 +72,6 @@ class Solution(object):
                 nums[i - count_dup] = nums[i]
         return len(nums) - count_dup
 
-    def two_index(self, nums):
-        j = 0
-        for i in range(len(nums)):
-            if nums[i] != nums[j]:
-                j += 1
-                nums[j] = nums[i]
-        return j + 1
-
     def count_non_dup(self, nums):
         count_ndup = 0
         for i in range(1, len(nums)):
@@ -77,5 +79,3 @@ class Solution(object):
                 count_ndup += 1
                 nums[count_ndup] = nums[i]
         return count_ndup + 1
-
-    # leetcode submit region end(Prohibit modification and deletion)

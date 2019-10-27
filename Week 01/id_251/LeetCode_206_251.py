@@ -19,11 +19,10 @@
 """
 1 迭代
 2 递归
-    # 参考资料: https://www.cnblogs.com/kubixuesheng/p/4394509.html
     (1) 结束条件：已经反转的链表为空或者链表中只有一个元素 head = None or head.next = None
     (2) 递推公式：只要画一下第一层就行head
-        ! 先反转后面的链表，走到链表的末端结点 new_pre = f(head.next),
-        !! 再将当前节点设置为后面节点的后续节点 head.next.next = head; head.next = None
+        ! 先反转后面的链表，记录头结点 new_pre = f(head.next),
+        !! 反转当前节点 head.next.next = head; head.next = None
 """
 
 
@@ -37,18 +36,14 @@ class Solution(object):
         while curr:
             curr.next, pre, curr = pre, curr, curr.next
         return pre
-        # 或者
-        # head = pre
-        # return head
 
     def reverseList1(self, head):
         # 已经反转的链表为空或者链表中只有一个元素
-        if head is None or head.next is None:
+        # not head or not head.next ==== head is None or head.next is None
+        if not (head and head.next):
             return head
-        # 先反转后面的链表，走到链表的末端结点
+        # 先反转后面的链表，记录头结点
         new_pre = self.reverseList1(head.next)
-        # 再将当前节点设置为后面节点的后续节点
-        head.next.next = head  # 防止出现环
-        head.next = None  # 防止出现环
-        return new_pre  # 走到链表的末端结点
-# leetcode submit region end(Prohibit modification and deletion)
+        # 反转当前节点
+        head.next.next, head.next = head, None
+        return new_pre  # 返回反转好部分的头结点
