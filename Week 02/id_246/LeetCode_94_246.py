@@ -1,11 +1,15 @@
-# NOTE
+'''
+binary tree inorder traversal_94
 
-
-1. 哈希表、映射、集合
-拓展内容： Hashmap源代码
-
-2. 树、二叉树、二叉搜索树
-拓展内容： 树的代码实现
+给定一个二叉树，返回它的中序 遍历。 左中右
+输入: [1,null,2,3]
+   1
+    \
+     2
+    /
+   3
+输出: [1,3,2]
+'''
 
 from collections import deque
 
@@ -37,9 +41,28 @@ class Tree(object):
                     queue.append(node.right)
                     nums += 1
                 nums += 1
+    #递归
+    def inorderTraversal_1(self):
+        res = []
+        def traversal(head):
+            if not head:
+                return
+            traversal(head.left)
+            res.append(head.val)
+            traversal(head.right)
 
-3. 泛型递归、 树的递归
-拓展内容：优雅计算斐波那契数列， 递归模板
+        traversal(self.root)
+        return res
 
-4. 分治、回溯
-拓展内容： 牛顿迭代法
+    #迭代
+    def inorderTraversal_2(self):
+        res, stack = [], []
+        while True:
+            while self.root:
+                stack.append(self.root)
+                self.root = self.root.left
+            if not stack:
+                return res
+            node = stack.pop()
+            res.append(node.val)
+            self.root = node.right
