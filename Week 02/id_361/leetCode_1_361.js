@@ -47,7 +47,7 @@ var twoSum = function(nums, target) {
 
 /**
  * javascript
- * 2.两遍哈希表
+ * 2.一遍哈希表
  * 时间复杂度：O(n)
  * 空间复杂度：O(n)
  * @param {number[]} nums

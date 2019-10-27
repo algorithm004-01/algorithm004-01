@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1bcafbbe-b44f-41ef-ac1b-6cb80985ddbe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Week 02/id_361/leetCode_94_361.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Week 02/id_361/NOTE.md" beforeDir="false" afterPath="$PROJECT_DIR$/Week 02/id_361/NOTE.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Week 02/id_361/leetCode_1_361.js" beforeDir="false" afterPath="$PROJECT_DIR$/Week 02/id_361/leetCode_1_361.js" afterDir="false" />
@@ -65,7 +64,7 @@
       <workItem from="1571619815714" duration="112000" />
       <workItem from="1571620157471" duration="1502000" />
       <workItem from="1571796457269" duration="2014000" />
-      <workItem from="1572188969835" duration="2180000" />
+      <workItem from="1572188969835" duration="5308000" />
     </task>
     <servers />
   </component>
