@@ -23,22 +23,22 @@ var myPow = function (x, n) {
 }
 // 分治
 // 1.子问题结束，2，处理当前逻辑，3，下探，merge result 4，清除当前层
-var myPow = function (x, n) {
-    let N = n
-    if (N < 0) {
-        x = 1 / x;
-        N = -N;
+var myPow = (x, n) => {
+    // 结束条件
+    if (n = 0) return 1;
+    if (n = 1) return x;
+    if (n < 0) {
+        return myPow(1 / x, -n)
     }
-    return cPow(x, N);
-}
-function cPow(x, n) {
-    if (n === 0) return 1;
-    if (n === 1) return x;
-    if (n === -1) return 1 / x;
-    const pow = cPow(x, n / 2)
+
+    // 当前逻辑
+    const half = ~~(n / 2)
+    // 下探
+    const total = myPow(x, half)
+    // merge result
     if (n % 2 === 0) {
-        return pow * pow
+        return total * total
     } else {
-        return pow * pow * x
+        return total * total * x
     }
 }
