@@ -44,7 +44,7 @@ class Solution(object):
     # 空间复杂度: O(m)
     def two_index1(self, nums1, m, nums2, n):
         nums1_copy, nums1[:] = nums1[:m], []
-        p1, p2 = 0, 0
+        p1 = p2 = 0
 
         while p1 < m and p2 < n:
             if nums1_copy[p1] < nums2[p2]:
@@ -64,7 +64,6 @@ class Solution(object):
     # 空间复杂度: O(1)
     def two_index2(self, nums1, m, nums2, n):
         p1, p2, p = m - 1, n - 1, m + n - 1
-
         while p1 >= 0 and p2 >= 0:
             if nums1[p1] > nums2[p2]:
                 nums1[p] = nums1[p1]
@@ -92,8 +91,6 @@ class Solution(object):
         if n != -1:  # nums2 is still left
             nums1[:n + 1] = nums2[:n + 1]
 
-
-# leetcode submit region end(Prohibit modification and deletion)
 
 if __name__ == '__main__':
     n1 = [1, 2, 3, 0, 0, 0]

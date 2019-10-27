@@ -13,7 +13,7 @@
 
 """
 1 两重循环暴力解法 O(n^2)
-2 hash/set 存储 O(n)
+2 hash/set 存储 O(n) target - nums[i] 是否在i之前的 nums中
 """
 
 
@@ -26,17 +26,18 @@ class Solution(object):
         :rtype: List[int]
         """
 
-    def hash_two_sum(self, nums, target):
-        hash_map = {}
-        for i, num in enumerate(nums):
-            if target - num in hash_map:
-                return [hash_map[target - num], i]
-            hash_map[num] = i  # 这里容易写错
-
+    # 1 暴力法
     def force_two_Sum(self, nums, target):
         for i in range(len(nums) - 1):
             for j in range(i + 1, len(nums)):
                 if nums[i] + nums[j] == target:
                     return [i, j]
+
+    def hash_two_sum(self, nums, target):
+        dic = {}
+        for i, v in enumerate(nums):
+            if target - v in dic:
+                return [dic[target - v], i]
+            dic[v] = i
 
 # leetcode submit region end(Prohibit modification and deletion)
