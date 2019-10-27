@@ -37,9 +37,9 @@ package leetcode.editor.cn;
 import java.lang.reflect.Array;
 
 //Java：二叉树的最近公共祖先
-public class P236LowestCommonAncestorOfABinaryTree{
+public class LeetCode_236_541{
     public static void main(String[] args) {
-        Solution solution = new P236LowestCommonAncestorOfABinaryTree().new Solution();
+        Solution solution = new LeetCode_236_541().new Solution();
         // TO TEST
     }
     
