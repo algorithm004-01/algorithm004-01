@@ -38,6 +38,9 @@ Java的Set是在HashMap的基础上实现的。
 js中的Map和Set是在es6中裁出现的。Map相对于Object来讲，Map会比Object更哈希化。Map的key可以使任意的变量类型，而Object的key必须是String的类型（即使不是String类型也会调用Object.toString()来使其String化）。
 
 2. Set
+Set和Map一样也是在es6中出现的。Set对象是值的集合。并且Set中的每个元素只会出现一次。但是对于NaN来说NaN在Set中会被认为是一样的值（因为实际中NaN!==NaN）。
+在js中Set有以下几个方法：
+add,clear,delete,entreis,forEach,has,keys,values.
 
 ### Python中的dict和Set
 

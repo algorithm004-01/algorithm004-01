@@ -4,6 +4,7 @@
 // 3. 写代码
 // 4. 测试样例
 
+// https://leetcode-cn.com/problems/valid-anagram/solution/you-xiao-de-zi-mu-yi-wei-ci-by-leetcode/
 // 异位词anagram
 // 异位词就是字母出现的次数一样并且顺序不一样。
 // 我的解法
@@ -43,7 +44,7 @@ var isAnagram = function (s, t) {
     return true;
 };
 const s = "a", t = "b"
-console.log(isAnagram(s, t))
+// console.log(isAnagram(s, t))
 
 // 暴力解法
 // 直接sort字符串 O(Nlog(N))
@@ -58,3 +59,26 @@ var isAnagram = function(s, t) {
 }
 
 // 2.哈希表 统计每个字符的频次
+var isAnagram = function(s, t) {
+    if(s.length!==t.length) return false;
+    const counter = {};
+    for(let i = 0; i<s.length; i++){
+        if(!counter[s.charAt(i)]){
+            counter[s.charAt(i)]=1
+        }else{
+            counter[s.charAt(i)]++
+        }
+        if(!counter[t.charAt(i)]){
+            counter[t.charAt(i)]=-1
+        }else{
+            counter[t.charAt(i)]--
+        }
+        
+    }
+    for(let k in counter){
+        if( counter[k]!==0){
+            return false
+        }
+    }
+    return true
+}
