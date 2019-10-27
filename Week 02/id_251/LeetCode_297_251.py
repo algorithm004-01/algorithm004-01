@@ -65,7 +65,7 @@ class Codec:
         def doit():
             val = next(vals)
             if val == '#':
-                return None
+                return
             node = TreeNode(int(val))
             node.left = doit()
             node.right = doit()
