@@ -32,7 +32,6 @@ public class LeetCode_88_371 {
                 nums1[i] = nums2[n - 1];
                 n--;
             }
-
         }
     }
 
