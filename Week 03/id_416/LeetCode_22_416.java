@@ -16,6 +16,11 @@
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class LeetCode_22_416{
+    /**
+     * DFS：深度优先搜索
+     * @param n
+     * @return
+     */
     public List<String> generateParenthesis(int n) {
         List<String> list = new ArrayList<String>();
         _generate("",0,0,2 * n,list);
