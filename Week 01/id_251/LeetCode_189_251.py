@@ -46,22 +46,19 @@ class Solution(object):
     # 1 暴力解法 O(n*k) 超时
     def force_rotate(self, nums, k):
         k %= len(nums)
-        for i in range(k):
+        for _ in range(k):
             previous = nums[-1]
-            for j in range(len(nums)):
-                previous, nums[j] = nums[j], previous
+            for i in range(len(nums)):
+                previous, nums[i] = nums[i], previous
 
     # 2 使用额外的数组 时间空间：O(n)
     def new_arr_rotate(self, nums, k):
-        new_list = [None] * len(nums)
         k %= len(nums)
+        new_list = [None] * len(nums)
         for i in range(len(nums)):
             new_list[(i + k) % len(nums)] = nums[i]
 
-        for i in range(len(nums)):
-            nums[i] = new_list[i]
-
-        # nums[:] = new_list 这样赋值也行
+        nums[:] = new_list
 
     # 3 环形旋转 ?
     def ring_rotation(self, nums, k):
@@ -79,7 +76,7 @@ class Solution(object):
                     break  # 次数到了或者出现循环则跳出
             start += 1
 
-    # 4 三次使用反转
+    # 4 三次使用反转 最优解法
     def three_reverse_rotation(self, nums, k):
         k %= len(nums)
         """
@@ -109,8 +106,6 @@ class Solution(object):
         k %= len(nums)
         nums[:] = nums[-k:] + nums[:-k]
 
-
-# leetcode submit region end(Prohibit modification and deletion)
 
 if __name__ == '__main__':
     s = Solution()
