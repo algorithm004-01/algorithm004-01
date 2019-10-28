@@ -6,7 +6,6 @@
 
 ## 哈希表
 
-<<<<<<< HEAD
 哈希表（散列表），是一种（key Value）结构，是根据key，通过散列函数F(key),来访问内存存储位置的数据结构。但是，对于不同的key值，F(key)的输出有可能是一样的，这样的现象叫做冲突（Collosion）.这些不同的key值叫做***同义词***。
 处理冲突一般有：
 1. 开放定址法
@@ -16,7 +15,6 @@
 5. 建立公共溢出区域
 
 ## 时间复杂度
-=======
 哈希表（散列表），是一种（key Value）结构，
 
 redis是一种典型的应用场景
@@ -255,4 +253,3 @@ def divide_conquer(problem, param1, parm2):
     # revert the current level states
 
 ```
->>>>>>> a94311e474b5a05ee7fcf19b535e34af66573674
