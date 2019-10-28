@@ -43,6 +43,7 @@
 #         self.right = None
 
 class Solution(object):
+    # recursion
     def lowestCommonAncestor(self, root, p, q):
         """
         :type root: TreeNode
@@ -50,5 +51,21 @@ class Solution(object):
         :type q: TreeNode
         :rtype: TreeNode
         """
-        
+        if not root:
+            return None
+        if root == p or root == q:
+            return root
+        left, right = None, None
+        # look into left and right side of tree
+        if root.left:
+            left = self.lowestCommonAncestor(root.left, p, q)
+        if root.right:
+            right = self.lowestCommonAncestor(root.right, p, q)
+        # both p and q found so current root is LCA
+        if left and right:
+            return root
+        # either p or q found on left or right,
+        # first found non None node as LCA
+        else:
+            return left or right
 #leetcode submit region end(Prohibit modification and deletion)
