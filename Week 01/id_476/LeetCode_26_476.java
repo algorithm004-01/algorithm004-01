@@ -40,7 +40,7 @@
 
 public class RemoveDuplicatesFromSortedArray {
     public static void main(String[] args) {
-        Solution solution = new RemoveDuplicatesFromSortedArray().new Solution();
+        new RemoveDuplicatesFromSortedArray().new Solution();
     }
 
 

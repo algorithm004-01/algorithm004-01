@@ -16,7 +16,7 @@ import java.util.Stack;
 
 public class TrappingRainWater {
     public static void main(String[] args) {
-        Solution solution = new TrappingRainWater().new Solution();
+        new TrappingRainWater().new Solution();
     }
 
 

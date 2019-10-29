@@ -11,7 +11,7 @@ package com.markdown.leetcode.editor.cn;
 
 public class MergeTwoSortedLists {
     public static void main(String[] args) {
-        Solution solution = new MergeTwoSortedLists().new Solution();
+        new MergeTwoSortedLists().new Solution();
     }
 
     public class ListNode {

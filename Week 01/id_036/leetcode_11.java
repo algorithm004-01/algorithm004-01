@@ -41,7 +41,7 @@ public class leetcode_11 {
         //相当于一个死循环 弹出条件 i<j <==> while (i<j) { }
         for (int i = 0, j = nums.length - 1; i < j; ) {
             int area = Math.min(nums[i], nums[j]) * (j - i);
-            int temp = nums[i] > nums[j] ? j-- : i++;
+            nums[i] > nums[j] ? j-- : i++;
             max = Math.max(max, area);
         }
         return max;
