@@ -54,7 +54,7 @@ public class LeetCode_189_371 {
     /**
      * 将数组中的一段反转
      */
-    private static int[] reverseArray(int[] nums, int start, int end) {
+    private static int[] reverseArray(int[] nums, int start, int end) {//这里不需要 return,可以改方法签名
         while (start < end) {
             int temp = nums[end];
             nums[end--] = nums[start];
