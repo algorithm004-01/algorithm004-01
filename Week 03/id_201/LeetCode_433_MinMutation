@@ -99,5 +99,16 @@ class Solution {
         }
         return -1;
     }
+
+     /**
+      * because bank is small 参考127 ladderLength
+      * @param start
+      * @param end
+      * @param bank
+      * @return
+      */
+     public int minMutation2(String start, String end, String[] bank) {
+        return -1;
+     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
