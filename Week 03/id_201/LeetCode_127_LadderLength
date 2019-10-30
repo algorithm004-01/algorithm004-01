@@ -100,7 +100,7 @@ class Solution {
         return changeCount == 1;
     }
 
-    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+    public int ladderLength1(String beginWord, String endWord, List<String> wordList) {
         HashSet<String> wordSets = new HashSet();
         LinkedList<String> beginMediums = new LinkedList<String>();
         char[] charList = new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
@@ -136,6 +136,66 @@ class Solution {
             }
             step++;
         }
+        return 0;
+    }
+
+    /**
+     * todo
+     * #3 单指针，通用状态预处理
+     * @param beginWord
+     * @param endWord
+     * @param wordList
+     * @return
+     */
+    public int ladderLength2(String beginWord, String endWord, List<String> wordList) {
+        int len = beginWord.length();
+        HashMap<String, ArrayList<String>> commonStatusMap = new HashMap<>();
+        HashMap<String, ArrayList<String>> wordStatusMap = new HashMap<>();
+        Queue<String> headQueue = new LinkedList();
+        headQueue.add(beginWord);
+
+        //pre handle of dictionary
+        for (String word: wordList) {
+            ArrayList<String> wordStatus = getCommonStatus(word, len);
+            wordStatusMap.put(word, wordStatus);
+            for (String s: wordStatus) {
+                if (!commonStatusMap.contains(word)) {
+                    commonStatusMap.put(word, new ArrayList<String>());
+                }
+                commonStatusMap.get(word).add(s);
+            }
+        }
+
+        while (!headQueue.isEmpty()) {
+        }
+
+        return 0;
+    }
+
+    public ArrayList<String> getCommonStatus(String word, int length) {
+        ArrayList<String> commonStatus = new ArrayList();
+        char[] wordChar = new char[];
+        char oldChar;
+        for (int i = 0; i < length; i++) {
+            oldChar = wordChar[i];
+            wordChar[i] = *;
+            commonStatus.add(String.valueOf(wordChar));
+            wordChar[i] = oldChar;
+        }
+        return commonStatus;
+    }
+
+    /**
+     * todo
+     * #4 双指针，通用状态预处理
+     * @param beginWord
+     * @param endWord
+     * @param wordList
+     * @return
+     */
+    public int ladderLength2(String beginWord, String endWord, List<String> wordList) {
+
+
         return 0;
     }
 }
