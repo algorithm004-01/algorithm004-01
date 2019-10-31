@@ -134,7 +134,7 @@ https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/
 
 思路1：使用暴力方式，以此遍历数组中的每个元素，比较两个元素的大小，如果出现前面的值大于后面的值的地方，就是我们要找的；但是此种方法，时间复杂度是 O(n)，复杂度有些高，考虑是否有更优化的解法
 
-思路2：虽然数组是整体无序的，但是部分是有序的，可以借助这个特性使用二分查找；已知 nums[0] > nums[nums.length-1], 我们使用二分查找获取 nums[mid], 让 nums[mid] 和 nums[nums.length-1] 做比较，如果nums[mid]大，说明断点出在 mid 之前，就调整low的位置；否则在 mid 之后，调整high的位置，这样持续下去，直到找到那个位置
+思路2：虽然数组是整体无序的，但是部分是有序的，可以借助这个特性使用二分查找；已知 `nums[0] > nums[nums.length-1]`, 我们使用二分查找获取 `nums[mid]`, 让 `nums[mid]` 和 `nums[nums.length-1]` 做比较，如果 `nums[mid]` 大，说明断点出在 `mid` 之前，就调整 `low` 的位置；否则在 `mid` 之后，调整 `high` 的位置，这样持续下去，直到找到那个位置
 
 此外，mid元素和位置0的元素做比较，道理是一样的
 
