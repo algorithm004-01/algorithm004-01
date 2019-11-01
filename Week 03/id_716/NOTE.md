@@ -66,7 +66,7 @@ def BFS(graph, start, end):
 ```
 
 - 题目
-https://leetcode-cn.com/problems/binary-tree-level-order-traversal/#/description
+https://leetcode-cn.com/problems/binary-tree-level-order-traversal/#/description  (done)
 https://leetcode-cn.com/problems/minimum-genetic-mutation/#/description
 https://leetcode-cn.com/problems/generate-parentheses/#/description
 https://leetcode-cn.com/problems/find-largest-value-in-each-tree-row/#/description
@@ -75,6 +75,15 @@ https://leetcode-cn.com/problems/word-ladder/description/
 https://leetcode-cn.com/problems/word-ladder-ii/description/
 https://leetcode-cn.com/problems/number-of-islands/
 https://leetcode-cn.com/problems/minesweeper/description/
+
+- Topic：全面掌握深度优先搜索和广度优先搜索
+
+1. 图的存储
+2. 实现BFS和DFS；解决问题时 BFS 和 DFS 能否相互转换
+3. 实现 Dijkstra 算法、Bellford 算法、Floyd 算法、A*算法
+4. 实现拓扑排序 Kahn 算法、DFS 算法
+
+岛屿个数，有效数独，迷宫问题
 
 ##### 贪心算法
 
