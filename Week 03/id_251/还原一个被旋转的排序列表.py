@@ -13,8 +13,8 @@ def revert(array):
             left = mid
         else:
             right = mid
-
-    return array[left + 1:] + array[: right + 1]
+    # 这里left 和 right 都可以
+    return array[right + 1:] + array[: right + 1]
 
 
 if __name__ == '__main__':
