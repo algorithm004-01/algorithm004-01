@@ -48,6 +48,8 @@ import java.util.Queue;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    public HashMap<String, ArrayList<String>> commonStatusMap;
+    public HashMap<String, ArrayList<String>> wordStatusMap;
     /**
      *  时间复杂度为O(nk)  n:字典中单词的数量, k为word长度
      * @param beginWord
@@ -148,10 +150,10 @@ class Solution {
      * @return
      */
     public int ladderLength2(String beginWord, String endWord, List<String> wordList) {
-        int len = beginWord.length();
+        int len = beginWord.length(), step = 0;
         HashMap<String, ArrayList<String>> commonStatusMap = new HashMap<>();
         HashMap<String, ArrayList<String>> wordStatusMap = new HashMap<>();
-        Queue<String> headQueue = new LinkedList();
+        Queue<String> headQueue = new LinkedList<String>();
         headQueue.add(beginWord);
 
         //pre handle of dictionary
@@ -159,26 +161,43 @@ class Solution {
             ArrayList<String> wordStatus = getCommonStatus(word, len);
             wordStatusMap.put(word, wordStatus);
             for (String s: wordStatus) {
-                if (!commonStatusMap.contains(word)) {
-                    commonStatusMap.put(word, new ArrayList<String>());
+                if (!commonStatusMap.containsKey(s)) {
+                    commonStatusMap.put(s, new ArrayList<String>());
                 }
-                commonStatusMap.get(word).add(s);
+                commonStatusMap.get(s).add(word);
             }
         }
+        wordStatusMap.put(beginWord, getCommonStatus(beginWord, len));
 
         while (!headQueue.isEmpty()) {
+            int size = headQueue.size();
+            step++;
+            while (size-- > 0) {
+                String currentStr = headQueue.poll();
+                if (currentStr.equals(endWord))
+                    return step;
+                if (!wordStatusMap.containsKey(currentStr))
+                    continue;
+                for (String str: wordStatusMap.get(currentStr)) {
+                    if (!commonStatusMap.containsKey(str))
+                        continue;
+                    for (String nextStr: commonStatusMap.get(str))
+                        headQueue.add(nextStr);
+                    commonStatusMap.remove(str);
+                }
+                wordStatusMap.remove(currentStr);
+            }
         }
-
         return 0;
     }
 
     public ArrayList<String> getCommonStatus(String word, int length) {
         ArrayList<String> commonStatus = new ArrayList();
-        char[] wordChar = new char[];
+        char[] wordChar = word.toCharArray();
         char oldChar;
         for (int i = 0; i < length; i++) {
             oldChar = wordChar[i];
-            wordChar[i] = *;
+            wordChar[i] = '*';
             commonStatus.add(String.valueOf(wordChar));
             wordChar[i] = oldChar;
         }
@@ -186,16 +205,70 @@ class Solution {
     }
 
     /**
-     * todo
-     * #4 双指针，通用状态预处理
+     * #4 双指针 (head point and tail point)
+     * 时间复杂度为O（NK）,实际时间比较小，双直针会在中间相遇
+     * （原来的搜索是金字塔形,越往下层基数越大，指数型增长）
      * @param beginWord
      * @param endWord
      * @param wordList
      * @return
      */
-    public int ladderLength2(String beginWord, String endWord, List<String> wordList) {
+    public int ladderLength3(String beginWord, String endWord, List<String> wordList) {
+        if (!wordList.contains(endWord)) {
+            return 0;
+        }
+        commonStatusMap = new HashMap<>();
+        wordStatusMap = new HashMap<>();
+        Queue<Pair<String, Integer>> headQueue = new LinkedList();
+        Queue<Pair<String, Integer>> tailQueue = new LinkedList();
+        HashMap<String, Integer> headVisited = new HashMap();
+        HashMap<String, Integer> tailVisited = new HashMap();
+        headQueue.add(new Pair(beginWord, 1));
+        tailQueue.add(new Pair(endWord, 1));
 
+        //pre handle of dictionary
+        int len = beginWord.length(), vistedStep;
+        for (String word: wordList) {
+            ArrayList<String> wordStatus = getCommonStatus(word, len);
+            wordStatusMap.put(word, wordStatus);
+            for (String s: wordStatus) {
+                if (!commonStatusMap.containsKey(s)) {
+                    commonStatusMap.put(s, new ArrayList<String>());
+                }
+                commonStatusMap.get(s).add(word);
+            }
+        }
+        wordStatusMap.put(beginWord, getCommonStatus(beginWord, len));
 
+        while (!headQueue.isEmpty() && !tailQueue.isEmpty()) {
+            vistedStep = visitWord(headQueue, headVisited, tailVisited);
+            if (vistedStep > 0) {
+                return vistedStep;
+            }
+            vistedStep = visitWord(tailQueue, tailVisited, headVisited);
+            if (vistedStep > 0) {
+                return vistedStep;
+            }
+        }
+        return 0;
+    }
+
+    public int visitWord(Queue<Pair<String, Integer>> q, HashMap<String, Integer> visitedMap, HashMap<String, Integer> compareMap) {
+        Pair<String, Integer> wordNode = q.poll();
+        String word = wordNode.getKey();
+        if (compareMap.containsKey(word)) {
+            return wordNode.getValue() + compareMap.get(word) -1;
+        }
+        for (String s: wordStatusMap.get(word)) {
+            if (!commonStatusMap.containsKey(s))
+                continue;
+            for (String s1: commonStatusMap.get(s)) {
+                if (!visitedMap.containsKey(s1)) {
+                    q.add(new Pair(s1, wordNode.getValue() + 1));
+                    visitedMap.put(s1, wordNode.getValue() + 1);
+                }
+            }
+        }
         return 0;
     }
 }
