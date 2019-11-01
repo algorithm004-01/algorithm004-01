@@ -41,7 +41,7 @@
 # Related Topics 广度优先搜索
 
 """
-1 BFS 重点是刚开始的画出邻接矩阵
+1 BFS 重点是刚开始的 构造通用状态字典
 """
 
 
@@ -60,6 +60,7 @@ class Solution(object):
 
         L = len(beginWord)
 
+        # 构造通用状态字典
         all_combo_dict = defaultdict(list)
         for word in wordList:
             for i in range(L):
@@ -78,5 +79,4 @@ class Solution(object):
                     if word not in visited:
                         visited[word] = True
                         queue.append((word, level + 1))
-                all_combo_dict[intermediate_word] = []
         return 0
