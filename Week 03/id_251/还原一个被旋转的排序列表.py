@@ -14,7 +14,7 @@ def revert(array):
         else:
             right = mid
     # 这里left 和 right 都可以
-    return array[right + 1:] + array[: right + 1]
+    return array[right + 1:] + array[:right + 1]
 
 
 if __name__ == '__main__':
