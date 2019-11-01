@@ -43,11 +43,11 @@ def DFS(tree):
     if tree.root is None:
         return []
     
-    visited, stack = [], [tree.root]
+    visited, stack = set(), [tree.root]
     
     while stack:
         node = stack.pop()
-        visited.append(node)
+        visited.add(node)
         
         process(node)
         nodes = generate_related_nodes(node)
