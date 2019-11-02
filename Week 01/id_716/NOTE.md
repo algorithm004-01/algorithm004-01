@@ -98,11 +98,75 @@ int mergeSort(int[] arr, int low, int high) {
     merge(arr, low, mid, high)
 }
 // 合并函数, 将两个有序数组合并为一个有序数组
-void merge(int[] arr, int low, int mid, int high) {
-    
+void merge(A[p...r], A[p...q], A[q+1...r]) {
+  var i := p，j := q+1，k := 0 // 初始化变量 i, j, k
+  var tmp := new array[0...r-p] // 申请一个大小跟 A[p...r] 一样的临时数组
+  while i<=q AND j<=r do {
+    if A[i] <= A[j] {
+      tmp[k++] = A[i++] // i++ 等于 i:=i+1
+    } else {
+      tmp[k++] = A[j++]
+    }
+  }
+  
+  // 判断哪个子数组中有剩余的数据
+  var start := i，end := q
+  if j<=r then start := j, end:=r
+  
+  // 将剩余的数据拷贝到临时数组 tmp
+  while start <= end do {
+    tmp[k++] = A[start++]
+  }
+  
+  // 将 tmp 中的数组拷贝回 A[p...r]
+  for i:=0 to r-p do {
+    A[p+i] = tmp[i]
+  }
 }
+
+// 下面是分析
+1. 当n=1时，mergeSort 计算次数是1， f(1) = 1
+2. 归并排序，当n较大时，第一步递归左半部分，第二步递归右半部分，第三步merge两个有序数组为1个, merge 的时间复杂度是 O(n)
+可知 f(n) = f(n/2) + f(n/2) + n 
+ = 2f(n/2) + n 
+ = 2(2f(n/4) + n/2) + n = 4f(n/4) + 2n
+ = ...
+ = 2^k * f(n/2^k) + k * n
+
+ 当 n/2^k = 1 时，可求解，所以 k = logn, 带入 f(n) = n + logn * n
+ 所以归并排序的时间复杂度是 O(nlogn)
 ```
 
+复杂度分析需要多多练习，需要掌握复杂度分析的一般规则、组合规则、递归求解规则等，其中递归求解是比较复杂的分析方法。
+
+参考：
+1. [十分钟搞定时间复杂度（算法的时间复杂度）](https://www.jianshu.com/p/f4cca5ce055a)
+2. [拜托，面试别再问我时间复杂度了](https://www.itcodemonkey.com/article/10271.html)
+3. [复杂度分析](https://amberwest.github.io/2018/09/27/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/)
+
+10.24 补充 关于斐波那契递归实现的复杂度分析
+
+分析一下使用朴素递归的方式的时间复杂度，代码如下
+```
+func climbStairs(n int) int {
+    if n <= 2 { return n }
+    return climbStairs(n - 1) + climbStairs(n - 2)
+}
+
+// 简单的分析方法
+// 可以将递归调用转成一个调用树，树的深度是n，每个非叶子有两个节点，而树中的每个节点都需要计算一次，叶子节点的上限是 2^n,
+// 所以时间复杂度可以粗略的得出为 O(2^n), 这个是不精确的一个上限
+
+// 更加严谨的分析方法
+// 从代码实现可知，T(n) = O(1) + T(n-1) + T(n-2), 其中O(1)是加法操作，为常量级别
+// 斐波那契数列是可以求出通项的，使用数学的方式进行分析，这个对数学有一定要求，详细看 参考1
+```
+
+朴素递归可以使用尾递归进行优化
+
+
+参考：
+1. [几种斐波那契数列项算法的复杂度分析](https://blog.mottomo.moe/categories/Tech/Coding/zh/2019-04-07-Fibonacci-Implementations/)
 
 --- 
 
@@ -144,8 +208,6 @@ public class DequeDemo {
 ##### Queue 源码分析
 
 `Queue` 的实现比较多
-
-
 
 ##### Priority Queue 源码分析
 
