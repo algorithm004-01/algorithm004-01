@@ -37,3 +37,10 @@ class Solution(object):
             else:
                 right = mid
         return left if target in nums[left: left + 1] else -1
+
+
+if __name__ == '__main__':
+    s = Solution()
+    print(s.search([], 0))
+    print(s.search([1, 2, 3], 2))
+    print(s.search([4, 5, 6, 0, 1, 3], 0))
