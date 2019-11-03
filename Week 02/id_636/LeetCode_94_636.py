@@ -12,4 +12,15 @@ class Solution:
         '''
         # init
         result = []
-        stack = [(1, root)]
+
+        def loop(root: TreeNode):
+            if not root:
+                return
+
+            loop(root.left)
+            result.append(root.val)
+            loop(root.right)
+
+        loop(root)
+
+        return result
