@@ -1,0 +1,119 @@
+//给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。 
+//
+// 示例 1: 
+//
+// 输入: s = "anagram", t = "nagaram"
+//输出: true
+// 
+//
+// 示例 2: 
+//
+// 输入: s = "rat", t = "car"
+//输出: false 
+//
+// 说明: 
+//你可以假设字符串只包含小写字母。 
+//
+// 进阶: 
+//如果输入字符串包含 unicode 字符怎么办？你能否调整你的解法来应对这种情况？ 
+// Related Topics 排序 哈希表
+
+
+
+//leetcode submit region begin(Prohibit modification and deletion)
+class Solution {
+
+    /**
+     * #1
+     * 遍历S, T字符串，获取各个字母出现的次数
+     * 比较各字母出现的次数是否相等
+     * 时间复杂度为O(N)
+     * hashmap
+     * @param s
+     * @param t
+     * @return
+     */
+    public boolean isAnagram(String s, String t) {
+        char[] charArrS = s.toCharArray();
+        char[] charArrT = t.toCharArray();
+        if (charArrS.length != charArrT.length) {
+            return false;
+        }
+        char[] occurTimes1 = new char[26];
+        char[] occurTimes2 = new char[26];
+        for (int i = 0; i < charArrS.length; i++) {
+            occurTimes1[charArrS[i] - 'a']++;
+            occurTimes2[charArrT[i] - 'a']++;
+        }
+        return Arrays.equals(occurTimes1, occurTimes2);
+    }
+
+    /**
+     * #2 improvement of #1
+     * @param s
+     * @param t
+     * @return
+     */
+    public boolean isAnagram2 (String s, String t) {
+        char[] charArrS = s.toCharArray();
+        char[] charArrT = t.toCharArray();
+        if (charArrS.length != charArrT.length) {
+            return false;
+        }
+        int[] occurTimes = new int[26];
+        for (int i = 0; i++ < s.length;) {
+            occurTimes[charArrS[i] - 'a']++;
+            occurTimes[charArrT[i] - 'a']--;
+        }
+        for (int j = 0; j++ < occurTimes.length) {
+            if (occurTimes[j] != 0)
+                return false;
+        }
+        return true;
+    }
+
+    /**
+     * #1 improvement of #1, #2
+     * @param s
+     * @param t
+     * @return
+     */
+    public boolean isAnagram3 (String s, String t) {
+        char[] charArrS = s.toCharArray();
+        char[] charArrT = t.toCharArray();
+        if (charArrS.length != charArrT.length) {
+            return false;
+        }
+        int[] occurTimes = new int[26];
+        for (int i = 0; i++ < s.length;) {
+            occurTimes[charArrS[i] - 'a']++;
+        }
+        for (int j = 0; j++ < t.length;) {
+            occurTimes[charArrT[i] - 'a']--;
+            if (occurTimes[charArrT[i] - 'a'] < 0)
+                return false;
+        }
+        return true;
+    }
+
+    /**
+     * 将字符串转化为char数组
+     * 对数组进行排序
+     * 比较排序后的数组是否相等
+     * 时间复杂度  O(NlogN)
+     * care: if string length is not equal then return false
+     * @param s
+     * @param t
+     * @return
+     */
+    public boolean isAnagram1 (String s, String t) {
+        if (s.length ! = t.length)
+        return false;
+        char[] charS = s.toCharArray();
+        Arrays.sort(charS);
+        char[] charT = t.toCharArray();
+        Arrays.sort(charT);
+        return Arrays.equals(charS, charT);
+    }
+}
+//leetcode submit region end(Prohibit modification and deletion)

@@ -60,10 +60,14 @@ class Solution(object):
     def swapPairs2(self, head):
         if not head or not head.next:
             return head
-        second = head.next
         # head --> second --> f(second.next) to second --> head --> f(second.next)
+        # 先head指向 f(second.next), 然后 second指向head 最后 返回 新头结点
+        second = head.next
         head.next = self.swapPairs2(second.next)
         second.next = head
         return second
+        # ======>
+        # head.next, head, head.next = self.swapPairs2(head.next.next), head.next, head
+        # return head
 
 # leetcode submit region end(Prohibit modification and deletion)
