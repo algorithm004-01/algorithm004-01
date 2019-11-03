@@ -7,14 +7,12 @@ def revert(array):
     left, right = 0, len(array) - 1
     while left < right:
         mid = left + (right - left) // 2
-        if array[left] < array[mid] < array[right]:
-            return array
-        elif array[left] < array[mid]:
-            left = mid
+        # 找到旋转后第二段的起点
+        if array[mid] > array[right]:
+            left = mid + 1
         else:
             right = mid
-    # 这里left 和 right 都可以
-    return array[right + 1:] + array[:right + 1]
+    return array[left:] + array[:left]
 
 
 if __name__ == '__main__':
