@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -52,4 +53,11 @@ public class LeetCode_107_716 {
 
         return res;
     }
+}
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int val) { this.val = val; }
 }

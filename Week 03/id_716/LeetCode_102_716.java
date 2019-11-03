@@ -63,3 +63,10 @@ public class LeetCode_102_716 {
         levelOrderHelper(node.right, level + 1, res);
     }
 }
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int val) { this.val = val; }
+}
