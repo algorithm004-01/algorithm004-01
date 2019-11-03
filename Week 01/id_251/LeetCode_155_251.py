@@ -49,6 +49,7 @@ class MinStack(object):
         :rtype: None
         """
         self.data.append(x)
+        # 这里 x < self.helper[-1] 或者 x <= self.helper[-1] 都可以
         if len(self.helper) == 0 or x <= self.helper[-1]:
             self.helper.append(x)
         else:
@@ -59,8 +60,11 @@ class MinStack(object):
         :rtype: None
         """
         if self.data:
-            del self.helper[-1]
-            return self.data.pop()
+            # del 时间复杂度比pop高
+            # del self.helper[-1]
+            # del self.data[-1]
+            self.helper.pop()
+            self.data.pop()
 
     def top(self):
         """
@@ -110,8 +114,11 @@ class MinStackNoSync(object):
         """
         if self.data:
             if self.data[-1] == self.helper[-1]:
-                del self.helper[-1]
-            return self.data.pop()
+                # del 时间复杂度比pop高
+                # del self.helper[-1]
+                # del self.data[-1]
+                self.helper.pop()
+                self.data.pop()
 
     def top(self):
         """
@@ -140,7 +147,8 @@ class MinStackTuple(object):
 
     def pop(self):
         if self.stack:
-            del self.stack[-1]
+            # del self.stack[-1]
+            self.stack.pop()
 
     def top(self):
         if self.stack:

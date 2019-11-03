@@ -1,5 +1,6 @@
 # 极客大学「算法训练营第四期 - 1 班」作业提交仓库
 
+ 请大家通过该链接查看讲师课件并进行下载: https://pan.baidu.com/s/1k1BHhltBkZLJw0TG-uYC7g 密码:p5op
 
 ## 仓库目录结构说明
 

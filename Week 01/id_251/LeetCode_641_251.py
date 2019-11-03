@@ -94,7 +94,7 @@ class MyCircularDequeForceList(object):
         """
         if self.isEmpty():
             return False
-        del self.q[-1]
+        self.q.pop()
         return True
 
     def getFront(self):
@@ -240,6 +240,7 @@ class MyCircularDeque(object):
         :type k: int
         """
         self._size = k
+        # rear 不存元素， rear-1 是队尾
         self._front, self._rear = 0, 0
         self._capacity = k + 1
         self._data = [-1] * (k + 1)
@@ -265,6 +266,7 @@ class MyCircularDeque(object):
         if self.isFull():
             return False
         self._data[self._rear] = value
+        # 尾部牺牲一个存储空间
         self._rear = (self._rear + 1) % self._capacity
         return True
 
