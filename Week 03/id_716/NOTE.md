@@ -197,6 +197,8 @@ public class ActivitySelection {
 2. 最小生成树：Prim 算法和 Kruskal 算法
 3. 最短路径：Dijkstra 算法
 
+以上都是贪心算法的一些典型的实际应用，每一个总结起来都需要花费大量的精力，留在以后慢慢分析，在这里立一个 Flag.
+
 #### 相关题目练习
 
 利用老师课上讲的利用贪心选择和最近重复性的原则，以及贪心算法的基本要素：证明贪心选择的安全性以及找出最优子结构，原问题的最优解可以通过组合当前的选择和子问题的最优解得到。
@@ -208,6 +210,37 @@ public class ActivitySelection {
 >
 > 1. num 的长度小于 10002 且 ≥ k
 > 2. num 不会包含任何前导零
+
+题解：
+这道题的初步感觉是挺简单的，但是仔细想了之后发现并不简单。
+可以把问题分解为：当前选择是移除1个数字使剩余后的数字最小；子问题是在剩余的数字中再选择一个1个数字使剩余的数字最小；可见具有重复性，而且是最近重复性，而且当前选择并不会影响将来的选择，都是选择最小的，使原问题的解最终最小
+
+代码实现：
+
+```java
+public String removeKdigits(String num, int k) {
+    if (k >= num.length()) return "0";
+
+    char[] stack = new char[num.length()];
+    int sPos = 0;
+
+    for (char curr : num.toCharArray()) {
+        // 移动到新的字符上时，都去找当前的最大值，移除掉
+        while (k > 0 && sPos > 0 && stack[sPos] > curr) {
+            sPos--;
+            k--;
+        }
+
+        // 如果第一个位置是0的话，直接丢弃
+        if (sPos != 0 || curr != '0') {
+            stack[sPos++] = curr;
+        }
+    }
+
+    String res = new String(stack, 0, sPos - k);
+    return res.isEmpty() ? "0" : res;
+}
+```
 
 - [无重叠区间](https://leetcode-cn.com/problems/non-overlapping-intervals/)
 
