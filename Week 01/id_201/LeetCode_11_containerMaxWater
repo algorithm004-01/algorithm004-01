@@ -1,0 +1,59 @@
+
+
+//leetcode submit region begin(Prohibit modification and deletion)
+class Solution {
+
+    public int maxArea(int[] height) {
+        int maxAreaSize = 0, area, i = 0, j = height.length - 1, currentMin, minHeight;
+        while (i < j) {
+            if (height[i] < height[j]) {
+                currentMin = height[i++];
+            } else {
+                currentMin = height[j--];
+            }
+            if (currentMin <= minHeight)
+                continue;
+            area = currentMin * (j - i);
+            minHeight = currentMin;
+            if (maxAreaSize < area)
+                maxAreaSize = area;
+        }
+        return maxAreaSize;
+    }
+    /**
+     *
+     * @param height
+     * @return
+     */
+    public int maxArea2(int[] height) {
+        int maxAreaSize = 0, area = 0, i = 0, j = height.length - 1;
+        while (i < j) {
+            if (height[i] < height[j]) {
+                area = height[i] * (j - i++);
+            } else {
+                area = height[j] * (j-- - i);
+            }
+            if (maxAreaSize < area)
+                maxAreaSize = area;
+        }
+        return maxAreaSize;
+    }
+
+    /**
+     * 暴力求解  时间复杂度为O(n^2)
+     * @param height
+     * @return
+     */
+    public int maxArea1(int[] height) {
+        int maxAreaSize = 0, area = 0;
+        for (int i = 0; i < height.length - 1; i++) {
+            for (int j = i + 1; j < height.length; j++) {
+                area = Math.min(height[i], height[j]) * (j - i);
+                if (maxAreaSize < area) {
+                    maxAreaSize = area;
+                }
+            }
+        }
+        return maxAreaSize;
+    }
+}
