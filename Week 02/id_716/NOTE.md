@@ -48,7 +48,7 @@
 1. https://leetcode-cn.com/problems/climbing-stairs/  (done)
 2. https://leetcode-cn.com/problems/generate-parentheses/
 3. https://leetcode-cn.com/problems/invert-binary-tree/description/  (done)
-4. https://leetcode-cn.com/problems/validate-binary-search-tree
+4. https://leetcode-cn.com/problems/validate-binary-search-tree  (done)
 5. https://leetcode-cn.com/problems/maximum-depth-of-binary-tree
 6. https://leetcode-cn.com/problems/minimum-depth-of-binary-tree
 7. https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/
