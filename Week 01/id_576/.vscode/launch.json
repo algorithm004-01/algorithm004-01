@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - RewriteDeque",
+            "request": "launch",
+            "mainClass": "RewriteDeque"
+        }
+    ]
+}

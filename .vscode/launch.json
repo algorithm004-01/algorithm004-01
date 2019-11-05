@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - LeetCode_98_576",
+            "request": "launch",
+            "mainClass": "LeetCode_98_576"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - LeetCode_22_576",
+            "request": "launch",
+            "mainClass": "LeetCode_22_576"
+        }
+    ]
+}

@@ -21,7 +21,7 @@ public class LeetCode_1_576 {
         return new int[0];
     }
     
-    //1.	哈希表，O(n),把数组元素的值和位置用hashmap存储，遍历条件target-nums[i],看是否有key存在，则取位置值为输出结果。
+    //2.一遍哈希表，O(n),把数组元素的值和位置用hashmap存储，遍历条件target-nums[i],看是否有key存在，则取位置值为输出结果。
     //记住这种用hash表存储值来判断的思路
     public int[] twoSum2(int[] nums, int target) {
         int[] result = new int[2];
