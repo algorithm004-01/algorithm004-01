@@ -1,0 +1,94 @@
+//给定一个二叉树，返回其按层次遍历的节点值。 （即逐层地，从左到右访问所有节点）。
+//
+// 例如:
+//给定二叉树: [3,9,20,null,null,15,7],
+//
+//     3
+//   / \
+//  9  20
+//    /  \
+//   15   7
+//
+//
+// 返回其层次遍历结果：
+//
+// [
+//  [3],
+//  [9,20],
+//  [15,7]
+//]
+//
+// Related Topics 树 广度优先搜索
+
+
+
+//leetcode submit region begin(Prohibit modification and deletion)
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Stack;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    /**
+     * #1 BFS
+     * 时间复杂度为O(N)
+     * @param root
+     * @return
+     */
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        ArrayList levelNodeValList = new ArrayList();
+        LinkedList<TreeNode> nodes = new LinkedList<>();
+        nodes.add(root);
+        int size = 0, level = 0;
+        ArrayList<Integer> subList;
+        TreeNode current;
+        while (!nodes.isEmpty()) {
+            subList = new ArrayList();
+            size = nodes.size();
+            while (size-- > 0) {
+                current = nodes.poll();
+                subList.add(current.val);
+                if (current.left != null)
+                    nodes.add(current.left);
+                if (current.right != null)
+                    nodes.add(current.right);
+            }
+            levelNodeValList.add(subList);
+        }
+        return levelNodeValList;
+    }
+
+    /**
+     * #2  DFS
+     * 时间复杂度为O(N)
+     * @param root
+     * @return
+     */
+    public List<List<Integer>> levelOrder1(TreeNode root) {
+        List<List<Integer>> levelOrderList = new ArrayList<List<Integer>>();
+        travelNode(root, 0, levelOrderList);
+        return levelOrderList;
+    }
+
+    public void travelNode(TreeNode current, Integer level, List<List<Integer>> levelOrderList) {
+        if (current == null)
+            return;
+        if (levelOrderList.size() == level) {
+            levelOrderList.add((new ArrayList<Integer>()));
+        }
+        levelOrderList.get(level).add(current.val);
+
+        travelNode(current.left, level + 1, levelOrderList);
+        travelNode(current.right, level + 1, levelOrderList);
+    }
+}
+//leetcode submit region end(Prohibit modification and deletion)
