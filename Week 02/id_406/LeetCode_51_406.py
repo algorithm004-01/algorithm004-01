@@ -24,4 +24,8 @@ class Solution:
                 stack.append(nums[i])
                 col.add(i)
                 master.add(row + i)
+<<<<<<< HEAD
                 slave.add(row - i)
+=======
+                slave.add(row - i)
+>>>>>>> master
