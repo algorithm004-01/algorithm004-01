@@ -73,8 +73,8 @@ def BFS(graph, start, end):
 
 <https://leetcode-cn.com/problems/word-ladder/description/>  (done)
 <https://leetcode-cn.com/problems/word-ladder-ii/description/> (done)
-<https://leetcode-cn.com/problems/number-of-islands/>
-<https://leetcode-cn.com/problems/minesweeper/description/>
+<https://leetcode-cn.com/problems/number-of-islands/>  (done)
+<https://leetcode-cn.com/problems/minesweeper/description/>  (done)
 
 - Topic：全面掌握深度优先搜索和广度优先搜索
 

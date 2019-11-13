@@ -81,8 +81,8 @@
 1. <https://leetcode-cn.com/problems/powx-n/>  (done)
 2. <https://leetcode-cn.com/problems/subsets/> (done)
 3. <https://leetcode-cn.com/problems/majority-element/description/> （简单、但是高频） (done)
-4. <https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/>
-5. <https://leetcode-cn.com/problems/n-queens/>
+4. <https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/>  (done)
+5. <https://leetcode-cn.com/problems/n-queens/> (done)
 
 ---
 
