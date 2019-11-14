@@ -1,4 +1,4 @@
-public static int longestValidParentheses(String s) {
+public int longestValidParentheses(String s) {
 		int maxans = 0;
 	    Stack<Integer> stack = new Stack<>();
 	    stack.push(-1);
