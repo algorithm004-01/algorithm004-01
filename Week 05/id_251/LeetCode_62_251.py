@@ -79,16 +79,13 @@ class Solution3(object):
         b. 定义状态数组 f[i, j]
         c. DP方程 dp[i, j] = dp[i - 1, j] + dp[i, j - 1]
         """
-        if not m or not n:
-            return 0
         dp = [[1 for _ in range(n)] for _ in range(m)]
         for i in range(1, m):
             for j in range(1, n):
                 dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
         return dp[-1][-1]
 
-
-# dp 优化
+# dp 优化1
 class Solution4(object):
     def uniquePaths(self, m, n):
         """
@@ -96,8 +93,22 @@ class Solution4(object):
         :type n: int
         :rtype: int
         """
-        if not m or not n:
-            return 0
+        pre = [1] * n
+        cur = [1] * n
+        for i in range(1, m):
+            for j in range(1, n):
+                cur[j] = pre[j] + cur[j - 1]
+            pre = cur[:]
+        return cur[-1]
+
+# dp 优化2
+class Solution5(object):
+    def uniquePaths(self, m, n):
+        """
+        :type m: int
+        :type n: int
+        :rtype: int
+        """
         cur = [1] * n
         for i in range(1, m):
             for j in range(1, n):
