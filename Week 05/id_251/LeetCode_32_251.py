@@ -78,15 +78,15 @@ class Solution3(object):
         """
         DP
         a. 重复性 
-            if problem(i) is ')':
-                if problem(i - 1) is '(':
+            if s(i) is ')':
+                if s(i - 1) is '(':
                     problem(i) = sub(i - 2) + 2
-                if i - problem(i - 1) > 0 and s[i - problem[i - 1] - 1] == '(':
+                if i - sub(i - 1) > 0 and s[i - sub[i - 1] - 1] == '(':
                     problem(i) = sub(i - 1) + sub(i - sub(i - 1) - 2) + 2
         b. 定义状态数组 f[i]
         c. dp方程
-            if dp[i] == ')':
-                if dp[i - 1] == '(':
+            if s[i] == ')':
+                if s[i - 1] == '(':
                     dp[i] = dp[i - 2] + 2
                 elif i - dp[i - 1] > 0 and s[i - dp[i - 1] - 1] == '(':
                     dp[i] = dp[i - 1] + dp[i - dp[i - 1] - 2] + 2                  
