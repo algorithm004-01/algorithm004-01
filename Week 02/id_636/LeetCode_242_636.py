@@ -47,6 +47,45 @@ class Solution:
 
         return sDict == tDict
 
+    def isAngramMapUpdate(self, s: str, t: str) -> bool:
+
+        # check length
+        if len(s) != len(t):
+            return False
+        # new dict
+        sDict = dict()
+        tDict = dict()
+
+        for index in range(len(s)):
+            sDict.update({
+                s[index]: sDict.setdefault(s[index], 0) + 1
+            })
+
+            tDict.update({
+                t[index]: tDict.setdefault(t[index], 0) + 1
+            })
+
+        return sDict == tDict
+
+    def isAngramMapDefault(self, s: str, t: str)  -> bool:
+        # check length
+        if len(s) != len(t):
+            return False
+
+        from collections import defaultdict
+
+        # new dict
+        sDict = defaultdict(lambda: 0)
+        tDict = defaultdict(lambda: 0)
+
+        for index in range(len(s)):
+            sDict[s[index]] += 1
+            tDict[t[index]] += 1
+
+            print(sDict, tDict)
+
+        return sDict == tDict
+
     def isAngramCollections(self, s: str, t: str) -> bool:
         import collections
         return collections.Counter(s) == collections.Counter(t)
@@ -54,7 +93,7 @@ class Solution:
 if __name__ == '__main__':
     s = Solution()
 
-    str1 = "aaaaaab"
-    str2 = "baaaaaa"
+    str1 = "a"
+    str2 = "b"
 
-    print(s.isAngramCollections(str1, str2))
+    print(s.isAngramMapDefault(str1, str2))

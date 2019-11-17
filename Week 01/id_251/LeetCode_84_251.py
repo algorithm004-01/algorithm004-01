@@ -84,8 +84,8 @@ class Solution(object):
         """        
         heights.append(0) 这里很巧妙有2点
         1：将第一个while的stack[-1] != -1判断省掉
-        因为当stack[-1] == -1时，height[i] > 0, heights[stack[-1]] = heights[-1] = 0
-        从而 heights[i] < heights[stack[-1]] 包含 stack[-1= != -1 的判断
+        因为当stack[-1] == -1时，height[i] >= 0, heights[stack[-1]] = heights[-1] = 0
+        从而 stack[-1]= != -1 的判断可以省略
         2：讲上一方法的最后for循环提升到前面来实现
         while stack[-1] != -1:
             max_area = max(max_area, heights[stack.pop()] * (len(heights) - stack[-1] - 1))
@@ -100,5 +100,3 @@ class Solution(object):
                 max_area = max(max_area, heights[stack.pop()] * (i - stack[-1] - 1))
             stack.append(i)
         return max_area
-
-# leetcode submit region end(Prohibit modification and deletion)
