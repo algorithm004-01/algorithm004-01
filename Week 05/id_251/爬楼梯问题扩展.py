@@ -21,8 +21,6 @@ def climb_stairs_3_(n):
         return 1
     if n == 2:
         return 2
-    if n == 3:
-        return 4
     a, b, c = 1, 2, 4
     for _ in range(3, n):
         c, b, a = a + b + c, c, b
@@ -56,8 +54,6 @@ def climb_stairs_different(n):
 def climb_stairs_different_(n):
     if n <= 2:
         return 1
-    if n == 3:
-        return 3
     f11, f12, f13 = 1, 0, 0
     f21, f22, f23 = 0, 1, 0
     f31, f32, f33 = 1, 1, 1
@@ -79,8 +75,10 @@ if __name__ == '__main__':
     print(climb_stairs_different(5))
     print(climb_stairs_different(6))
     print(climb_stairs_different(7))
+    print(climb_stairs_different(8))
     print(climb_stairs_different_(3))
     print(climb_stairs_different_(4))
     print(climb_stairs_different_(5))
     print(climb_stairs_different_(6))
     print(climb_stairs_different_(7))
+    print(climb_stairs_different_(8))
