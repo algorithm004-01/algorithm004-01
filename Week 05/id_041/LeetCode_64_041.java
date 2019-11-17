@@ -1,7 +1,7 @@
 package MinPathSum;
 
-public class MinPathSum {
-    public int minPathSum(int[][] grid) {
+public class LeetCode_64_041 {
+    public int LeetCode_64_041(int[][] grid) {
         for(int i  = 0;i < grid.length; i++){
             for( int j = 0; j < grid[0].length; j++ ){
                 if(i == 0 && j == 0) continue;

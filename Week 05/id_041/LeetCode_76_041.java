@@ -17,7 +17,7 @@ import java.util.HashMap;
  如果 S 中存在这样的子串，我们保证它是唯一的答案。
  *
  * */
-public class MinimumWindowSubstring {
+public class LeetCode_76_041 {
     public String minWindow(String s, String t) {
         if(s == null || s.length()==0 || t == null || t.length() == 0) return "";
         //使用双指针思路解决
@@ -74,7 +74,7 @@ public class MinimumWindowSubstring {
         return s.substring(minLeft,minLeft+minLen);
     }
     public static void main(String[] args){
-        MinimumWindowSubstring ms = new MinimumWindowSubstring();
+        LeetCode_76_041 ms = new LeetCode_76_041();
         String s = "ADOBECODEBANC", t = "ABC";
         System.out.println(ms.minWindow(s,t));
     }
