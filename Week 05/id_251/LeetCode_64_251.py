@@ -6,7 +6,7 @@
 #
 # 输入:
 # [
-#   [1,3,1],
+#  [1,3,1],
 #  [1,5,1],
 #  [4,2,1]
 # ]
@@ -65,6 +65,7 @@ class Solution2(object):
         return dp[-1][-1]
 
 
+# 空间优化
 class Solution3(object):
     def minPathSum(self, grid):
         """
