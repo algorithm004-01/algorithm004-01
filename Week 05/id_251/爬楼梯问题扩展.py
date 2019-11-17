@@ -17,12 +17,8 @@ def climb_stairs_3(n):
 
 # 空间优化
 def climb_stairs_3_(n):
-    if n == 1:
-        return 1
-    if n == 2:
-        return 2
-    a, b, c = 1, 2, 4
-    for _ in range(3, n):
+    a, b, c = 0, 1, 1
+    for _ in range(1, n):
         c, b, a = a + b + c, c, b
     return c
 
