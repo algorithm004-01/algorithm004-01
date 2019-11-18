@@ -31,6 +31,7 @@
 
 """
 1、 BFS 队列实现
+2、 递归实现
 """
 
 
@@ -69,3 +70,29 @@ class Solution2(object):
             res.append([node.val for node in level])
             level = [kid for n in level for kid in (n.left, n.right) if kid]
         return res
+
+
+class Solution3(object):
+    def levelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        levels = []
+        if not root:
+            return levels
+
+        def helper(node, level):
+            # level层数下表从0开始，不需要加一层的情况下level = len(levels) - 1
+            if len(levels) == level:
+                levels.append([])
+
+            levels[level].append(node.val)
+
+            if node.left:
+                helper(node.left, level + 1)
+            if node.right:
+                helper(node.right, level + 1)
+
+        helper(root, 0)
+        return levels
