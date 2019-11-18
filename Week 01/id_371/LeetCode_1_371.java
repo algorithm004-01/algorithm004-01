@@ -19,6 +19,28 @@ public class LeetCode_1_371 {
         Arrays.stream(twoSum).forEach(System.out::println);
 
     }
+
+    /**
+     * 重解1:
+     * @author Shaobo.Qian
+     * @date 2019/11/9
+     */
+    public static int[] twoSum2(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>(nums.length);
+        for (int i = 0; i < nums.length; i++) {
+            int key = target - nums[i];
+            if (map.containsKey(key)) {
+                return new int[]{map.get(key), i};
+            } else {
+                map.put(nums[i], i);
+            }
+        }
+        return null;
+    }
+
+
+
+
     public static int[] twoSum(int[] nums, int target) {
         //遍历数组,将数组元素相加和目标值比较
         for (int i = 0; i < nums.length - 1; i++) {

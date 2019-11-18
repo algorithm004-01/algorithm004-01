@@ -17,6 +17,25 @@ public class Leetcode_104_371 {
 
 
     /**
+     * 重解1:递归
+     *
+     * @author Shaobo.Qian
+     * @date 2019/11/9
+     */
+    public int maxDepth2(TreeNode root) {
+        //1.递归出口
+        if (root == null) {
+            return 0;
+        } else {
+            //3.带上参数,向下一层
+            int leftMax = maxDepth2(root.right);
+            int rightMax = maxDepth2(root.left);
+            //2.处理当前层
+            return Math.max(leftMax, rightMax) + 1;
+        }
+    }
+
+    /**
      * 仿解1:递归
      */
     public int maxDepth1(TreeNode root) {
@@ -45,8 +64,10 @@ public class Leetcode_104_371 {
         }
         return recur(root, 0);
     }
+
     /**
      * 原解1:(未解出-->对递归理解不透彻)
+     *
      * @param root
      * @param depth
      * @return
