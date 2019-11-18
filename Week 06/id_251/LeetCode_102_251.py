@@ -1,0 +1,58 @@
+#给定一个二叉树，返回其按层次遍历的节点值。 （即逐层地，从左到右访问所有节点）。 
+#
+# 例如: 
+#给定二叉树: [3,9,20,null,null,15,7], 
+#
+#     3
+#   / \
+#  9  20
+#    /  \
+#   15   7
+# 
+#
+# 返回其层次遍历结果： 
+#
+# [
+#  [3],
+#  [9,20],
+#  [15,7]
+#]
+# 
+# Related Topics 树 广度优先搜索
+
+
+
+#leetcode submit region begin(Prohibit modification and deletion)
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+"""
+1、 BFS 队列实现
+"""
+class Solution(object):
+    def levelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        if not root:
+            return []
+        res = []
+        queue = [root]
+        while queue:
+            level_vals= []
+            for _ in range(len(queue)):
+                node = queue.pop(0)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+                level_vals.append(node.val)
+            res.append(level_vals)
+        return res
+
+
