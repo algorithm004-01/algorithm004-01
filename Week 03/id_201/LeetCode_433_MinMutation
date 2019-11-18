@@ -1,0 +1,114 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+
+//leetcode submit region begin(Prohibit modification and deletion)
+class Solution {
+    /**
+     * #1
+     * @param start
+     * @param end
+     * @param bank
+     * @return
+     */
+    public int minMutation(String start, String end, String[] bank) {
+        if (start.length() != end.length())
+            return 0;
+        HashSet<String> bankSet = new HashSet();
+        char[] startChars, replaceChars = new char[]{'A', 'C', 'G', 'T'};
+        Queue<String> possibleStr = new LinkedList<>();
+        HashSet<String> visitedSet = new HashSet();
+        char diffChar;
+        int step = 0, size;
+        String currentStart;
+        possibleStr.offer(start);
+        // put element in bank to set
+        for (String s : bank)
+            bankSet.add(s);
+        while (!possibleStr.isEmpty()) {
+            size = possibleStr.size();
+            while (size-- > 0) {
+                currentStart = possibleStr.poll();
+                if (currentStart.equals(end))
+                    return step;
+                startChars = currentStart.toCharArray();
+                for (int i = 0; i < startChars.length; i++) {
+                    diffChar = startChars[i];
+                    for (int j = 0; j < replaceChars.length; j++) {
+                        if (replaceChars[j] == startChars[i])
+                            continue;
+                        startChars[i] = replaceChars[j];
+                        currentStart = String.valueOf(startChars);
+                        if (!visitedSet.contains(currentStart) && bankSet.contains(currentStart)) {
+                            visitedSet.add(currentStart);
+                            possibleStr.offer(currentStart);
+                        }
+                    }
+                    startChars[i] = diffChar;
+                }
+            }
+            step++;
+        }
+        return -1;
+    }
+
+    /**
+     * #2 improvememt of #1
+     * @param start
+     * @param end
+     * @param bank
+     * @return
+     */
+    public int minMutation1(String start, String end, String[] bank) {
+        if (start.length() != end.length())
+            return 0;
+        HashSet<String> bankSet = new HashSet();
+        char[] startChars, replaceChars = new char[]{'A', 'C', 'G', 'T'};
+        Queue<String> possibleStr = new LinkedList<>();
+        char diffChar;
+        int step = 0, size;
+        String currentStart;
+        possibleStr.offer(start);
+        // put element in bank to set
+        for (String s : bank)
+            bankSet.add(s);
+        while (!possibleStr.isEmpty()) {
+            size = possibleStr.size();
+            while (size-- > 0) {
+                currentStart = possibleStr.poll();
+                if (currentStart.equals(end))
+                    return step;
+                startChars = currentStart.toCharArray();
+                for (int i = 0; i < startChars.length; i++) {
+                    diffChar = startChars[i];
+                    for (int j = 0; j < replaceChars.length; j++) {
+                        if (replaceChars[j] == startChars[i])
+                            continue;
+                        startChars[i] = replaceChars[j];
+                        currentStart = String.valueOf(startChars);
+                        if (bankSet.contains(currentStart)) {
+                            bankSet.remove(currentStart);
+                            possibleStr.offer(currentStart);
+                        }
+                    }
+                    startChars[i] = diffChar;
+                }
+            }
+            step++;
+        }
+        return -1;
+    }
+
+     /**
+      * because bank is small 参考127 ladderLength
+      * @param start
+      * @param end
+      * @param bank
+      * @return
+      */
+     public int minMutation2(String start, String end, String[] bank) {
+        return -1;
+     }
+}
+//leetcode submit region end(Prohibit modification and deletion)

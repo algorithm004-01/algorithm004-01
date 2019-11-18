@@ -63,20 +63,15 @@ class Solution(object):
         """
         hash_set = set()
         while head:
-            if head in hash_set:
-                return True
+            if head in hash_set: return True
             hash_set.add(head)
             head = head.next
         return False
 
     # 快慢指针法
     def hasCycleSlowFastIndex(self, head):
-        slow = fast = head
+        slow, fast = head, head
         while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-            if slow == fast:
-                return True
+            slow, fast = slow.next, fast.next.next
+            if slow is fast: return True
         return False
-
-# leetcode submit region end(Prohibit modification and deletion)
