@@ -28,7 +28,7 @@ class Solution:
         visited = {beginWord:True} # 标记已经访问过的单词
         
         while queue:
-            current_word,level = queue.pop(0)
+            current_word,level = queue.pop(0)  # 删除对应索引的元素，默认删除最后一个
             for i in range(L):
                 # 当前单词可以配对的形式 intermediate_word
                 intermediate_word = current_word[:i] + "*" + current_word[i+1:]
