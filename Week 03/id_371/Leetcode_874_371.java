@@ -26,7 +26,7 @@ public class Leetcode_874_371 {
      *
      * @author Shaobo.Qian
      * @date 2019/11/3
-     * @link
+     * @link https://leetcode.com/problems/walking-robot-simulation/discuss/152322/Maximum!-This-is-crazy!
      */
     public static int robotSim2(int[] commands, int[][] obstacles) {
         //1.存入所有障碍物坐标

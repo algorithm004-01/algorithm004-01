@@ -42,8 +42,8 @@
 
 """
 1 递归
-2 中序遍历
-3 stack
+2 中序遍历 为升序
+3 stack 用栈实现计算机的递归函数调用的底层调用栈
 """
 
 
@@ -57,15 +57,7 @@ class Solution(object):
         def valid(node, lower, upper):
             if not node:
                 return True
-            """
-            if not (lower < node.val < upper):
-                return False
-            if not valid(node.left, lower, node.val):
-                return False
-            if not valid(node.right, node.val, upper):
-                return False
-            return True
-            """
+
             return lower < node.val < upper and valid(node.left, lower, node.val) and valid(node.right, node.val, upper)
 
         return valid(root, float('-inf'), float('inf'))
@@ -105,8 +97,7 @@ class Solution3:
 
     # 另一种写法
     def isValidBST_(self, root):
-        stack = []
-        pre = None
+        stack, pre = [], None
         while stack or root:
             while root:
                 stack.append(root)

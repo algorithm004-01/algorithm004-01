@@ -11,7 +11,13 @@ func TestBFindBreakPoint(t *testing.T) {
 		args args
 		want int
 	}{
-
+		{
+			name: "test TestBFindBreakPoint",
+			args: args{
+				nums: []int{4, 5, 6, 7, 0, 1, 2},
+			},
+			want: 4,
+		},
 		{
 			name: "test TestBFindBreakPoint",
 			args: args{

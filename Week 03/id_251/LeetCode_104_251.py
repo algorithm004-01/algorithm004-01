@@ -26,8 +26,8 @@
 #         self.right = None
 
 """
-1 递归解法
-2 迭代解法
+1 递归解法 DFS
+2 迭代解法 DFS
 """
 
 
@@ -41,3 +41,25 @@ class Solution(object):
         return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1 if root else 0
         """
         return 1 + max(map(self.maxDepth, (root.left, root.right))) if root else 0
+
+
+class SolutionDFS(object):
+    def maxDepth(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        stack = []
+        if root:
+            stack.append((1, root))
+
+        depth = 0
+
+        while stack:
+            cur_depth, root = stack.pop()
+            if root:
+                depth = max(depth, cur_depth)
+                stack.append((cur_depth + 1, root.left))
+                stack.append((cur_depth + 1, root.right))
+
+        return depth

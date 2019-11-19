@@ -125,22 +125,62 @@ public class LeetCode_127_716 {
 
     // bidirectional bread first search
     private int bbfs(Map<String, List<String>> graph, String beginWord, String endWord) {
-        Set<String> beginVisited = new HashSet<>();
-        beginVisited.add(beginWord);
+        Map<String, Integer> beginVisited = new HashMap<>();
+        beginVisited.put(beginWord, 1);
 
-        Set<String> endVisited = new HashSet<>();
-        endVisited.add(endWord);
+        Map<String, Integer> endVisited = new HashMap<>();
+        endVisited.put(endWord, 1);
 
-        Queue<Pair> beginToEndQueue = new LinkedList<>();
-        beginToEndQueue.offer(new Pair(beginWord, 1));
+        Queue<Pair> beginQueue = new LinkedList<>();
+        beginQueue.offer(new Pair(beginWord, 1));
 
-        Queue<Pair> endToBeginQueue = new LinkedList<>();
-        endToBeginQueue.offer(new Pair(endWord, 0));
+        Queue<Pair> endQueue = new LinkedList<>();
+        endQueue.offer(new Pair(endWord, 1));
 
         // 控制流，控制双向搜索
-        while (!beginToEndQueue.isEmpty() || !endToBeginQueue.isEmpty()) {
-            // todo https://leetcode.com/problems/word-ladder/discuss/40711/Two-end-BFS-in-Java-31ms.
+        while (!beginQueue.isEmpty() && !endQueue.isEmpty()) {
+            // from begin
+            int l = visitWord(graph, beginQueue, beginVisited, endVisited);
+            if (l > -1) {
+                return l;
+            }
+
+            // then from end
+            l = visitWord(graph, endQueue, endVisited, beginVisited);
+            if (l > -1) {
+                return l;
+            }
         }
+
+        return 0;
+    }
+
+    private int visitWord(Map<String, List<String>> graph, Queue<Pair> queue, Map<String, Integer> visited, 
+        Map<String, Integer> oppVisited) {
+        Pair curr = queue.poll();
+        
+        for (int i = 0; i < curr.word.length(); i++) {
+            String keyToFind = toKey(curr.word, i);
+
+            // 遍历邻接节点
+            for (String adjWord : graph.getOrDefault(keyToFind, new ArrayList<>())) {
+                // 找到就直接返回
+                if (oppVisited.containsKey(adjWord)) return curr.level + oppVisited.get(adjWord);
+
+                // 不是要找的，就加入已访问集合 & 加入到待访问队列
+                if (!visited.containsKey(adjWord)) {
+                    visited.put(adjWord, curr.level + 1);
+                    queue.offer(new Pair(adjWord, curr.level + 1));
+                }
+            }
+        }
+
+        return -1;
+    }
+
+    // ---------- 上面的实现代码量较大
+    // 3. 更加简化的实现，双向bfs
+    public int ladderLength3(String beginWord, String endWord, List<String> wordList) {
 
         return 0;
     }
