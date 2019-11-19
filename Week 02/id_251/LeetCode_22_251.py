@@ -62,7 +62,8 @@ class Solution(object):
 
     def _generate(self, left, right, n, s, res):
         # terminator
-        if left == right == n:
+        # left == right == n; left == n; right == n; len(s) == 2 * n 都可以
+        if len(s) == 2 * n:
             res.append(s)
             return
 

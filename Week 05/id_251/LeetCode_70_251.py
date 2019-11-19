@@ -26,7 +26,7 @@
 """
 1 朴素递归 (1) 递归终止条件 f(1) = 1, f(2) = 2; （2） 递归公式 f(n) = f(n - 1) + f(n - 2)
     时间空间O(2^n)
-2 递推公式 时间(1) 空间O(n)
+2 递推公式 时间(1) 空间O(n) DP
 3 递归 + 记忆化 空间时间O(n)
 """
 
@@ -47,7 +47,7 @@ class Solution(object):
             return 2
         return self.simple_recursion(n - 1) + self.simple_recursion(n - 2)
 
-    # 2 递推
+    # 2 递推 DP
     def iteration(self, n):
         if n == 1:
             return 1
@@ -55,6 +55,15 @@ class Solution(object):
         for _ in range(2, n):
             second, first = first + second, second
         return second
+
+    # 2 递推 DP list DP:方程 F(N) = F(N-1) + F(N-2)
+    def iteration_DP(self, n):
+        if n == 1:
+            return 1
+        dp = [1, 2] + [0] * (n - 2)
+        for i in range(2, n):
+            dp[i] = dp[i - 1] + dp[i - 2]
+        return dp[-1]
 
     # 斐波那契
     def iteration1(self, n):
@@ -71,5 +80,3 @@ class Solution(object):
         if n not in self.dic:
             self.dic[n] = self.memorization_recursion(n - 1) + self.memorization_recursion(n - 2)
         return self.dic[n]
-
-    # leetcode submit region end(Prohibit modification and deletion)

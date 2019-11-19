@@ -51,6 +51,15 @@ class Solution(object):
             # 判断不是整数倍跳出
             if end is None:
                 break
+            """
+            pre --> start --> …… --> end --> end.next
+            to 
+            pre.next --> [reverse(start --> …… --> end)] --> end.next
+            此处先将end --> None, end.next 存入临时变量 _next
+            reverse(start --> …… --> end): start --> …… --> end
+            to
+            end --> …… --> start
+            """
             start, end.next, _next = pre.next, None, end.next
             pre.next, start.next = self.reverse(start), _next
             end = pre = start
@@ -61,5 +70,3 @@ class Solution(object):
         while curr:
             curr.next, pre, curr = pre, curr, curr.next
         return pre
-
-# leetcode submit region end(Prohibit modification and deletion)

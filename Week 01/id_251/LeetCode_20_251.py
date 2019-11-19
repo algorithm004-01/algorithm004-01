@@ -96,7 +96,7 @@ class Solution(object):
                 return False
         return not stack
 
-    # 栈方法 增加一个特殊字符
+    # 栈方法 优化 增加一个特殊字符
     def isValid3_1(self, s):
         if len(s) & 1 == 1:  # 位运算判断奇偶
             return False
@@ -109,4 +109,3 @@ class Solution(object):
             elif hash_map[stack.pop()] != c:
                 return False
         return len(stack) == 1
-# leetcode submit region end(Prohibit modification and deletion)
