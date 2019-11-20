@@ -42,6 +42,11 @@ class Trie(object):
         node[self.end_of_word] = self.end_of_word
 
     def search(self, word):
+        """
+        Returns if the word is in the trie.
+        :type word: str
+        :rtype: bool
+        """
         node = self.root
         for char in word:
             if char not in node:
