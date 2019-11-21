@@ -7,7 +7,7 @@ import java.util.Queue;
 // 二叉树的层次遍历
 
 public class LeetCode_102_716 {
-    // 1. 使用loop + 队列
+    // 1. 使用loop + 队列, BFS 算法实现
     public List<List<Integer>> levelOrder1(TreeNode root) {
         // 存储结果
         List<List<Integer>> res = new ArrayList<>();
@@ -39,7 +39,7 @@ public class LeetCode_102_716 {
         return res;
     }
 
-    // 2. 使用递归
+    // 2. 使用递归，DFS 算法实现
     public List<List<Integer>> levelOrder2(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
         levelOrderHelper(root, 0, res);

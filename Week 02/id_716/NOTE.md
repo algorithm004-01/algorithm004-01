@@ -2,13 +2,14 @@
 
 ## 关键部分笔记
 
-#### 哈希表、映射、集合
+### 哈希表、映射、集合
 
 - Java 中HashMap、Set的实现分析
 - 讲解题目：242，49
-1. https://leetcode-cn.com/problems/valid-anagram/description/  (done)
-2. https://leetcode-cn.com/problems/group-anagrams/ (done)
-3. https://leetcode-cn.com/problems/two-sum/description/ (done)
+  
+1. <https://leetcode-cn.com/problems/valid-anagram/description/>  (done)
+2. <https://leetcode-cn.com/problems/group-anagrams/> (done)
+3. <https://leetcode-cn.com/problems/two-sum/description/> (done)
   
 #### 树、二叉树、二叉搜索树
 
@@ -18,63 +19,70 @@
 - 二叉搜索树及操作，查找、插入、删除
 - 树的面试题解法一般都是递归，为什么？
 - 讲解题目：树的遍历
-1. https://leetcode-cn.com/problems/binary-tree-inorder-traversal/  (done)
-2. https://leetcode-cn.com/problems/binary-tree-preorder-traversal/ (done)
-3. https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/ (done)
-4. https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/  (done)
-5. https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/ (done)
+  
+1. <https://leetcode-cn.com/problems/binary-tree-inorder-traversal/>  (done)
+2. <https://leetcode-cn.com/problems/binary-tree-preorder-traversal/> (done)
+3. <https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/> (done)
+4. <https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/>  (done)
+5. <https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/> (done)
 
-#### 范型递归、递归树
+### 范型递归、递归树
 
 - 递归
+  
 1. 递归的本质是循环，在汇编层是没有循环的，只能通过不停调用重复代码来实现循环的效果
 2. 递归是重复性的进行，在现实中也会有体现
 3. 可以借鉴电影盗梦空间来理解递归（向下进入到不同层，向上又回到原来的一层；返回上一层可以携带返回值，来改变上一层的状态；每一层都是新的拷贝，每一层可以修改状态，然后返回）
 
 归去来兮，剥洋葱的感觉
 
-- 递归代码模版：https://shimo.im/docs/DjqqGCT3xqDYwPyY/read
+- 递归代码模版：<https://shimo.im/docs/DjqqGCT3xqDYwPyY/read>
+  
 1. 先写递归终止条件
 2. 当前层的逻辑处理
 3. 陷入到下一层
 4. 清理当前层
 
 - 递归的难点和误区
+  
 1. 不要人肉递归（最大误区）
 2. 找到最近最简方法，将其拆解成可重复解决的问题（重复子问题）
 3. 数学归纳法思维
 
 - 讲解题目：70，22
-1. https://leetcode-cn.com/problems/climbing-stairs/  (done)
-2. https://leetcode-cn.com/problems/generate-parentheses/
-3. https://leetcode-cn.com/problems/invert-binary-tree/description/  (done)
-4. https://leetcode-cn.com/problems/validate-binary-search-tree  (done)
-5. https://leetcode-cn.com/problems/maximum-depth-of-binary-tree
-6. https://leetcode-cn.com/problems/minimum-depth-of-binary-tree
-7. https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/
-8. https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
-9. https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal
-10. https://leetcode-cn.com/problems/combinations/
-11. https://leetcode-cn.com/problems/permutations/
-12. https://leetcode-cn.com/problems/permutations-ii/
+  
+1. <https://leetcode-cn.com/problems/climbing-stairs/>  (done)
+2. <https://leetcode-cn.com/problems/generate-parentheses/>
+3. <https://leetcode-cn.com/problems/invert-binary-tree/description/>  (done)
+4. <https://leetcode-cn.com/problems/validate-binary-search-tree>  (done)
+5. <https://leetcode-cn.com/problems/maximum-depth-of-binary-tree>
+6. <https://leetcode-cn.com/problems/minimum-depth-of-binary-tree>
+7. <https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/>
+8. <https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/>
+9. <https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal>
+10. <https://leetcode-cn.com/problems/combinations/>
+11. <https://leetcode-cn.com/problems/permutations/>
+12. <https://leetcode-cn.com/problems/permutations-ii/>
 
-#### 分治、回溯
+### 分治、回溯
 
 - 一种特殊的递归
 - 分治：将一个大问题分解为多个子问题，然后merge子问题
 
 - 分治模版
-1. 终止条件
-2. 准备数据，拆分子问题
-3. 处理子问题，处理、合并生成最终结果
-4. 清理状态
+  
+1. 终止条件  terminator
+2. 准备数据，拆分子问题  process current logic, split your big problem
+3. 处理子问题，处理、合并生成最终结果 drill down -> sub problems & merge result
+4. 清理状态 revert state
 
-- 讲解题目：
-1. https://leetcode-cn.com/problems/powx-n/
-2. https://leetcode-cn.com/problems/subsets/
-3. https://leetcode-cn.com/problems/majority-element/description/ （简单、但是高频）
-4. https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/
-5. https://leetcode-cn.com/problems/n-queens/
+- 讲解题目
+  
+1. <https://leetcode-cn.com/problems/powx-n/>  (done)
+2. <https://leetcode-cn.com/problems/subsets/> (done)
+3. <https://leetcode-cn.com/problems/majority-element/description/> （简单、但是高频） (done)
+4. <https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/>  (done)
+5. <https://leetcode-cn.com/problems/n-queens/> (done)
 
 ---
 
@@ -86,7 +94,7 @@
 
 为什么需要树？当在面临大量的输入数据时，线性表的访问时间就变的很慢了，有没有一种数据结构可以加速访问呢，树就是其中一种，树可以将大部分的操作都优化到 O(logn) 的时间复杂度，可以大大提升效率；此外，我们在日常生活中无时无刻不在使用树，比如想中午吃什么的时候，我们不自觉的构建了一颗决策树，操作系统的文件系统等；（在这篇总结中，不再罗列概念）
 
-##### 树的数学性质
+#### 树的数学性质
 
 有时候了解更多关于树的数学性质有助于解决很多问题，所有的数学性质是直接可以使用的
 
@@ -103,7 +111,7 @@
 11. 完全二叉树通过本结点的编号可以快速得到父结点、左右孩子的编号；编号为i的父节点为 `i/2`, 左子节点为 `2*i`, 右子节点为 `2*i + 1`（这个性质在堆中得到了很好的应用）
 12. etc.
 
-##### 为什么会有那么多特殊化的树
+#### 为什么会有那么多特殊化的树
 
 这是本次总结想要好好分析的。
 
@@ -119,7 +127,7 @@
 
 为什么二叉查找树的查找效率高？我们首先来分析一颗完全二叉查找树，这是一种比较理想的状态，因为树的高度是 logn, 也是二叉查找树所有形态中高度最小的树；我们试着来分析一下：
 
-```
+```text
 // 对于一颗包含 n 个节点完全二叉树
 // 1. 除了最后一层外，每一层的节点是上一层节点个数的2倍; 一般的，第一层是1个节点，第二层是2个节点，第三层是4个节点，以此类推
 // 2. 最后一层节点的个数在 1 ~ 2^(L-1), 其中 L 表示最大层数
@@ -129,6 +137,7 @@ n >= 1 + 2 + 4 + ... + 2^(L-2) + 1
 
 => log(n+1) <= L <= log(n) + 1
 ```
+
 可知，L 的最大值是 log(n) + 1, 高度h最大是 log(n); 所以在查找某个元素时，最大查找次数是 log(n), 故而时间复杂度是 O(logn), 很高效；同理，插入、删除操作时间复杂度也是 O(logn)
 
 上面我们说了是一种理想状态，因为数据特点的不同，我们构造出来的二叉查找树可能会退化成链表结构，比如每次都一直插入左子树或一直插入右子树，这个时候查找时间复杂度就是 O(n), 这是不可接受的。那怎么办呢？
@@ -150,6 +159,7 @@ AVL的实现有很多，如红黑树，伸展树，AA树，treap 树等，这些
 - B+Tree：由二叉查找树演变而来的多叉索引树
 
 有这样一个实际应用，我们需要一个数据库，要将数据持久化存储在磁盘上，并且支持：
+
 1. 根据某个值快速查找数据
 2. 根据某个区间值来查找数据
 3. 希望能够按顺序输出某个区间内的数据，升序和降序
@@ -164,9 +174,9 @@ AVL的实现有很多，如红黑树，伸展树，AA树，treap 树等，这些
 
 通过分析各种类型的树及其操作，很清楚的知道了他们的由来、特性、适用的场景以及它能解决的问题，而这个也是我们学习数据结构和算法最核心的地方；在理解了这些的基础上，然后用代码去实现出来并不断优化工程代码。
 
---- 
+---
 
-// todo 位运算的常用操作 https://www.zhihu.com/question/38206659
+// todo 位运算的常用操作 <https://www.zhihu.com/question/38206659>
 
 ### HashMap 总结
 
@@ -292,7 +302,7 @@ final Node<K,V>[] resize() {
             }
         }
     }
-}    
+}
 
 // 启动扩容的地方，当元素个数大于阈值的时候会触发
 // 其中 threshold = Capacity * 装载因子，一切就联系起来了
@@ -301,6 +311,7 @@ if (++size > threshold)
 ```
 
 从源代码分析可见，工业级散列表的实现还是比较复杂的，但是原理和思想才是最重要的：
+
 1. 首先分配一个初始容量，当然也可以通过构造函数来指定，固定一个装载因子，计算出触发扩容的阈值
 2. 在每次插入时，判断元素数量是否到达阈值，到了就触发扩容策略
 3. 扩容策略是在原来的基础上double，如果没有指定或者为0就使用默认初始容量16
@@ -335,7 +346,7 @@ static class Node<K,V> implements Map.Entry<K,V> {
 ```
 
 盗用一张图，就是这样的
-![](https://img-blog.csdn.net/20170317181650025?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvanVzdGxvdmV5b3Vf/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![hashmap](https://img-blog.csdn.net/20170317181650025?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvanVzdGxvdmV5b3Vf/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 但是，当某个位置的链表过长时，会造成查找和插入的时间复杂度增加，HashMap 在这里做了一个优化，当链表长度超过某个值时，就将链表转换成红黑树，当红黑树的元素个数小于某个值时，会转成链表.
 
