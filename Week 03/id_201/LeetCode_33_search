@@ -1,0 +1,40 @@
+class Solution {
+    /**
+     *  时间复杂度为O(logn)
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int search(int[] nums, int target) {
+        int left = 0, right = nums.length - 1, middle;
+        while (left <= right) {
+            middle = left + (right - left) / 2;
+            if (nums[middle] == target)
+                return middle;
+            if (nums[middle] < nums[left]) {
+                if (nums[middle] < target && target <= nums[right]) {
+                    left = middle + 1;
+                } else {
+                    right = middle - 1;
+                }
+            } else if (nums[middle] > target && target >= nums[left]) {
+                right = middle - 1;
+            } else {
+                left = middle + 1;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * todo ann
+     * 更简洁的写法  （TODO ANN 2 正负无穷）
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int search1(int[] nums, int target) {
+
+        return -1;
+    }
+}
