@@ -1,8 +1,5 @@
 import java.util.Arrays;
 
-/**
- * Created by liuyp on 2019/11/24.
- */
 public class Week06 {
 
     public Week06() {

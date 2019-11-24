@@ -1,6 +1,3 @@
-/**
- * Created by liuyp on 2019/11/23.
- */
 public class Week05 {
 
     public Week05() {
