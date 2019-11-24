@@ -13,6 +13,7 @@ public class Week06 {
         return find(parent, parent[i]);
     }
 
+
     void union(int parent[], int x, int y) {
         int xset = find(parent, x);
         int yset = find(parent, y);
