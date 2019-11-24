@@ -37,6 +37,7 @@
 """
 1、DFS
 2、BFS
+3、UnionFind 并查集
 """
 
 
@@ -79,3 +80,37 @@ class Solution2(object):
                         queue += [k for k, num in enumerate(M[p]) if num and k not in visited]
                 res += 1
         return res
+
+
+# 并查集
+class UnionFind:
+    def __init__(self, n):
+        self.u = list(range(n))
+
+    def union(self, i, j):
+        p1, p2 = self.find(i), self.find(j)
+        self.u[p1] = p2
+
+    def find(self, i):
+        root = i
+        while self.u[root] != root:
+            root = self.u[root]
+        while self.u[i] != i:
+            self.u[i], i = root, self.u[i]
+        return root
+
+
+class Solution3(object):
+    def findCircleNum(self, M):
+        """
+        :type M: List[List[int]]
+        :rtype: int
+        """
+        N = len(M)
+        uf = UnionFind(N)
+
+        for i in range(N):
+            for j in range(N):
+                if M[i][j] == 1:
+                    uf.union(i, j)
+        return len(set([uf.find(i) for i in range(N)]))
