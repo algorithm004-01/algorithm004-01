@@ -8,7 +8,6 @@
     def __init__(self):
       self.root = {}
       self.end_of_word  ="#"
-
       def insert(self,word):
         node = self.root
         for char in word:
