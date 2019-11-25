@@ -13,8 +13,9 @@
 # Related Topics 字符串 回溯算法
 
 """
-1 暴力递归
-2 回溯递归
+1 暴力回溯递归
+2 回溯递归 剪枝
+3、 dp
 """
 
 
@@ -76,6 +77,21 @@ class Solution(object):
             self._generate(left, right + 1, n, s + ')', res)
 
         # reverse states
+
+
+class Solution3(object):
+    # 1 暴力递归
+    def generateParenthesis(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+        dp = [[] for _ in range(n + 1)]
+        dp[0] = ['']
+        for i in range(n + 1):
+            for j in range(i):
+                dp[i] += ['({}){}'.format(x, y) for x in dp[j] for y in dp[i - j - 1]]
+        return dp[n]
 
 
 if __name__ == '__main__':
