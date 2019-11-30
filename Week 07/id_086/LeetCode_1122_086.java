@@ -1,16 +1,24 @@
 /**
- *  1122.有效的字母异位词
+ *  1122.数组的相对排序
  */
 
 class Solution {
-    public boolean isAnagram(String s, String t) {
-        if (s.length() != t.length()) {
-            return false;
+    public int[] relativeSortArray(int[] arr1, int[] arr2) {
+        int[] bucket = new int[1001];
+        for (int num : arr1) {
+            bucket[num]++;
         }
-        char[] sChars = s.toCharArray();
-        char[] tChars = t.toCharArray();
-        Arrays.sort(sChars);
-        Arrays.sort(tChars);
-        return Arrays.equals(sChars,tChars);
+        int i = 0;
+        for (int num:arr2) {
+            while (bucket[num] -- > 0) {
+                arr1[i++] = num;
+            }
+        }
+        for (int j = 0; j < 1001; j++) {
+            while (bucket[j]-- > 0) {
+                arr1[i++] = j;
+            }
+        }
+        return arr1;
     }
 }
