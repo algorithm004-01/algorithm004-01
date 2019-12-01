@@ -25,7 +25,8 @@
 # 
 # Related Topics 回溯算法
 """
-回溯法+位运算剪枝
+1 回溯法+位运算剪枝
+2 回溯法 剪枝
 """
 
 
@@ -51,3 +52,22 @@ class Solution(object):
             p = bits & -bits  # 取到最低位的1
             bits = bits & (bits - 1)  # 表示在p位置放入皇后
             self.DFS(n, row + 1, cols | p, (pie | p) << 1, (na | p) >> 1)
+
+
+class Solution2(object):
+    def totalNQueens(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        result = []
+        self.dfs([], [], [], n, result)
+        return len(result)
+
+    def dfs(self, queens, xy_dif, xy_sum, n, result):
+        p = len(queens)
+        if p == n:
+            result.append(queens)
+        for q in range(n):
+            if q not in queens and p - q not in xy_dif and p + q not in xy_sum:
+                self.dfs(queens + [q], xy_dif + [p - q], xy_sum + [p + q], n, result)
