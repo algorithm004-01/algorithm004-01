@@ -21,5 +21,5 @@ class Solution:
                 elif five >=3:
                     five-=3
                 else:
-                    return false
+                    return False
         return True

@@ -20,16 +20,16 @@ Design Circular Deque|Medium|2019-10-20|2019-10-28||||https://leetcode.com/probl
 Reverse Linked List|Easy|2019-10-21|2019-10-30||||https://leetcode.com/problems/reverse-linked-list/
 Swap Nodes in Pairs|Medium|2019-10-21|2019-10-30||||https://leetcode.com/problems/swap-nodes-in-pairs/
 Linked List Cycle|Easy|2019-10-21|2019-10-30||||https://leetcode.com/problems/linked-list-cycle/
-Linked List Cycle II|Medium|2019-10-22|||||https://leetcode.com/problems/linked-list-cycle-ii
-Reverse Nodes in k-Group|Hard|2019-10-22|||||https://leetcode.com/problems/reverse-nodes-in-k-group/
-Rotate Array|Easy|2019-10-22|||||https://leetcode.com/problems/rotate-array/
-Merge Two Sorted Lists|Easy|2019-10-22|||||https://leetcode.com/problems/merge-two-sorted-lists/
-Merge Sorted Array|Easy|2019-10-22|||||https://leetcode.com/problems/merge-sorted-array/
-Plus One|Easy|2019-10-22|||||https://leetcode.com/problems/plus-one/
-Valid Parentheses|Easy|2019-10-22|||||https://leetcode.com/problems/valid-parentheses/
-Min Stack|Easy|2019-10-22|||||https://leetcode.com/problems/min-stack/
-Largest Rectangle in Histogram|Hard||||||https://leetcode.com/problems/largest-rectangle-in-histogram/
-Sliding Window Maximum|Hard||||||https://leetcode.com/problems/sliding-window-maximum/
+Linked List Cycle II|Medium|2019-10-22|2019-11-06||||https://leetcode.com/problems/linked-list-cycle-ii
+Reverse Nodes in k-Group|Hard|2019-10-22|2019-11-06||||https://leetcode.com/problems/reverse-nodes-in-k-group/
+Rotate Array|Easy|2019-10-22|2019-11-06||||https://leetcode.com/problems/rotate-array/
+Merge Two Sorted Lists|Easy|2019-10-22|2019-11-06||||https://leetcode.com/problems/merge-two-sorted-lists/
+Merge Sorted Array|Easy|2019-10-22|2019-11-06||||https://leetcode.com/problems/merge-sorted-array/
+Plus One|Easy|2019-10-22|2019-11-06||||https://leetcode.com/problems/plus-one/
+Valid Parentheses|Easy|2019-10-22|2019-11-06||||https://leetcode.com/problems/valid-parentheses/
+Min Stack|Easy|2019-10-22|2019-11-07||||https://leetcode.com/problems/min-stack/
+Largest Rectangle in Histogram|Hard|2019-11-07|||||https://leetcode.com/problems/largest-rectangle-in-histogram/
+Sliding Window Maximum|Hard|2019-11-07|||||https://leetcode.com/problems/sliding-window-maximum/
 
 <a id="note" name="note"></a>
 
