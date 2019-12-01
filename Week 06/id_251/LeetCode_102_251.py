@@ -58,7 +58,7 @@ class Solution(object):
         return res
 
 
-# bfs点简洁化
+# bfs简洁写法
 class Solution2(object):
     def levelOrder(self, root):
         """

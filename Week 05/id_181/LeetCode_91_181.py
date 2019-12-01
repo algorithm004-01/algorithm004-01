@@ -8,7 +8,7 @@ class Solution:
         if not s or s[0] == '0':
             return 0
         dp  = [None] * len(s)
-        dp[0] = 1;
+        dp[0] = 1
         if len(s) > 1: 
             if s[1] == '0': 
                 if int(s[0:2]) <= 26: 

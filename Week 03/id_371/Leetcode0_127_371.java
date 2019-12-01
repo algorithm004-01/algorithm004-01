@@ -7,7 +7,7 @@ import java.util.*;
  * @create: 2019-10-29 22:22
  **/
 
-public class Leetcode_127_371 {
+public class Leetcode0_127_371 {
 
     public static void main(String[] args) {
         String beginWord = "hit";
