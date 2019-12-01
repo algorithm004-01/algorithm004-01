@@ -1,5 +1,4 @@
 #!/usr/bin/env python3.7
-<<<<<<< HEAD
 class Solution:
     def rotate(self, nums, k):
         n = len(nums)
@@ -20,5 +19,3 @@ class Solution:
 
 test = [1, 2, 3, 4, 5, 6, 7, 8]
 print(Solution().rotate(test, 3))
-=======
->>>>>>> 70513d3... Week 03 homework submited
