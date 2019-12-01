@@ -59,16 +59,6 @@ var Trie = function() {
  * @param {string} word
  * @return {void}
  */
-// Trie.prototype.insert = function(word) {
-//   let cur = this;
-//   for (let i = 0; i < word.length; i++) {
-//     if (!cur.next.hasOwnProperty(word[i])) {
-//       cur.next[word[i]] = new Trie();
-//     }
-//     cur = cur.next[word[i]];
-//   }
-//   cur.isWord = true;
-// };
 Trie.prototype.insert = function(word) {
   let cur = this;
   for (let i = 0; i < word.length; i++) {
