@@ -1,15 +1,33 @@
-class Solution:
-    def longestValidParentheses(self, s: str) -> int:
-        if (not s):
-            return 0
-        res = 0
-        n = len(s)
-        dp = [0] * n
-        for i in range(1, len(s)):
-            if (s[i] == ")"):
-                if (s[i - 1] == "("):
-                    dp[i] = dp[i - 2] + 2
-                if (s[i - 1] == ")" and i - dp[i - 1] - 1 >= 0 and s[i - dp[i - 1] - 1] == "("):
-                    dp[i] = dp[i - 1] + dp[i - dp[i - 1] - 2] + 2
-                res = max(res, dp[i])
-        return res
+import collections
+
+
+class LRUCache:
+
+    def __init__(self, capacity):
+        self.dic = collections.OrderedDict()
+        self.remain = capacity
+
+    def get(self, key):
+        if key not in self.dic:
+            return -1
+        v = self.dic.pop(key)
+        self.dic[key] = v
+        return v
+
+    def put(self, key, value):
+        if key in self.dic:
+            self.dic.pop(key)
+        else:
+            if self.remain > 0:
+                self.remain -= 1
+            else:
+                self.dic.popitem(last=False)
+        self.dic[key] = value
+
+
+if __name__ == '__main__':
+    capacity = ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+    obj = LRUCache(capacity)
+    obj.put('test', 'test')
+    param_1 = obj.get('test')
+    print(param_1)
