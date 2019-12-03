@@ -89,3 +89,66 @@ HashMap 小总结
 ## 前中后序遍历
 ## leetcode 题目
 
+# 递归的实现、特性、
+## 理论部分
+    树的面试题解法一般是递归
+### 递归的本质是循环
+- 循环体调用自身
+- 类比《盗梦空间》
+    - 向下进入不同梦境，向上回到上一层
+    - 每层之间相互独立
+    - 可以穿越梦境的主角类似于参数
+    - 简单递归形式
+        - 求阶乘 n!
+        - n! = 1*2*3*4*5...*n
+        - 代码实现
+        def Factorial(n): if n <= 1: return 1 return 1​ n* Factorial(n -1 )​​​
+    - 递归栈
+- 递归注意点
+  1. 不要人肉递归（画递归图辅助理解，入门可使用，进阶需抛弃，直接看函数）
+  2. 找最近重复子问题
+  3. 数学归纳法
+    1 成立、2 成立 ，同时可证明n成立 n+成立
+  4. 机械化记忆递归代码模板
+## 算法题
+- 爬楼梯
+- 找最近重复性
+- 思考到三级台阶时，考虑重复性问题，否则陷入人肉递归
+    f(3)=f(1)+f(2)
+    f(n)=f(n-1)+f(n-2)
+    mutual exclusive | complete exhaustive
+    括号生成
+    https://leetcode-cn.com/problems/generate-parentheses/
+
+# 分治 Divide & Conque
+    本质就是递归，找重复性，递归为多个子问题
+-   分治代码模板
+    泛型递归模板(类似)
+    回溯 Backtracking
+
+-   leecode 22 生成括号
+    - 暴力回溯
+建立完六层，最后发现不可行，去掉，再回到前一层
+分治、回溯习题
+leecode 50 Pow(x,n) **高频**
+    - 暴力法：
+for 循环n 次，得到x的n次方
+时间复杂度为O(n)
+    - 分治
+- 递归模板：
+  1. terminator 终结条件
+  2. process(split your big problem)
+  3. drill down (subproblems),merge (subresult)
+  4. reserve states
+- pow(x,n)
+    - subproblem : subresult = pow(x,n/2)
+    - merge:
+判断奇偶，进行处理（考虑负数问题，若负数，取其绝对值进行判断
+if n % 2 ==1: result = subresult * subresult *xelse result = ​​​ subresult * subresult
+时间复杂度 O(logn)
+    - 快速幂法
+    - 牛顿迭代
+- leetcode 78.子集
+写过排列组合再看此题
+
+
