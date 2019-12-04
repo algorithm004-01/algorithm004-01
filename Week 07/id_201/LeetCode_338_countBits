@@ -1,0 +1,20 @@
+
+public class LeetCode_338_countBits {
+    public int[] countBits(int n) {
+        int[] bits = new int[n + 1];
+        for (int i = 1; i <= n; ++i) {
+            bits[i] = hammingWeight(i);
+        }
+        return bits;
+    }
+
+    public int hammingWeight(int n) {
+        int hammingWeight = 0;
+        while (n != 0) {
+            hammingWeight++;
+            n &= n - 1;
+        }
+        return hammingWeight;
+    }
+
+}
