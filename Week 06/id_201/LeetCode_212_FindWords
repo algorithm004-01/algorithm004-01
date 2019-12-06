@@ -1,0 +1,45 @@
+
+import com.sun.xml.internal.ws.encoding.HasEncoding;
+
+import java.util.*;
+
+public class LeetCode_212_FindWords {
+
+    /**
+     * 回溯  DFS
+     * @param board
+     * @param words
+     * @return
+     */
+    public List<String> findWords(char[][] board, String[] words) {
+        List<String> wordList = new ArrayList();
+        HashSet<String> wordSet = new HashSet();
+        boolean[][] visited = new boolean[board.length][board[0].length];
+        int maxLen = 0;
+        for (String word: words) {
+            wordSet.add(word);
+            if (word.length() > maxLen)
+                maxLen = word.length();
+        }
+        for (int i = 0; i < board.length; ++i) {
+            for (int j = 0; j < board[0].length; ++j) {
+                searchWord("", i, j, board, wordSet, wordList, visited, maxLen);
+            }
+        }
+        return wordList;
+    }
+
+    public void searchWord(String s, int ir, int ic, char[][] board, HashSet<String> wordSet, List<String> wordList, boolean[][] visited, int maxLen) {
+        if (ir < 0 || ir >= board.length || ic < 0 || ic > board[0].length - 1 || visited[ir][ic] || s.length() > maxLen)
+            return;
+        String str = new StringBuffer(s).append(board[ir][ic]).toString();
+        if (wordSet.contains(str))
+            wordList.add(str);
+        visited[ir][ic] = true;
+        int[][] direction = {{0, 0, 1, -1}, {1, -1, 0, 0}};
+        for (int i = 0; i < direction[0].length; ++i) {
+            searchWord(str, ir + direction[0][i], ic + direction[1][i] , board , wordSet, wordList, visited, maxLen);
+        }
+        visited[ir][ic] = false;
+    }
+}
