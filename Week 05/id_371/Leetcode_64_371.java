@@ -11,24 +11,24 @@ public class Leetcode_64_371 {
     }
 
     /**
-     * 仿解1:
+     * 仿解1:dp-->自顶向下(循环+记忆化存储)
      *
      * @author Shaobo.Qian
      * @date 2019/11/17
-     * @link https://leetcode-cn.com/problems/minimum-path-sum/solution/zui-xiao-lu-jing-he-by-leetcode/
+     * @link https://leetcode-cn.com/problems/minimum-path-sum/solution/zui-xiao-lu-jing-he-dong-tai-gui-hua-gui-fan-liu-c/
+     * @anki 1.dp 方程如何推导 2.如何降维度
      */
     public int minPathSum(int[][] grid) {
-
-        for (int i = grid.length - 1; i >= 0; i--) {
-            for (int j = grid[0].length - 1; j >= 0; j--) {
-                if (i == grid.length - 1 && j != grid[0].length - 1)
-                    grid[i][j] = grid[i][j] + grid[i][j + 1];
-                else if (j == grid[0].length - 1 && i != grid.length - 1)
-                    grid[i][j] = grid[i][j] + grid[i + 1][j];
-                else if (j != grid[0].length - 1 && i != grid.length - 1)
-                    grid[i][j] = grid[i][j] + Math.min(grid[i + 1][j], grid[i][j + 1]);
+        int m = grid.length;
+        int n = grid[0].length;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i == 0 && j == 0) continue;
+                else if (i == 0) grid[i][j] = grid[i][j - 1] + grid[i][j];
+                else if (j == 0) grid[i][j] = grid[i - 1][j] + grid[i][j];
+                else grid[i][j] = Math.min(grid[i - 1][j], grid[i][j - 1]) + grid[i][j];
             }
         }
-        return grid[0][0];
+        return grid[m - 1][n - 1];
     }
 }

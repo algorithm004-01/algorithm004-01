@@ -7,7 +7,7 @@ import java.util.*;
  * @create: 2019-11-05 08:28
  **/
 
-public class Leetcode_51_371 {
+public class Leetcode_0051_371 {
     public static void main(String[] args) {
         List<List<String>> res = solveNQueens(4);
         res.forEach(System.out::println);
