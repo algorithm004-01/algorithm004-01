@@ -1,0 +1,60 @@
+1.二叉树的前序遍历（binary-tree-preorder-traversal）
+
+class Solution:
+    def preorderTraversal(self, root: TreeNode) -> List[int]: # 意思是root是TreeNode型的
+        if root is None:
+            return []
+        
+        stack, res = [root, ], [] # 注意stack和res一样,均为一位数组,只不过其中有一个root初始值了
+        
+        while stack: # 意思是当stack不为空时
+            root = stack.pop() # pop 不加参数指的是把末尾的元素pop出去,加了参数指的是把下标为参数所对应的元素pop出去
+            if root: # 如果root是存在的
+                res.append(root.val) # 注意是前序遍历 根-左-右
+                if root.right:
+                    stack.append(root.right) # 由于是根-左-右,且栈是先进后出,所以左子树“后进来的,先出去”
+                if root.left:
+                    stack.append(root.left)
+        return res
+        
+        
+2.子集(subsets)
+// java解法
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>(); // 定义一个二维数组列表
+        backtrack(0, nums, res, new ArrayList<Integer>());
+        return res;
+
+    }
+
+    private void backtrack(int i, int[] nums, List<List<Integer>> res, ArrayList<Integer> tmp) {
+        res.add(new ArrayList<>(tmp)); // 把每轮积攒的加到res里
+        for (int j = i; j < nums.length; j++) { // j代表nums的下标,即当前遍历到nums里的哪一个数了
+            tmp.add(nums[j]);
+            backtrack(j + 1, nums, res, tmp); // 自己调自己,注意第三个参数res为当前的res
+            tmp.remove(tmp.size() - 1);
+        }
+    }
+}
+// 用时：1 ms
+
+# python解法
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = [[]]
+        for i in nums:
+            res = res + [[i] + num for num in res]
+        return res
+    
+"""
+当i = 1:
+res = [[]]
+res = [[1], []]   ————[1]为新加的,[]为原始的
+当i = 2:
+res = [[],[1]]
+res = [[2],[1,2],[],[1]]  ————[2],[1,2]为新加的,[],[1]为原始的
+当i = 3:
+res = [[],[1],[2],[1,2]]
+res = [[3],[1,3],[2,3],[1,2,3],[],[1],[2],[1,2]]  ————[3],[1,3],[2,3],[1,2,3]为新加的,[],[1],[2],[1,2]为原始的
+"""
