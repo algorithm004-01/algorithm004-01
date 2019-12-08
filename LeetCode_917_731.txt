@@ -1,0 +1,18 @@
+class Solution {
+public:
+    bool isword(char a){
+        if(a-'a'>=0&&a-'z'<=0||a-'A'>=0&&a-'Z'<=0) return true;
+        else return false;
+    }
+    string reverseOnlyLetters(string S) {
+        string t="";
+        for(int i=S.size();i>=0;i--){
+            if(isword(S[i])) t+=S[i];
+        }
+        int j=0;
+        for(int i=0;i<S.size();i++){
+            if(isword(S[i])) S[i]=t[j++];
+        }
+        return S;
+    }
+};
