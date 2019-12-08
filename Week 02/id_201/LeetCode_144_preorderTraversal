@@ -1,0 +1,95 @@
+//给定一个二叉树，返回它的 前序 遍历。
+//
+// 示例:
+//
+// 输入: [1,null,2,3]
+//   1
+//    \
+//     2
+//    /
+//   3
+//
+//输出: [1,2,3]
+//
+//
+// 进阶: 递归算法很简单，你可以通过迭代算法完成吗？
+// Related Topics 栈 树
+
+
+
+//leetcode submit region begin(Prohibit modification and deletion)
+
+import java.util.ArrayList;
+import java.util.Stack;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    /**
+     * #1
+     * @param root
+     * @return
+     */
+    public List<Integer> preorderTraversal(TreeNode root) {
+        ArrayList<Integer> preorderList = new ArrayList();
+        preorderList(root, preorderList);
+        return preorderList;
+    }
+
+    public void preOrderTravel(TreeNode current, ArrayList<Integer> preorderList) {
+        preorderList.add(current.val);
+        if (current.left != null) {
+            preOrderTravel(current.left, preorderList);
+        }
+        if (current.right != null) {
+            preOrderTravel(current.right, preorderList);
+        }
+    }
+
+    /**
+     * #2
+     * @param root
+     * @return
+     */
+    public List<Integer> preOrderTraversal1(TreeNode root) {
+        ArrayList preorderList = new ArrayList();
+        TreeNode current = root;
+        Stack<TreeNode> nodeStack = new Stack<>();
+        while (current != null) {
+            nodeStack.push(current);
+            preorderList.add(current.val);
+            current = current.left;
+        }
+        while (!nodeStack.isEmpty()) {
+            current = nodeStack.pop();
+            current = current.right;
+            while (current != null) {
+                preorderList.add(current.val);
+                current = current.left;
+                nodeStack.push(current);
+            }
+        }
+        return preorderList;
+    }
+
+    /**
+     * todo
+     * #3
+     * @param root
+     * @return
+     */
+    public List<Integer> preOrderTraversal1(TreeNode root) {
+        ArrayList preorderList = new ArrayList();
+        TreeNode current = root, preNode;
+
+        return preorderList;
+    }
+}
+//leetcode submit region end(Prohibit modification and deletion)
