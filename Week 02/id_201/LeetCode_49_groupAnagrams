@@ -1,0 +1,140 @@
+//给定一个字符串数组，将字母异位词组合在一起。字母异位词指字母相同，但排列不同的字符串。
+//
+// 示例:
+//
+// 输入: ["eat", "tea", "tan", "ate", "nat", "bat"],
+//输出:
+//[
+//  ["ate","eat","tea"],
+//  ["nat","tan"],
+//  ["bat"]
+//]
+//
+// 说明：
+//
+//
+// 所有输入均为小写字母。
+// 不考虑答案输出的顺序。
+//
+// Related Topics 哈希表 字符串
+
+
+
+//leetcode submit region begin(Prohibit modification and deletion)
+class Solution {
+    /**
+     * 利用hashmap来进行分类
+     * 将数组中的字符串通过某种方法对应到一个可以区分不是异位词的KEY上
+     * n: 数组中元素的个数； k: 字符串的长度
+     */
+    /**
+     * 先排序后分类
+     * #1 异位词排序后的字符串相等
+     * 时间复杂度为O(NKlongk)
+     * @param strs
+     * @return
+     */
+    public List<List<String>> groupAnagrams(String[] strs) {
+        ArrayList anagramsGroup = new ArrayList();
+        if (strs.length == 0)
+            return anagramsGroup;
+        HashMap<String, List> sortCharMap = new HashMap<>();
+        char[] strChar;
+        String s;
+        for (String str: strs) {
+            strChar = str.toCharArray();
+            Arrays.sort(strChar);
+            s = String.valueOf(strChar);
+            if (!sortCharMap.containsKey(s)) {
+                sortCharMap.put(s, new ArrayList());
+            }
+            sortCharMap.get(s).add(str);
+        }
+        anagramsGroup.addAll(sortCharMap.values());
+        return anagramsGroup;
+    }
+
+    /**
+     * 时间复杂度为O(NK)
+     * @param strs
+     * @return
+     */
+    public List<List<String>> groupAnagrams1(String[] strs) {
+        ArrayList anagramsGroup = new ArrayList();
+        if (strs.length == 0)
+            return anagramsGroup;
+        HashMap<String, List> sortCharMap = new HashMap<>();
+        char[] strChar;
+        String s;
+        for (String str: strs) {
+            strChar = str.toCharArray();
+            s = getUniqueStr(strChar);
+            if (!sortCharMap.containsKey(s)) {
+                sortCharMap.put(s, new ArrayList());
+            }
+            sortCharMap.get(s).add(str);
+        }
+        anagramsGroup.addAll(sortCharMap.values());
+        return anagramsGroup;
+    }
+
+    /**
+     * #2 异位词中各字母出现的次数相等
+     * @param strChar
+     * @return
+     */
+    public String getUniqueStr(char[] strChar)
+    {
+        StringBuilder s = new StringBuilder("");
+        int[] occurTimes = new int[26];
+        for (char i: strChar) {
+            occurTimes[i - 'a']++;
+        }
+        for (int j: occurTimes) {
+            s.append(j);
+        }
+        return s.toString();
+    }
+
+    /**
+     * #3
+     * 时间复杂度为O(NK)
+     * @param strs
+     * @return
+     */
+    public List<List<String>> groupAnagrams2(String[] strs) {
+        ArrayList anagramsGroup = new ArrayList();
+        if (strs.length == 0)
+            return anagramsGroup;
+        HashMap<Integer, List> sortCharMap = new HashMap<>();
+        int key;
+        int[] multiplyArr = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103 };
+        for (String str: strs) {
+            key = getUniqueStr1(str.toCharArray(), multiplyArr);
+            if (!sortCharMap.containsKey(key)) {
+                sortCharMap.put(key, new ArrayList());
+            }
+            sortCharMap.get(key).add(str);
+        }
+        anagramsGroup.addAll(sortCharMap.values());
+        return anagramsGroup;
+    }
+
+    /**
+     * #3
+     * 算术基本定理，又称为正整数的唯一分解定理，即：每个大于1的自然数，要么本身就是质数，要么可以写为2个以上的质数的积，
+     * 而且这些质因子按大小排列之后，写法仅有一种方式。
+     * care: 小心key很大导致溢出
+     * @param strChar
+     * @return
+     */
+    public int getUniqueStr1(char[] strChar, multiplyArr)
+    {
+        int key = 1;
+        for (char i: strChar) {
+            key *= multiplyArr[i - 'a'];
+        }
+        return key;
+    }
+}
+//leetcode submit region end(Prohibit modification and deletion)
