@@ -1,0 +1,46 @@
+/**
+ 给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。
+
+ 例如，给定三角形：
+
+ [
+ [2],
+ [3,4],
+ [6,5,7],
+ [4,1,8,3]
+ ]
+ 自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。
+
+ 说明：
+
+ 如果你可以只使用 O(n) 的额外空间（n 为三角形的总行数）来解决这个问题，那么你的算法会很加分。
+
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/triangle
+ 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ */
+class LeetCode_62_416 {
+    /**
+     * 解题思路
+     *  1.寻找重复子问题subproblems problem[i][j] = Math.min(subproblem[j+1][j] + subproblem[i+1][j+1])
+     *  2.寻找中间状态opt[i]
+     *  3.dp方程式，递归公式 f[i][j] = f[i+1][j]
+     */
+
+    int row = 0;
+    //自顶向下，递归
+    public int minimumTotal(List<List<Integer>> triangle) {
+        row = triangle.size();
+        return helper(0,0,triangle);
+    }
+    public int helper(int i, int j,List<List<Integer>> triangle) {
+        //terminator
+        if(level >= row - 1) {
+            return triangle.get(i).get(j);
+        }
+        //current logic,drill down
+        int left = helper(i + 1,j,triangle);
+        int right = helper(i + 1,j + 1,triangle);
+        return Math.min(left,right) + triangle.get(i).get(j);
+    }
+}

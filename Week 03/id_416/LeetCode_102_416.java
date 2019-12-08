@@ -57,7 +57,7 @@ public class LeetCode_102_416{
         while(!queue.isEmpty()) {
             List<Integer> lis = new ArrayList<Integer>();
             int size = queue.size();
-            for(int i =0;i<size;i++) {
+            for(size --> 0) {
                 TreeNode currNode = queue.pop();
                 lis.add(currNode.val);
                 if(null != currNode.left) queue.offer(currNode.left);
