@@ -1,0 +1,212 @@
+//给定一个由 '1'（陆地）和 '0'（水）组成的的二维网格，计算岛屿的数量。一个岛被水包围，并且它是通过水平方向或垂直方向上相邻的陆地连接而成的。你可以假设网格的四个边均被水包围。
+//
+// 示例 1:
+//
+// 输入:
+//11110
+//11010
+//11000
+//00000
+//
+//输出: 1
+//
+//
+// 示例 2:
+//
+// 输入:
+//11000
+//11000
+//00100
+//00011
+//
+//输出: 3
+//
+// Related Topics 深度优先搜索 广度优先搜索 并查集
+
+
+
+//leetcode submit region begin(Prohibit modification and deletion)
+class Solution {
+    /**
+     * #1  时间复杂度为O(M * N) M, n : 分别为横纵坐标最大值
+     * DFS
+     * @param grid
+     * @return
+     */
+    public int numIslands(char[][] grid) {
+        int length = grid.length;
+        if (length == 0) {
+            return 0;
+        }
+        int rowLength = grid[0].length;
+        int count = 0;
+        int[][] visitedGrid = new int[length][rowLength];
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < rowLength; j++) {
+                if (grid[i][j] == '1') {
+                    visitGrid(i, j, visitedGrid, grid);
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+
+    public void visitGrid(int i, int j, int[][] visitedGrid, char[][] grid) {
+        if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || visitedGrid[i][j] == 1 || grid[i][j] == '0')
+            return;
+        grid[i][j] = '0';
+        visitedGrid[i][j] = 1;
+        visitGrid(i + 1, j, visitedGrid, grid);
+        visitGrid(i, j + 1, visitedGrid, grid);
+        visitGrid(i - 1, j, visitedGrid, grid);
+        visitGrid(i, j - 1, visitedGrid, grid);
+    }
+
+    /**
+     * #2 improvement of #1, the visitedgrid 比较多余
+     * @param grid
+     * @return
+     */
+    public int numIslands1(char[][] grid) {
+        if (grid.length == 0) {
+            return 0;
+        }
+        int count = 0;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == '1') {
+                    visitGrid(i, j, grid);
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    public void visitGrid1(int i, int j, char[][] grid) {
+        if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] == '0')
+            return;
+        grid[i][j] = '0';
+        visitGrid(i + 1, j, grid);
+        visitGrid(i, j + 1, grid);
+        visitGrid(i - 1, j, grid);
+        visitGrid(i, j - 1, grid);
+    }
+
+    /**
+     * #3
+     * BFS use Queue
+     * 时间复杂度为O(m*n)
+     * 空间复杂度为O(min(m, n))
+     * @param grid
+     * @return
+     */
+    public int numIslands2(char[][] grid) {
+        int count = 0;
+        if (grid.length == 0)
+            return count;
+        Queue<Pair<Integer, Integer>> islandPoint = new LinkedList<Pair<Integer, Integer>>();
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == '1') {
+                    count++;
+                    islandPoint.add(new Pair(i, j));
+                    while (!islandPoint.isEmpty()) {
+                        Pair<Integer, Integer> point = islandPoint.poll();
+                        int nr = point.getKey(), nc = point.getValue();
+                        if (nr > 0 && grid[nr - 1][nc] == '1') {
+                            islandPoint.add(new Pair(nr - 1, nc));
+                            grid[nr - 1][nc] = '0';
+                        }
+
+                        if (nr + 1 < grid.length && grid[nr + 1][nc] == '1') {
+                            islandPoint.add(new Pair(nr + 1, nc));
+                            grid[nr + 1][nc] = '0';
+                        }
+
+                        if (nc > 0 && grid[nr][nc - 1] == '1') {
+                            islandPoint.add(new Pair(nr, nc - 1));
+                            grid[nr][nc - 1] = '0';
+                        }
+
+                        if (nc + 1 < grid[0].length && grid[nr][nc + 1] == '1') {
+                            islandPoint.add(new Pair(nr, nc + 1));
+                            grid[nr][nc + 1] = '0';
+                        }
+                    }
+                }
+            }
+        }
+        return count;
+    }
+
+    class UnionFind {
+        int[] father;
+        int m, n;
+        int count = 0;
+        UnionFind(char[][] grid) {
+            m = grid.length;
+            n = grid[0].length;
+            father = new int[m*n];
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (grid[i][j] == '1') {
+                        int id = i * n + j;
+                        father[id] = id;
+                        count++;
+                    }
+                }
+            }
+        }
+        public void union(int node1, int node2) {
+            int find1 = find(node1);
+            int find2 = find(node2);
+            if(find1 != find2) {
+                father[find1] = find2;
+                count--;
+            }
+        }
+        public int find (int node) {
+            if (father[node] == node) {
+                return node;
+            }
+            father[node] = find(father[node]);
+            return father[node];
+        }
+    }
+
+    int[][] distance = {{1,0},{-1,0},{0,1},{0,-1}};
+
+    /**
+     * union  ann todo
+     * @param grid
+     * @return
+     */
+    public int numIslands3(char[][] grid) {
+        if (grid == null || grid.length == 0)  {
+            return 0;
+        }
+        UnionFind uf = new UnionFind(grid);
+        int rows = grid.length;
+        int cols = grid[0].length;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (grid[i][j] == '1') {
+                    for (int[] d : distance) {
+                        int x = i + d[0];
+                        int y = j + d[1];
+                        if (x >= 0 && x < rows && y >= 0 && y < cols && grid[x][y] == '1') {
+                            int id1 = i*cols+j;
+                            int id2 = x*cols+y;
+                            uf.union(id1, id2);
+                        }
+                    }
+                }
+            }
+        }
+        return uf.count;
+    }
+}
+//leetcode submit region end(Prohibit modification and deletion)
