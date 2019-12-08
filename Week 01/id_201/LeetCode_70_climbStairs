@@ -1,0 +1,158 @@
+//假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+//
+// 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
+//
+// 注意：给定 n 是一个正整数。
+//
+// 示例 1：
+//
+// 输入： 2
+//输出： 2
+//解释： 有两种方法可以爬到楼顶。
+//1.  1 阶 + 1 阶
+//2.  2 阶
+//
+// 示例 2：
+//
+// 输入： 3
+//输出： 3
+//解释： 有三种方法可以爬到楼顶。
+//1.  1 阶 + 1 阶 + 1 阶
+//2.  1 阶 + 2 阶
+//3.  2 阶 + 1 阶
+//
+// Related Topics 动态规划
+
+
+
+//leetcode submit region begin(Prohibit modification and deletion)
+class Solution {
+    /**
+     * top down  (自顶向下)
+     * 最后一步只有走一步 或走两步两种可能
+     * 所以，求到N的所有可能转化为 到N-1的可能 + 到N-2的可能
+     * 时间复杂度为O(N)
+     */
+    /**
+     * #1
+     * @param n
+     * @return
+     */
+    public int climbStairs(int n) {
+        int[] stepsArr = new int[n + 1];
+        stepsArr[0] = 0;
+        return getSteps(n, stepsArr);
+    }
+
+    public int getSteps(int n, int[] stepsArr) {
+        if (stepsArr[n] == 0) {
+            if (n < 4) {
+                stepsArr[n] = n;
+            } else {
+                stepsArr[n] = getSteps(n - 1) + getSteps(n - 2);
+            }
+        }
+        return stepsArr[n];
+    }
+
+    /**
+     * #2
+     * improvement of #1
+     * @param n
+     * @return
+     */
+    public int climbStairs1(int n) {
+        int[] stepArr = new int[n + 1];
+        stepArr[1] = 1;
+        stepArr[2] = 2;
+        return getSteps2(n, stepArr);
+    }
+
+    public int getSteps2(int n, int[] steps) {
+        if (steps[n] == 0) {
+            steps[n] = getSteps2(n - 1, steps) + getSteps2(n - 2, steps);
+        }
+        return steps[n];
+    }
+
+    /**
+     * bottom - up (从下往上分析)
+     * 非波拉契数列
+     */
+    public int climbStairs2(int n) {
+        if (n < 4) {
+            return n;
+        }
+        int preOne = 2, preTwo = 1, current;
+        for (int i = 2; i < n; i++) {
+            current = preOne + preTwo;
+            preTwo = preOne;
+            preOne = current;
+        }
+        return current;
+    }
+
+    /**
+     * simplified code
+     * @param n
+     * @return
+     */
+    public int climsStairs3(int n) {
+        int a = 1, b = 1;
+        while (n-- > 0) {
+            a = (b += a) -a;
+        }
+        return a;
+    }
+
+    /**
+     * 自底向上分析 (暴力法/优化版【存储中间值】)
+     * 在每一级台阶上有两种选择，走一步或者是走2步
+     * 则到第N级台阶上的可能性是前面所有可能性的和
+     */
+    /**
+     * #3
+     * 时间复杂度为O(2^n)
+     * @param n
+     * @return
+     */
+    public int climbStairs4 (int n) {
+        return climsStair(0, n);
+    }
+
+    public int climsStair (int currentStair, int aimStair) {
+        if (currentStair > aimStair) {
+            return 0;
+        }
+        if (currentStair == aimStair) {
+            return 1;
+        }
+        return climsStair(currentStair + 1, aimStair) + climsStair(currentStair + 2, aimStair);
+    }
+
+    /**
+     * #4 improvement of #3
+     * 时间复杂度为O(N)
+     * @param n
+     * @return
+     */
+    public int climbStairs5 (int n) {
+        int[] stepsArr = new int[n + 1];
+        return climsStair1(0, n, stepsArr);
+    }
+
+    public int climsStair1 (int currentStair, int aimStair,  int[] stepsArr) {
+        if (currentStair > aimStair) {
+            return 0;
+        }
+        if (currentStair == aimStair) {
+            return 1;
+        }
+        if (stepsArr[n] == 0) {
+            stepsArr[n] = climsStair1(currentStair + 1, aimStair) + climsStair1(currentStair + 2, aimStair);
+        }
+        return stepsArr[n];
+    }
+
+}
+//leetcode submit region end(Prohibit modification and deletion)
