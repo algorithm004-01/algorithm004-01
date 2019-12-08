@@ -27,12 +27,6 @@ public class RegularExpressionMatching {
                         dp[i + 1][j + 1] = dp[i + 1][j - 1];
                     } else {
                         dp[i + 1][j + 1] = (dp[i + 1][j] || dp[i][j + 1] || dp[i + 1][j - 1]);
-                            /*
-                            dp[i][j] = dp[i-1][j] // 多个字符匹配的情况
-                            or dp[i][j] = dp[i][j-1] // 单个字符匹配的情况
-                            or dp[i][j] = dp[i][j-2] // 没有匹配的情况
-                             */
-
                     }
                 }
             }
