@@ -27,6 +27,7 @@ class Solution:
                     max_rec=max(max_rec,h*(j-stack[-1]-1))
                 stack.append(j)
         return max_rec
+
         
 # @lc code=end
 
