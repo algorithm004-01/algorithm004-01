@@ -1,0 +1,799 @@
+{
+    "root": {
+        "data": {
+            "id": "bxo1epdv0pc0",
+            "created": 1570933383212,
+            "text": "数据结构和算法",
+            "expandState": "expand"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "bxo0mtojea00",
+                    "created": 1570931198369,
+                    "text": "算法",
+                    "layout_mind_offset": {
+                        "x": -92.49999632438016,
+                        "y": -0.8333333002196355
+                    }
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "bxo0myei4g00",
+                            "created": 1570931208646,
+                            "text": "提高--刷题技巧",
+                            "layout_left_offset": {
+                                "x": -88.33332982328221,
+                                "y": -212.499991556009
+                            }
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "bxo25noyzow0",
+                                    "created": 1570935495363,
+                                    "text": "拆分知识点"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "bxo0n5212i00",
+                                    "created": 1570931223129,
+                                    "text": "刻意练习---五遍刷题"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "bxo2jio00o80",
+                                            "created": 1570936581519,
+                                            "text": "每个题目都做五遍"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo2jtjsfxc0",
+                                            "created": 1570936605209,
+                                            "text": "第一遍"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "bxo2k39fm740",
+                                                    "created": 1570936626350,
+                                                    "text": "1.5分钟，基础不好的话最多十五分钟进行读题和思考"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "bxo2ko7mguw0",
+                                                    "created": 1570936671953,
+                                                    "text": "2.不知道怎么做  直接看解法 多解发 比较优势  背诵默写 （知道怎么做  就去做）"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo2m9c3yq80",
+                                            "created": 1570936796301,
+                                            "text": "第二遍"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "bxo2md209zs0",
+                                                    "created": 1570936804398,
+                                                    "text": "马上自己写 提交leetcode 顺利运行"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "bxo2n1gqm5s0",
+                                                    "created": 1570936857531,
+                                                    "text": "多种解法比较 体会优化"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo2njluc140",
+                                            "created": 1570936897022,
+                                            "text": "第三遍"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "bxo2nlij4ew0",
+                                                    "created": 1570936901175,
+                                                    "text": "一天之后再从新过一遍"
+                                                },
+                                                "children": [
+                                                    {
+                                                        "data": {
+                                                            "id": "bxo2ns9s92g0",
+                                                            "created": 1570936915884,
+                                                            "text": "不同解法 专项练习 找自己最弱的专项练习"
+                                                        },
+                                                        "children": []
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo2o377qu00",
+                                            "created": 1570936939673,
+                                            "text": "第四遍"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "bxo2o97zklk0",
+                                                    "created": 1570936952780,
+                                                    "text": "一周之后再次过一遍  再专项练习"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo2omaw6x40",
+                                            "created": 1570936981254,
+                                            "text": "第五遍 "
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "bxo2oo1cp9c0",
+                                                    "created": 1570936985031,
+                                                    "text": "面试前一个星期 再过一遍"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "bxo28mbvwow0",
+                                    "created": 1570935727488,
+                                    "text": "feedback"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "bxo295hbf880",
+                                            "created": 1570935769175,
+                                            "text": "即时反馈"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo29bweaxs0",
+                                            "created": 1570935783147,
+                                            "text": "主动型反馈"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "bxo29qhw56g0",
+                                                    "created": 1570935814922,
+                                                    "text": "高手代码github leetcode"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo29g9lpmw0",
+                                            "created": 1570935792653,
+                                            "text": "被动式反馈"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "bxo2a9hh1zs0",
+                                                    "created": 1570935856256,
+                                                    "text": "高手指点"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "bxo2b22akj40",
+                                    "created": 1570935918464,
+                                    "text": "面试"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "bxo2b5b690w0",
+                                            "created": 1570935925532,
+                                            "text": "1. clarification 和面试官反复沟通确保理解正确题意"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo2his2nhk0",
+                                            "created": 1570936425037,
+                                            "text": "2. possible solutions 想所有可能的解法来解决这个题目"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "bxo2iba2bkw0",
+                                                    "created": 1570936487074,
+                                                    "text": "compire(time/space)对比时间和空间复杂度"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "bxo2irnmm1k0",
+                                                    "created": 1570936522723,
+                                                    "text": "optimal 加强 找出最优解决方案"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo2j2m8gfs0",
+                                            "created": 1570936546584,
+                                            "text": "3. coding"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo2j740mv40",
+                                            "created": 1570936556366,
+                                            "text": "4. test case"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "bxo3ani4o880",
+                            "created": 1570938707880,
+                            "text": "编程技巧"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "bxo3ar1gycw0",
+                                    "created": 1570938715580,
+                                    "text": "自顶向下编程"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "bxo3ats6sr40",
+                                            "created": 1570938721549,
+                                            "text": "先写主干逻辑，再去填充每个逻辑细节"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "bxo3cv1hpmw0",
+                                    "created": 1570938881017,
+                                    "text": "VSCODE等ide的配置和快捷键的使用"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "bxo0nze05zk0",
+                            "created": 1570931289157,
+                            "text": "常用方法",
+                            "layout_left_offset": {
+                                "x": -57.49999771515536,
+                                "y": 3.3333332008785987
+                            }
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "bxo1sbdbg8o0",
+                                    "created": 1570934449803,
+                                    "text": "if-else, switch 用来处理 分支branch"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "bxo1scbq2p40",
+                                    "created": 1570934451883,
+                                    "text": "for，while loop 用来迭代 Iteration"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "bxo1scu2znc0",
+                                    "created": 1570934452994,
+                                    "text": "递归Recursion  用来 (Divide & Conquer, Backtrace）（划分 征服 回溯）需要借助递归树来辅助分析"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "bxo1sd89kpk0",
+                                    "created": 1570934453851,
+                                    "text": "搜索search 深度优先 deep first search 广度优先 breadth first search"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "bxo1x4ipkps0",
+                                    "created": 1570934826712,
+                                    "text": "动态规划Dynamic Programming"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "bxo1xok1u1s0",
+                                    "created": 1570934870329,
+                                    "text": "二分查找 Binary search"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "bxo1y1tfmh40",
+                                    "created": 1570934899195,
+                                    "text": "贪心 greedy"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "bxo1y5pejw80",
+                                    "created": 1570934907658,
+                                    "text": "数学 Math 几何 Geometry"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "bxo1zun1r400",
+                            "created": 1570935040299,
+                            "text": "复杂度",
+                            "layout_left_offset": {
+                                "x": -48.99999701976799,
+                                "y": -4.999977946281206
+                            },
+                            "expandState": "expand"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "bxo0nsg65ow0",
+                                    "created": 1570931274051,
+                                    "text": "时间复杂度"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "bxo3g8fwasw0",
+                                            "created": 1570939145278,
+                                            "text": "big O notation"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "bxo3gmudww80",
+                                                    "created": 1570939176629,
+                                                    "text": "O(1): constant complexity常数时间复杂度"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "bxo3hlf1ubc0",
+                                                    "created": 1570939251890,
+                                                    "text": "O(log n)对数时间复杂度  Logarithmic Complexity 对数复杂度"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "bxo5hcuwd7k0",
+                                                    "created": 1570944875477,
+                                                    "text": "O(n)  Linear Complexity 线性时间复杂度"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "bxo5htavp7s0",
+                                                    "created": 1570944911271,
+                                                    "text": "O(n^2): N square Complexity 平⽅"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "bxo5hvif1hs0",
+                                                    "created": 1570944916081,
+                                                    "text": "O(n^3): N square Complexity ⽴⽅"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "bxo5i0arvsg0",
+                                                    "created": 1570944926503,
+                                                    "text": "O(2^n): Exponential Growth 指数"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "bxo5i4lz7g80",
+                                                    "created": 1570944935887,
+                                                    "text": "O(n!): Factorial 阶乘"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxogrig0mug0",
+                                            "created": 1570976703488,
+                                            "text": "主定理 Master Theorem"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "bxogse3qsyo0",
+                                                    "created": 1570976772403,
+                                                    "text": "任何递归或者分治的函数都能算出来时间复杂度"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxogt4xfm1k0",
+                                            "created": 1570976830795,
+                                            "text": "四种递归"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "bxogt81k2eo0",
+                                                    "created": 1570976837574,
+                                                    "text": "binary search二分查找（Olog(n)）"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "bxogu1q53rk0",
+                                                    "created": 1570976902187,
+                                                    "text": "binary tree traversal二叉树遍历(O(n)) n代表节点总数"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "bxogxbwrgr40",
+                                                    "created": 1570977159448,
+                                                    "text": "opterminal sorted matrix search 有序的矩阵查找 一维的数组查找是O(logn) 有序的二维矩阵查找是O(n)"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "bxogxm249og0",
+                                                    "created": 1570977181540,
+                                                    "text": "merge sort 归并排序 所有排序最优的复杂度是nlog(n)  归并排序是nlog(n)"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxoh1ba2nrk0",
+                                            "created": 1570977471533,
+                                            "text": "思考题"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "bxoh1fe9dls0",
+                                                    "created": 1570977480493,
+                                                    "text": "二叉树遍历不论前中后序都是O(n)  n是节点数 每次遍历每个节点只访问一次且仅仅访问一次 所以和n是线性关系所以是O(n)"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "bxoh2fu1nhk0",
+                                                    "created": 1570977559812,
+                                                    "text": "图的遍历  解释和二叉树遍历一样的"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "bxoh1qnp1k00",
+                                                    "created": 1570977505008,
+                                                    "text": "搜索算法 dfs bfs  O(n) n是搜索空间的节点总数"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "bxoh3wufwxk0",
+                                                    "created": 1570977675205,
+                                                    "text": "二分查找 log(n)"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "bxo0nwlvwk80",
+                                    "created": 1570931283103,
+                                    "text": "空间复杂度"
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "bxo0mf60d0o0",
+                    "created": 1570931166773,
+                    "text": "数据结构",
+                    "expandState": "expand",
+                    "layout_mind_offset": {
+                        "x": 94.6666618320678,
+                        "y": -1.986820450383675e-7
+                    }
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "bxo0lnm75a00",
+                            "created": 1570931106802,
+                            "text": "一维",
+                            "layout_right_offset": {
+                                "x": -5.833333101537505,
+                                "y": -50.83333131339819
+                            }
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "bxo0qhbkuwg0",
+                                    "created": 1570931484920,
+                                    "text": "基础",
+                                    "expandState": "expand"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "bxo0nchniz40",
+                                            "created": 1570931239311,
+                                            "text": "数组（Array）"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo0nikjx7k0",
+                                            "created": 1570931252547,
+                                            "text": "链表（linked list）"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "bxo1huo876g0",
+                                    "created": 1570933629816,
+                                    "text": "高级"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "bxo1ikwzaj40",
+                                            "created": 1570933686942,
+                                            "text": "栈（stack）"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo1iejir880",
+                                            "created": 1570933673067,
+                                            "text": "队列（queue）"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo1l8g1tvk0",
+                                            "created": 1570933894889,
+                                            "text": "双端队列（deque）"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo1lluo9tc0",
+                                            "created": 1570933924071,
+                                            "text": "集合（set）"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo1lqibkj40",
+                                            "created": 1570933934208,
+                                            "text": "映射（map（hash or map））"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "bxo0lt5tzk80",
+                            "created": 1570931118873,
+                            "text": "二维"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "bxo1mfq5w8w0",
+                                    "created": 1570933989102,
+                                    "text": "基础",
+                                    "expandState": "expand",
+                                    "layout_right_offset": {
+                                        "x": -3.3333332008785987,
+                                        "y": -63.33333081669295
+                                    }
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "bxo0o8azs7k0",
+                                            "created": 1570931308566,
+                                            "text": "树（tree）"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo0obe2sk00",
+                                            "created": 1570931315282,
+                                            "text": "图（graph）"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "bxo1n1jbvmg0",
+                                    "created": 1570934036578,
+                                    "text": "高级"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "bxo1naw7zuo0",
+                                            "created": 1570934056948,
+                                            "text": "二叉搜索树（binary search tree（red black tree， AVL））"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo1onven4g0",
+                                            "created": 1570934163561,
+                                            "text": "堆（heap）"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo1oyasuaw0",
+                                            "created": 1570934186260,
+                                            "text": "并查集（disjoint set）"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "bxo1pghyo480",
+                                            "created": 1570934225875,
+                                            "text": "字典（Trie）"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "bxo0lwwdjq80",
+                            "created": 1570931127009,
+                            "text": "特殊"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "bxo1qq4smu80",
+                                    "created": 1570934325211,
+                                    "text": "布隆过滤器（bloom filter）,位运算（bitwise）",
+                                    "expandState": "expand"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "bxo1rpfoo8g0",
+                                    "created": 1570934402057,
+                                    "text": "LRU Cache"
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "template": "default",
+    "theme": "fresh-blue",
+    "version": "1.4.43"
+}
