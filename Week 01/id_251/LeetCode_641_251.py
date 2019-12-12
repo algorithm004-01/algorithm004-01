@@ -84,7 +84,7 @@ class MyCircularDequeForceList(object):
         """
         if self.isEmpty():
             return False
-        del self.q[0]
+        self.q.pop(0)
         return True
 
     def deleteLast(self):
@@ -94,7 +94,7 @@ class MyCircularDequeForceList(object):
         """
         if self.isEmpty():
             return False
-        del self.q[-1]
+        self.q.pop()
         return True
 
     def getFront(self):
@@ -231,7 +231,7 @@ class MyCircularDequeCycleList(object):
         return self._size == self._capacity
 
 
-# k+1 cycle优化 牺牲一个存储单元
+# k+1 cycle优化 牺牲一个存储单元 最有解法
 class MyCircularDeque(object):
 
     def __init__(self, k):
@@ -239,7 +239,7 @@ class MyCircularDeque(object):
         Initialize your data structure here. Set the size of the deque to be k.
         :type k: int
         """
-        self._size = k
+        # rear 不存元素， rear-1 是队尾
         self._front, self._rear = 0, 0
         self._capacity = k + 1
         self._data = [-1] * (k + 1)
@@ -265,7 +265,8 @@ class MyCircularDeque(object):
         if self.isFull():
             return False
         self._data[self._rear] = value
-        self._rear = (self._rear + 1) % self._capacity
+        # 尾部牺牲一个存储空间
+        self._rear = (self._rear + 1 + self._capacity) % self._capacity
         return True
 
     def deleteFront(self):
@@ -276,7 +277,7 @@ class MyCircularDeque(object):
         if self.isEmpty():
             return False
         self._data[self._front] = -1
-        self._front = (self._front + 1) % self._capacity
+        self._front = (self._front + 1 + self._capacity) % self._capacity
         return True
 
     def deleteLast(self):
@@ -316,7 +317,8 @@ class MyCircularDeque(object):
         Checks whether the circular deque is full or not.
         :rtype: bool
         """
-        return (self._rear - self._front + self._capacity) % self._capacity == self._size
+        return (self._rear + 1 + self._capacity) % self._capacity == self._front
+
 # Your MyCircularDeque object will be instantiated and called as such:
 # obj = MyCircularDeque(k)
 # param_1 = obj.insertFront(value)

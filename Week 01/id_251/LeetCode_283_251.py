@@ -17,12 +17,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution(object):
     """
-    # 1 loop 两层循环统计 0
+    # 1 loop 两层循环统计 0 双指针的另一种写法
     # 2 一个新数组，遍历非零存入新数组，最后len(old array) - len(new array)个0
-    # 3 index 统计非零
+    # 3 index 双指针 统计非零
     1 和 3 本质上差别不到，无非就是 一个统计0 一个统计非0
     """
 
+    # 3 双指针
     def moveZeroes(self, nums):
         """
         :type nums: List[int]
@@ -33,27 +34,13 @@ class Solution(object):
         j = 0
         for i in range(len(nums)):
             if nums[i] != 0:
-                nums[j] = nums[i]
-                if i != j:
-                    nums[i] = 0
-                j += 1
-
-    # 双指针交换版 和 上面优化版复杂度一样
-    def swap_index(self, nums):
-        j = 0
-        for i in range(len(nums)):
-            if nums[i] != 0:
-                """
-                # 减少无用的操作，只有在没有0的情况下才生效，意义不大
                 if i != j:
                     nums[j], nums[i] = nums[i], nums[j]
-                """
-                nums[j], nums[i] = nums[i], nums[j]
                 j += 1
 
     def two_index(self, nums):
-        # 双指针法好理解的版本
-        j = 0
+        # 双指针法好理解的版本统计非零
+        j = 0  # j 非零的右边界，0开始的起点
         for i in range(len(nums)):
             if nums[i] != 0:
                 nums[j] = nums[i]
@@ -69,12 +56,8 @@ class Solution(object):
             if nums[i] == 0:
                 zeros_count += 1
             else:
-                """
-                # 减少无用的赋值操作，只有在没有0的情况下才生效，意义不大
                 if i - zeros_count != i:
                     nums[i - zeros_count] = nums[i]
-                """
-                nums[i - zeros_count] = nums[i]
 
         for j in range(len(nums) - zeros_count, len(nums)):
             nums[j] = 0
@@ -86,23 +69,17 @@ class Solution(object):
             if nums[i] == 0:
                 zeros_count += 1
             else:
-                """
-                # 减少无用的赋值操作，只有在没有0的情况下才生效，意义不大
                 if i - zeros_count != i:
                     nums[i - zeros_count], nums[i] = nums[i], nums[i - zeros_count]
-                """
-                nums[i - zeros_count], nums[i] = nums[i], nums[i - zeros_count]
 
-    # 笨方法 LeetCode
+    # 用额外的数组存一下
     def newArray(self, nums):
         new_list = []
         for i in nums:
             if i != 0:
                 new_list.append(i)
         zeros_count = len(nums) - len(new_list)
-        if zeros_count:
-            new_list.extend([0] * zeros_count)
-        nums[:] = new_list  # 不改变指针赋值
+        nums[:] = new_list + [0] * zeros_count
 
 
 # leetcode submit region end(Prohibit modification and deletion)

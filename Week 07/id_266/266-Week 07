@@ -1,0 +1,30 @@
+1.位1的个数（number-of-1-bits）
+
+// 本题的关键：X = X & (X - 1) 意思是把最低一位清零
+// 例: 0000101 & 0000100 = 0000100
+//     0000110 & 0000101 = 0000100 
+
+
+public class Solution {
+    // you need to treat n as an unsigned value
+    public int hammingWeight(int n) {
+        int count = 0;
+    while (n != 0) {
+        count++;
+        n &= (n - 1); // 把最低一位清零
+    }
+    return count;
+    }
+}
+
+2.2的幂（power-of-two）
+
+# isPowerOfTwo = (n > 0) and (n & (n - 1)) == 0 # 因为有且仅有一位是1，所以打掉它这个数就变成0了
+
+class Solution(object):
+    def isPowerOfTwo(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        return n > 0 and n & (n - 1) == 0
