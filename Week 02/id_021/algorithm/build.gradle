@@ -9,8 +9,6 @@ group = 'com.lqw'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
-def nexusUrl = 'http://nexus.webuy.ai/nexus/content/groups/public/'
-
 repositories {
     maven {
         name 'eleph-repository'
