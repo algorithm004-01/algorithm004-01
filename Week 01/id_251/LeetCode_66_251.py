@@ -46,7 +46,7 @@ class Solution(object):
         return digits
 
     def tricky(self, digits):
-        return list(map(int, list(str(int("".join(map(str, digits))) + 1))))
+        return map(int, list(str(int(''.join(map(str, digits))) + 1)))
 
 
 # leetcode submit region end(Prohibit modification and deletion)

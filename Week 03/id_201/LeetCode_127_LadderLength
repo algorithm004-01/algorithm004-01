@@ -1,0 +1,275 @@
+//给定两个单词（beginWord 和 endWord）和一个字典，找到从 beginWord 到 endWord 的最短转换序列的长度。转换需遵循如下规则：
+//
+//
+// 每次转换只能改变一个字母。
+// 转换过程中的中间单词必须是字典中的单词。
+//
+//
+// 说明:
+//
+//
+// 如果不存在这样的转换序列，返回 0。
+// 所有单词具有相同的长度。
+// 所有单词只由小写字母组成。
+// 字典中不存在重复的单词。
+// 你可以假设 beginWord 和 endWord 是非空的，且二者不相同。
+//
+//
+// 示例 1:
+//
+// 输入:
+//beginWord = "hit",
+//endWord = "cog",
+//wordList = ["hot","dot","dog","lot","log","cog"]
+//
+//输出: 5
+//
+//解释: 一个最短转换序列是 "hit" -> "hot" -> "dot" -> "dog" -> "cog",
+//     返回它的长度 5。
+//
+//
+// 示例 2:
+//
+// 输入:
+//beginWord = "hit"
+//endWord = "cog"
+//wordList = ["hot","dot","dog","lot","log"]
+//
+//输出: 0
+//
+//解释: endWord "cog" 不在字典中，所以无法进行转换。
+// Related Topics 广度优先搜索
+
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+
+//leetcode submit region begin(Prohibit modification and deletion)
+class Solution {
+    public HashMap<String, ArrayList<String>> commonStatusMap;
+    public HashMap<String, ArrayList<String>> wordStatusMap;
+    /**
+     *  时间复杂度为O(nk)  n:字典中单词的数量, k为word长度
+     * @param beginWord
+     * @param endWord
+     * @param wordList
+     * @return
+     */
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        //每次只能变换一个字母,且每次产生的中间字符串必定在字典中,
+        // 所以找从begin world开始和wordList, endWord的上一个状态也在字典里
+        HashSet<String> visitedWords = new HashSet();
+        LinkedList<String> beginMediums = new LinkedList<String>();
+        beginMediums.add(beginWord);
+        String currentStr;
+        int size, step = 1;
+        boolean haveEnd = false;
+        while (!beginMediums.isEmpty()) {
+            size = beginMediums.size();
+            while (size-- > 0) {
+                currentStr = beginMediums.poll();
+                if (currentStr.equals(endWord))
+                    return step;
+                for (String str: wordList) {
+                    if (!visitedWords.contains(str) && canReachEnd(currentStr, str)) {
+                        visitedWords.add(str);
+                        beginMediums.add(str);
+                    }
+                    if (!haveEnd && str.equals(endWord)) {
+                        haveEnd = true;
+                    }
+                }
+                if (false == haveEnd)
+                    return 0;
+            }
+            step++;
+        }
+        return 0;
+    }
+
+    public boolean canReachEnd(String start, String end) {
+        char[] startChars = start.toCharArray();
+        char[] endChars = end.toCharArray();
+        int changeCount = 0;
+        for (int i = 0; i < startChars.length; i++) {
+            if (startChars[i] != endChars[i])
+                changeCount++;
+            if (changeCount > 1)
+                break;
+        }
+        return changeCount == 1;
+    }
+
+    public int ladderLength1(String beginWord, String endWord, List<String> wordList) {
+        HashSet<String> wordSets = new HashSet();
+        LinkedList<String> beginMediums = new LinkedList<String>();
+        char[] charList = new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+                'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'y', 'w', 'x', 'y', 'z'};
+        int size, step = 1;
+        String changeStr;
+        char[] changeChars;
+        char oldChar;
+        beginMediums.add(beginWord);
+        for (String str: wordList)
+            wordSets.add(str);
+        while (!beginMediums.isEmpty()) {
+            size = beginMediums.size();
+            while (size-- > 0) {
+                changeStr = beginMediums.poll();
+                if (changeStr.equals(endWord))
+                    return step;
+                changeChars = changeStr.toCharArray();
+                for (int i = 0; i < changeChars.length; i++) {
+                    for (char j: charList) {
+                        if (changeChars[i] == j)
+                            continue;
+                        oldChar = changeChars[i];
+                        changeChars[i] = j;
+                        changeStr = String.valueOf(changeChars);
+                        if (wordSets.contains(changeStr)) {
+                            wordSets.remove(changeStr);
+                            beginMediums.add(changeStr);
+                        }
+                        changeChars[i] = oldChar;
+                    }
+                }
+            }
+            step++;
+        }
+        return 0;
+    }
+
+    /**
+     * todo
+     * #3 单指针，通用状态预处理
+     * @param beginWord
+     * @param endWord
+     * @param wordList
+     * @return
+     */
+    public int ladderLength2(String beginWord, String endWord, List<String> wordList) {
+        int len = beginWord.length(), step = 0;
+        HashMap<String, ArrayList<String>> commonStatusMap = new HashMap<>();
+        HashMap<String, ArrayList<String>> wordStatusMap = new HashMap<>();
+        Queue<String> headQueue = new LinkedList<String>();
+        headQueue.add(beginWord);
+
+        //pre handle of dictionary
+        for (String word: wordList) {
+            ArrayList<String> wordStatus = getCommonStatus(word, len);
+            wordStatusMap.put(word, wordStatus);
+            for (String s: wordStatus) {
+                if (!commonStatusMap.containsKey(s)) {
+                    commonStatusMap.put(s, new ArrayList<String>());
+                }
+                commonStatusMap.get(s).add(word);
+            }
+        }
+        wordStatusMap.put(beginWord, getCommonStatus(beginWord, len));
+
+        while (!headQueue.isEmpty()) {
+            int size = headQueue.size();
+            step++;
+            while (size-- > 0) {
+                String currentStr = headQueue.poll();
+                if (currentStr.equals(endWord))
+                    return step;
+                if (!wordStatusMap.containsKey(currentStr))
+                    continue;
+                for (String str: wordStatusMap.get(currentStr)) {
+                    if (!commonStatusMap.containsKey(str))
+                        continue;
+                    for (String nextStr: commonStatusMap.get(str))
+                        headQueue.add(nextStr);
+                    commonStatusMap.remove(str);
+                }
+                wordStatusMap.remove(currentStr);
+            }
+        }
+        return 0;
+    }
+
+    public ArrayList<String> getCommonStatus(String word, int length) {
+        ArrayList<String> commonStatus = new ArrayList();
+        char[] wordChar = word.toCharArray();
+        char oldChar;
+        for (int i = 0; i < length; i++) {
+            oldChar = wordChar[i];
+            wordChar[i] = '*';
+            commonStatus.add(String.valueOf(wordChar));
+            wordChar[i] = oldChar;
+        }
+        return commonStatus;
+    }
+
+    /**
+     * #4 双指针 (head point and tail point)
+     * 时间复杂度为O（NK）,实际时间比较小，双直针会在中间相遇
+     * （原来的搜索是金字塔形,越往下层基数越大，指数型增长）
+     * @param beginWord
+     * @param endWord
+     * @param wordList
+     * @return
+     */
+    public int ladderLength3(String beginWord, String endWord, List<String> wordList) {
+        if (!wordList.contains(endWord)) {
+            return 0;
+        }
+        commonStatusMap = new HashMap<>();
+        wordStatusMap = new HashMap<>();
+        Queue<Pair<String, Integer>> headQueue = new LinkedList();
+        Queue<Pair<String, Integer>> tailQueue = new LinkedList();
+        HashMap<String, Integer> headVisited = new HashMap();
+        HashMap<String, Integer> tailVisited = new HashMap();
+        headQueue.add(new Pair(beginWord, 1));
+        tailQueue.add(new Pair(endWord, 1));
+
+        //pre handle of dictionary
+        int len = beginWord.length(), vistedStep;
+        for (String word: wordList) {
+            ArrayList<String> wordStatus = getCommonStatus(word, len);
+            wordStatusMap.put(word, wordStatus);
+            for (String s: wordStatus) {
+                if (!commonStatusMap.containsKey(s)) {
+                    commonStatusMap.put(s, new ArrayList<String>());
+                }
+                commonStatusMap.get(s).add(word);
+            }
+        }
+        wordStatusMap.put(beginWord, getCommonStatus(beginWord, len));
+
+        while (!headQueue.isEmpty() && !tailQueue.isEmpty()) {
+            vistedStep = visitWord(headQueue, headVisited, tailVisited);
+            if (vistedStep > 0) {
+                return vistedStep;
+            }
+            vistedStep = visitWord(tailQueue, tailVisited, headVisited);
+            if (vistedStep > 0) {
+                return vistedStep;
+            }
+        }
+        return 0;
+    }
+
+    public int visitWord(Queue<Pair<String, Integer>> q, HashMap<String, Integer> visitedMap, HashMap<String, Integer> compareMap) {
+        Pair<String, Integer> wordNode = q.poll();
+        String word = wordNode.getKey();
+        if (compareMap.containsKey(word)) {
+            return wordNode.getValue() + compareMap.get(word) -1;
+        }
+        for (String s: wordStatusMap.get(word)) {
+            if (!commonStatusMap.containsKey(s))
+                continue;
+            for (String s1: commonStatusMap.get(s)) {
+                if (!visitedMap.containsKey(s1)) {
+                    q.add(new Pair(s1, wordNode.getValue() + 1));
+                    visitedMap.put(s1, wordNode.getValue() + 1);
+                }
+            }
+        }
+        return 0;
+    }
+}
+//leetcode submit region end(Prohibit modification and deletion)

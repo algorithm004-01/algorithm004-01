@@ -39,7 +39,7 @@ class MinStack(object):
         initialize your data structure here.
         """
         # 数据栈
-        self.data = []
+        self.stack = []
         # 辅助栈
         self.helper = []
 
@@ -48,8 +48,9 @@ class MinStack(object):
         :type x: int
         :rtype: None
         """
-        self.data.append(x)
-        if len(self.helper) == 0 or x <= self.helper[-1]:
+        self.stack.append(x)
+        # 这里 x < self.helper[-1] 或者 x <= self.helper[-1] 都可以
+        if len(self.helper) == 0 or x < self.helper[-1]:
             self.helper.append(x)
         else:
             self.helper.append(self.helper[-1])
@@ -58,16 +59,16 @@ class MinStack(object):
         """
         :rtype: None
         """
-        if self.data:
-            del self.helper[-1]
-            return self.data.pop()
+        if self.stack:
+            self.helper.pop()
+            self.stack.pop()
 
     def top(self):
         """
         :rtype: int
         """
-        if self.data:
-            return self.data[-1]
+        if self.stack:
+            return self.stack[-1]
 
     def getMin(self):
         """
@@ -90,7 +91,7 @@ class MinStackNoSync(object):
         initialize your data structure here.
         """
         # 数据栈
-        self.data = []
+        self.stack = []
         # 辅助栈
         self.helper = []
 
@@ -99,7 +100,7 @@ class MinStackNoSync(object):
         :type x: int
         :rtype: None
         """
-        self.data.append(x)
+        self.stack.append(x)
         # 关键1 和 关键2
         if len(self.helper) == 0 or x <= self.helper[-1]:
             self.helper.append(x)
@@ -108,17 +109,17 @@ class MinStackNoSync(object):
         """
         :rtype: None
         """
-        if self.data:
-            if self.data[-1] == self.helper[-1]:
-                del self.helper[-1]
-            return self.data.pop()
+        if self.stack:
+            if self.stack[-1] == self.helper[-1]:
+                self.helper.pop()
+            self.stack.pop()
 
     def top(self):
         """
         :rtype: int
         """
-        if self.data:
-            return self.data[-1]
+        if self.stack:
+            return self.stack[-1]
 
     def getMin(self):
         """
@@ -140,7 +141,7 @@ class MinStackTuple(object):
 
     def pop(self):
         if self.stack:
-            del self.stack[-1]
+            self.stack.pop()
 
     def top(self):
         if self.stack:
@@ -154,21 +155,21 @@ class MinStackTuple(object):
 # 方法3 升级
 class MinStack4(object):
     def __init__(self):
-        self.data = [(None, float('inf'))]
+        self.stack = [(None, float('inf'))]
 
     def push(self, x):
-        self.data.append((x, min(x, self.data[-1][1])))
+        self.stack.append((x, min(x, self.stack[-1][1])))
 
     def pop(self):
-        if len(self.data) > 1:
-            self.data.pop()
-            # del self.data[-1]
+        if len(self.stack) > 1:
+            self.stack.pop()
 
     def top(self):
-        return self.data[-1][0]
+        return self.stack[-1][0]
 
     def getMin(self):
-        return self.data[-1][1]
+        if len(self.stack) > 1:
+            return self.stack[-1][1]
 
 # Your MinStack object will be instantiated and called as such:
 # obj = MinStack()

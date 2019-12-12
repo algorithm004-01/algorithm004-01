@@ -1,0 +1,40 @@
+/**
+ 给定一个包含非负整数的 m x n 网格，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。
+
+ 说明：每次只能向下或者向右移动一步。
+
+ 示例:
+
+ 输入:
+ [
+   [1,3,1],
+ [1,5,1],
+ [4,2,1]
+ ]
+ 输出: 7
+ 解释: 因为路径 1→3→1→1→1 的总和最小。
+
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/minimum-path-sum
+ 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ */
+class LeetCode_62_416 {
+    public int minPathSum(int[][] grid) {
+        //自顶向下递归
+        //1.重复子问题 F(i,j) = Math.min()F(i-1,j),F(i,j-1));
+        //2.中间状态转移数组 F(i,j) 二维的
+        //3.dp方程 F(i,j) = Math.min()F(i-1,j),F(i,j-1));
+        int row = grid.length;
+        int col = grid[0].length;
+        int[][] dp = new int[row][col];//中间状态转移数组
+        for(int i = 0;i < row;i++) {
+            for(int j = 0;j < col;j++) {
+                if(i == 0 && j==0) dp[i][j] = grid[i][j];
+                if(i != 0 && j != 0) dp[i][j] = Math.min(dp[i - 1][j],dp[i][j - 1]) + grid[i][j];
+                if(i == 0 && j != 0) dp[i][j] = dp[i][j - 1] + grid[i][j];
+                if(i != 0 && j == 0) dp[i][j] = dp[i - 1][j] + grid[i][j];
+            }
+        }
+        return dp[row - 1][col - 1];
+    }
+}
