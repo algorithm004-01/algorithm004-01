@@ -10,7 +10,7 @@ func longestCommonSubsequence(text1 string, text2 string) int {
 	}
 	dp := make([][]int, len1+1)
 	for i := 0; i <= len1; i++ {
-		dp[i] = make([]int,len2+1)
+		dp[i] = make([]int, len2+1)
 	}
 	for i := 1; i <= len1; i++ {
 		for j := 1; j <= len2; j++ {
@@ -32,30 +32,6 @@ func max(x, y int) int {
 	return y
 }
 
-func letterCombinations(digits string) []string {
-	length := len(digits)
-	var res []string
-	alphaMap := map[string][]string{
-		"2":[]string{"a","b","c"},
-		"3":[]string{"d","e","f"},
-		"4":[]string{"g","h","i"},
-		"5":[]string{"j","k","l"},
-		"6":[]string{"m","n","o"},
-		"7":[]string{"p","q","r","s"},
-		"8":[]string{"t","u","v"},
-		"9":[]string{"w","x","y","z"},
-	}
-	s := ""
-	for i:=0;i<length;i++{
-		s :=
-	}
-	return res
-}
-
-func dg()  {
-	
-}
-
 func main() {
-	fmt.Println(longestCommonSubsequence("abcde","ace"))
+	fmt.Println(longestCommonSubsequence("abcde", "ace"))
 }
