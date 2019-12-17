@@ -1,0 +1,125 @@
+//给定一个二叉树，返回它的中序 遍历。
+//
+// 示例:
+//
+// 输入: [1,null,2,3]
+//   1
+//    \
+//     2
+//    /
+//   3
+//
+//输出: [1,3,2]
+//
+// 进阶: 递归算法很简单，你可以通过迭代算法完成吗？
+// Related Topics 栈 树 哈希表
+
+
+
+//leetcode submit region begin(Prohibit modification and deletion)
+
+import java.util.Stack;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    /**
+     * recursion
+     * 时间复杂度为: O(N)
+     * @param root
+     * @return
+     */
+    public List<Integer> inorderTraversal(TreeNode root) {
+        ArrayList<Integer> inOrderList = new ArrayList();
+        inorderTraver(root, inOrderList);
+        return inOrderList;
+    }
+
+    public void inorderTraver(TreeNode node, ArrayList inorderList) {
+        if (node != null) {
+            inorderTraver(node.left, inorderList);
+            inorderList.add(node.val);
+            inorderTraver(node.right, inorderList);
+        }
+    }
+
+    /**
+     * #2 迭代 use stack
+     *  时间复杂度为: O(N)
+     * @param root
+     * @return
+     */
+    public List<Integer> inorderTraversal1(TreeNode root) {
+        ArrayList<Integer> inOrderList = new ArrayList();
+        Stack<TreeNode> nodeStack = new Stack<>();
+        TreeNode current = root;
+        while (current != null) {
+            nodeStack.push(current);
+            current = current.left;
+        }
+        while (!nodeStack.isEmpty()) {
+            current = nodeStack.pop();
+            inOrderList.add(current.val);
+            current = current.right;
+            while (current != null) {
+                nodeStack.push(current);
+                current = current.left;
+            }
+        }
+        return inOrderList;
+    }
+
+    /**
+     * #3 莫里斯遍历
+     * 时间复杂度O(N)
+     * N各节点只有N-1条边
+     * 若current没有左子节点
+     *     a. 将current添加到输出
+     *     b. 进入右子树，亦即, current = current.right
+     * 否则
+     *     a. 在current的左子树中，令current成为最右侧节点的右子节点
+     *     b. 进入左子树，亦即，current = current.left
+     * @param root
+     * @return
+     */
+    public List<Integer> inorderTraversal2(TreeNode root) {
+        ArrayList<Integer> inOrderList = new ArrayList();
+        TreeNode current = root, nextNode, tempNode;
+        while (current != null) {
+            if (current.left == null) {
+                inOrderList.add(current.val);
+                current = current.right;
+                continue;
+            }
+            nextNode = current.left;
+            while (nextNode.right != null) {
+                nextNode = nextNode.right;
+            }
+            tempNode = current;
+            nextNode.right = tempNode;
+            current = current.left;
+            tempNode.left = null;
+        }
+        return inOrderList;
+    }
+
+    /**
+     * #3 color to distinct visited node
+     * @param root
+     * @return
+     */
+    public List<Integer> inorderTraversal3(TreeNode root) {
+        ArrayList<Integer> inOrderList = new ArrayList();
+        // todo
+        return inOrderList;
+    }
+
+}
+//leetcode submit region end(Prohibit modification and deletion)

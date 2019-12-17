@@ -1,0 +1,26 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.9.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+    id 'maven'
+}
+
+group = 'com.lqw'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    maven {
+        name 'eleph-repository'
+        url nexusUrl
+    }
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation "org.apache.commons:commons-lang3:3.1"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+
