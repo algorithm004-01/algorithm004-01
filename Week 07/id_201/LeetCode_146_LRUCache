@@ -1,0 +1,92 @@
+
+import java.util.Hashtable;
+
+public class LeetCode_146_LRUCache {
+    public int remain;
+    private Hashtable<Integer, DListNode> hases;
+    private DLinkedList1 cache;
+
+    public LeetCode146LRUCache1(int capacity) {
+        hases = new Hashtable<>();
+        cache = new DLinkedList1();
+        remain = capacity;
+    }
+
+    public int get(int key) {
+        DListNode node = hases.get(key);
+        if (node == null)
+            return -1;
+        cache.moveToHead(node);
+        return node.value;
+    }
+
+    public void put(int key, int value) {
+        DListNode node = hases.get(key);
+        if (node != null) {
+            node.value = value;
+            cache.moveToHead(node);
+            return;
+        }
+        if (remain == 0) {
+            hases.remove(cache.removeTail().key);
+            remain++;
+        }
+        node = new DListNode();
+        node.key = key;
+        node.value = value;
+        cache.addHead(node);
+        hases.put(key, node);
+        remain--;
+    }
+}
+
+
+
+/**
+ * head and tail 伪head and 伪tail
+ * 简化代码对于特殊情况的处理  null
+ * 使得插入的元素都作为中间元素处理
+ */
+class DLinkedList1 {
+    public DListNode head;
+    public DListNode tail;
+
+    public DLinkedList1() {
+        head = new DListNode();
+        tail = new DListNode();
+        head.next = tail;
+        tail.prev = head;
+    }
+
+    public void moveToHead(DListNode node) {
+        if (node.prev == null) {
+            addHead(node);
+        } else {
+            remove(node);
+            addHead(node);
+        }
+    }
+
+    public void addHead(DListNode node) {
+        node.next = head.next;
+        node.prev = head;
+        head.next.prev = node;
+        head.next = node;
+    }
+
+    public void remove(DListNode node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+
+    public DListNode removeTail() {
+        DListNode node = tail.prev;
+        remove(node);
+        return node;
+    }
+}
+
+class DListNode {
+    public DListNode prev, next;
+    public int key, value;
+}
